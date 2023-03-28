@@ -16,6 +16,6 @@
     </form>
     <div>
         <p>Vous n'etes pas encore inscrit ?</p>
-        <a href="#">Inscrivez bous ici</a>
+        <a href="/security/register.html">Inscrivez vous ici</a>
     </div>
 </div>
