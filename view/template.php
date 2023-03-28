@@ -8,7 +8,14 @@
 </head>
 <body>
     <header>
+        <nav>
+            <div id="navLeft">
 
+            </div>
+            <div id="navRight">
+
+            </div>
+        </nav>
     </header>
     <div id="wrapper">
         <main>
