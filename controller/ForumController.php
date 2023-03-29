@@ -6,6 +6,7 @@
     use App\AbstractController;
     use App\ControllerInterface;
     use Model\Managers\TopicManager;
+    use Model\Manager\CategorieManager;
     use Model\Managers\PostManager;
     
     class ForumController extends AbstractController implements ControllerInterface{
@@ -32,12 +33,12 @@
             return [
                 "view" => VIEW_DIR."forum/listCategories.php",
                 "data" => [
-                    "categories" => $categorieManager->findAll(["nomCategorie", "DESC"])
+                    "categories" => $categorieManager->findAll(["nomCategorie", "ASC"])
                 ]
             ];
 
-    }
-
+        }
 
         
+    
     }
