@@ -9,9 +9,9 @@
         public function redirectTo($ctrl = null, $action = null, $id = null){
         // fonction generallement native dans des framework pour faire des redirection 
             if($ctrl != "home"){
-                $url = $ctrl ? "/".$ctrl : "";
-                $url .= $action ? "/".$action : "";
-                $url .= $id ? "/".$id : "";
+                $url = $ctrl ? "?ctrl=".$ctrl : "";
+                $url .= $action ? "&action=".$action : "";
+                $url .= $id ? "&id=".$id : "";
                 $url .= ".html";
             }
             else $url = "/";
