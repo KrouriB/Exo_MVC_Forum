@@ -10,7 +10,8 @@
                 private $user;
                 private $dateCreation;
                 private $verouiller;
-                private $categorie
+                private $categorie;
+                private $resume;
 
                 public function __construct($data){         
                         $this->hydrate($data);        
@@ -122,6 +123,26 @@
                 public function setCategorie($categorie)
                 {
                         $this->categorie = $categorie;
+
+                        return $this;
+                }
+
+                /**
+                 * Get the value of resume
+                 */ 
+                public function getResume()
+                {
+                        return $this->resume;
+                }
+
+                /**
+                 * Set the value of resume
+                 *
+                 * @return  self
+                 */ 
+                public function setResume($resume)
+                {
+                        $this->resume = $resume;
 
                         return $this;
                 }
