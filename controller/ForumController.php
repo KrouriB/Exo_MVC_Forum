@@ -10,17 +10,34 @@
     
     class ForumController extends AbstractController implements ControllerInterface{
 
-        public function index(){
+        public function index(){}
         
-            $topicManager = new TopicManager();
+        public function listTopics(){
+            
+                $topicManager = new TopicManager();
+                
+                return [
+                    "view" => VIEW_DIR."forum/listTopics.php",
+                    "data" => [
+                        "topics" => $topicManager->findAll(["dateCreation", "DESC"])
+                    ]
+                ];
+
+        }
+
+        public function listCategorie(){
+            
+            $categorieManager = new CategorieManager();
             
             return [
-                "view" => VIEW_DIR."forum/listTopics.php",
+                "view" => VIEW_DIR."forum/listCategories.php",
                 "data" => [
-                    "topics" => $topicManager->findAll(["dateCreation", "DESC"])
+                    "categories" => $categorieManager->findAll(["nomCategorie", "DESC"])
                 ]
             ];
-        
-        }
+
+    }
+
+
         
     }
