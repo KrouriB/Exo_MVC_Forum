@@ -12,8 +12,8 @@
      */
     abstract class DAO{
 
-        private static $host   = 'mysql:host=127.0.0.1;port=3306';
-        private static $dbname = 'forum_dwwm3';
+        private static $host   = 'mysql:host=localhost';
+        private static $dbname = 'forum_brice';
         private static $dbuser = 'root';
         private static $dbpass = '';
 
