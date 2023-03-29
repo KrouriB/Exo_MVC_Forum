@@ -25,7 +25,7 @@
 
         }
 
-        public function listCategorie(){
+        public function listCategories(){
             
             $categorieManager = new CategorieManager();
             
