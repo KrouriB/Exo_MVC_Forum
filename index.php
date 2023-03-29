@@ -61,6 +61,6 @@
         /*j'efface le tampon*/
         ob_end_clean();
         /*j'affiche le template principal (layout)*/
-        include VIEW_DIR."layout.php";
+        include VIEW_DIR."template.php";
     }
     
