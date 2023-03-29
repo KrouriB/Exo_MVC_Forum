@@ -9,7 +9,7 @@
                 private $password;
                 private $role;
                 private $pseudo;
-                private $email
+                private $email;
 
                 public function __construct($data){         
                         $this->hydrate($data);        
