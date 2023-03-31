@@ -7,14 +7,25 @@ $categorie = $result["data"]['categorie'];
 
 <h1>liste des topics de la catégorie <?= $categorie->getNomCategorie() ?></h1>
 
-<?php
-foreach($topics as $topic){
-
-    ?>
-    <p><a href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getNomTopic()?></a></p>
+<table>
+    <thead>
+        <th></th>
+    </thead>
+    <tbody>
     <?php
-}
-?>
+    foreach($topics as $topic){
+        ?>
+        <tr>
+            <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getNomTopic()?></a></td>
+            <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getUser()->getPseudo()?></a></td>
+            <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getDateCreation()?></a></td>
+        </tr>
+        <?php
+    }
+    ?>      
+    </tbody>
+</table>
+
 
 <form action="#" methode="post">
     <div>
