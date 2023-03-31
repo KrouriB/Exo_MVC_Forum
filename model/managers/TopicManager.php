@@ -17,12 +17,11 @@
         public function findTopicbyCategorie($id){
             $sql = "
                 SELECT *
-                FROM ".$this->tableName." p
-                WHERE p.categorie_id = :id
-                ORDER BY dateCreation DESC
-                ";
+                FROM ".$this->tableName." t
+                WHERE t.categorie_id = :id
+                ORDER BY dateCreation DESC";
 
-            var_dump($sql);die;
+            // var_dump($sql);die;
 
             return $this->getMultipleResults(
                 DAO::select($sql,['id'=>$id]),
