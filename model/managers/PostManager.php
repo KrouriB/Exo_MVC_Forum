@@ -14,5 +14,19 @@
             parent::connect();
         }
 
+        public function findPostsbyTopic($id){
+            $sql = "
+                SELECT *
+                FROM ".$this->tableName." p
+                WHERE p.topic_id = :id";
+
+            var_dump($sql);die;
+
+            return $this->getMultipleResults(
+                DAO::select($sql,['id'=>$id]),
+                $this->className
+            );
+            
+        }
 
     }
