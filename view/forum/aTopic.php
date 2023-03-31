@@ -1,10 +1,13 @@
 <?php
 
 $posts = $result["data"]['posts'];
+$topic = $result["data"]['topic'];
     
 ?>
 
-<h1>liste posts</h1>
+<h1><?= $topic->getNomTopic() ?></h1>
+
+<h3><?= $topic->getResumer() ?></h3>
 
 <?php
 foreach($posts as $post){

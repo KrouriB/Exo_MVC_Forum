@@ -1,10 +1,11 @@
 <?php
 
 $topics = $result["data"]['topics'];
+$categorie = $result["data"]['categorie'];
     
 ?>
 
-<h1>liste topics d'une catégorie</h1>
+<h1>liste des topics de la catégorie <?= $categorie->getNomCategorie() ?></h1>
 
 <?php
 foreach($topics as $topic){
