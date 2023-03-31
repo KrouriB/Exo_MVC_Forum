@@ -18,9 +18,10 @@
             $sql = "
                 SELECT *
                 FROM ".$this->tableName." p
-                WHERE p.topic_id = :id";
+                WHERE p.topic_id = :id
+                ORDER BY datePost ASC";
 
-            var_dump($sql);die;
+            // var_dump($sql);die;
 
             return $this->getMultipleResults(
                 DAO::select($sql,['id'=>$id]),
