@@ -11,7 +11,7 @@
                 private $dateCreation;
                 private $verouiller;
                 private $categorie;
-                private $resume;
+                private $resumer;
 
                 public function __construct($data){         
                         $this->hydrate($data);        
@@ -128,21 +128,21 @@
                 }
 
                 /**
-                 * Get the value of resume
+                 * Get the value of resumer
                  */ 
-                public function getResume()
+                public function getResumer()
                 {
-                        return $this->resume;
+                        return $this->resumer;
                 }
 
                 /**
-                 * Set the value of resume
+                 * Set the value of resumer
                  *
                  * @return  self
                  */ 
-                public function setResume($resume)
+                public function setResumer($resumer)
                 {
-                        $this->resume = $resume;
+                        $this->resumer = $resumer;
 
                         return $this;
                 }
