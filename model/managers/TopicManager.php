@@ -14,5 +14,21 @@
             parent::connect();
         }
 
+        public function findTopicbyCategorie($id){
+            $sql = "
+                SELECT *
+                FROM ".$this->tableName." p
+                WHERE p.categorie_id = :id
+                ORDER BY dateCreation DESC
+                ";
+
+            var_dump($sql);die;
+
+            return $this->getMultipleResults(
+                DAO::select($sql,['id'=>$id]),
+                $this->className
+            );
+            
+        }
 
     }
