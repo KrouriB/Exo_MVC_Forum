@@ -5,15 +5,23 @@ $topic = $result["data"]['topic'];
     
 ?>
 
-<h1><?= $topic->getNomTopic() ?></h1>
-
-<h3><?= $topic->getResumer() ?></h3>
+<div id="topTopic">
+    <h1><?= $topic->getNomTopic() ?></h1>
+    
+    <h3><?= $topic->getResumer() ?></h3>
+</div>
 
 <?php
 foreach($posts as $post){
 
     ?>
-    <p><?=$post->getMessage()?></p>
+    <div class="unMessage">
+        <p><?=$post->getMessage()?></p>
+        <div>
+            <span><?=$post->getUser()->getPseudo() ?></span>
+            <span><?=$post->getDatePost() ?></span>
+        </div>
+    </div>
     <?php
 }
 ?>
