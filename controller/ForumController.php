@@ -39,6 +39,30 @@
 
         }
 
-        
+        public function listTopicsForACategorie(){
+            
+            $topicManager = new TopicManager();
+            
+            return [
+                "view" => VIEW_DIR."forum/listTopicsForACategorie.php",
+                "data" => [
+                    "topics" => $topicManager->findTopicbyCategorie($_GET["id"])
+                ]
+            ];
+
+        }
+
+        public function aTopic(){
+            
+            $postManager = new PostManager();
+            
+            return [
+                "view" => VIEW_DIR."forum/aTopic.php",
+                "data" => [
+                    "posts" => $postManager->findPostsbyTopic($_GET["id"])
+                ]
+            ];
+
+        }
     
     }
