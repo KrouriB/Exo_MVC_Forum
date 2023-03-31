@@ -20,7 +20,7 @@
                 FROM ".$this->tableName." a
                 WHERE a.email = :email";
 
-            var_dump($sql);die;
+            // var_dump($sql);die;
 
             return $this->getOneOrNullResult(
                 DAO::select($sql,['email'=>$email],false),
