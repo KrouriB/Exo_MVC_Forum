@@ -93,20 +93,20 @@
             }
         }
 
-        public function loginTry(){ // fonction pour se connecter
-            if(isset($_POST['submit'])){
+        // public function loginTry(){ // fonction pour se connecter
+        //     if(isset($_POST['submit'])){
                 
 
 
-                $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        //         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 
-                $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                // TODO : utiliser password_verify
+        //         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                 // TODO : utiliser password_verify
 
-                if(){
-                    // TODO : mettre l'utilisateur en session
-                }
-                $this->redirectTo("forum","listTopic");
-            }
-        }
+        //         if(){
+                     // TODO : mettre l'utilisateur en session
+        //         }
+        //         $this->redirectTo("forum","listTopic");
+        //     }
+        // }
     }
