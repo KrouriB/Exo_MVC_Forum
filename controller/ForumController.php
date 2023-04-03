@@ -68,5 +68,45 @@
             ];
 
         }
-    
+
+        public function aNewTopic(){
+
+            $topicManager = new TopicManager();
+
+            if (isset($_POST['submit'])){
+
+            }
+
+        }
+
+        public function aNewTopicInCategorie(){
+
+            $topicManager = new TopicManager();
+
+            if (isset($_POST['submit'])){
+
+            }
+
+        }
+
+        public function aPost(){
+
+            $postManager = new PostManager();
+            $topicManager = new TopicManager();
+
+            if (isset($_POST['submit'])){
+                $message = filter_input(INPUT_POST, "messageForm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                if ($message){
+                    $postManager->add($data = [
+                        "message" => $message,
+                        "user_id" => 5,
+                        "topic_id" => $_GET['id']
+                    ]);
+                    $this->redirectTo("forum","aTopic",$_GET['id']);
+                }
+            }
+
+        }
     }
+
+    // ["message"=>$message],["user_id"=>5],["topic_id"=>$_GET['id']]
