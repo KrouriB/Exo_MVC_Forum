@@ -10,12 +10,15 @@ $topics = $result["data"]['topics'];
 
 <?php
 foreach($topics as $topic){
-
+    $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
     ?>
     <div class="carteTopic">
         <a href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
             <div class="hautDeCarte">
-                <p class="nomCategorie" ><?=$topic->getCategorie()->getNomCategorie()?></p>
+                <div class="ligneHaut">
+                    <span><?= $verrou ?></span>
+                    <p class="nomCategorie" ><?=$topic->getCategorie()->getNomCategorie()?></p>
+                </div>
                 <p class="nomSujet"><?=$topic->getNomTopic()?></p>  
             </div>
             <div class="basDeCarte">
@@ -60,8 +63,3 @@ foreach($topics as $topic){
         <input type="submit" value="Ajouter votre sujet">
     </div>
 </form>
-
-<!-- 
-<i class="fa-solid fa-lock"></i> verouiller
-<i class="fa-regular fa-lock-open"></i> déverouiller
- -->
