@@ -8,8 +8,8 @@
     <div class="uneInfoLog">
         <label for="password">Mot de Passe : </label>
         <div>
-            <input type="password" name="password" id="password">
-            <button onclick="showPassword()"><i class="fa-regular fa-eye"></i></button>
+            <input type="password" name="password" id="password" class="mdp">
+            <input type="checkbox" onclick="showPasswordlog()"><i class="fa-regular fa-eye"></i>
         </div>
     </div>
     <div>

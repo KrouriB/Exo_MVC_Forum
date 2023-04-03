@@ -12,8 +12,8 @@
     <div class="uneInfoLog">
         <label for="password1">Mot de Passe : </label>
         <div>
-            <input type="password" name="password1" id="password1">
-            <button onclick="showPassword()"><i class="fa-regular fa-eye"></i></button>
+            <input type="password" name="password1" id="password1" class="mdp">
+            <input type="checkbox" onclick="showPasswordreg()"><i class="fa-regular fa-eye"></i>
         </div>
     </div>
     <div class="uneInfoLog">
