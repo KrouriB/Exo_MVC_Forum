@@ -23,4 +23,14 @@
                 ];
 
         }
+
+        public function login(){
+            return ["view" => VIEW_DIR."security/login.php"];
+        }
+
+        public function register(){
+            return ["view" => VIEW_DIR."security/register.php"];
+        }
+
+        
     }
