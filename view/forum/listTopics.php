@@ -1,6 +1,7 @@
 <?php
 
 $topics = $result["data"]['topics'];
+$categories = $result["data"]['categories'];
     
 ?>
 
@@ -31,35 +32,36 @@ foreach($topics as $topic){
 }
 ?>
 
-<form action="#" methode="post">
+<form action="index.php?ctrl=forum&action=aNewTopic" method="post">
     <div>
-        <label for="">
+        <label for="topic">
             Le nom de votre Sujet:
         </label>
-        <input type="text" name="" id="">
+        <input type="text" name="topic" id="topic">
     </div>
     <div>
-        <label for="">
+        <label for="resume">
             Détail de votre sujet (un "1er message"):
         </label>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <textarea name="resume" id="resume" cols="30" rows="10"></textarea>
     </div>
     <div>
-        <label for="">
+        <label for="categorie">
             Choissisez la catégorie :
         </label>
-        <select name="" id="">
+        <select name="categorie" id="categorie">
             <option value="0">--Veuillez selcetionner une option--</option>
-            <?php /*
-            foreach(){
-                */?>
-                    <!--<option value="#">#</option>-->
-                    <?php/*
+            <?php 
+            foreach($categories as $categorie){
+                var_dump($categorie);
+                ?>
+                <option value="<?=$categorie->getId()?>"><?=$categorie->getNomCategorie()?></option>
+                <?php
             }
-            */ ?>
+            ?>
         </select>
     </div>
     <div>
-        <input type="submit" value="Ajouter votre sujet">
+        <input type="submit" value="Ajouter votre sujet" name="submitNo">
     </div>
 </form>

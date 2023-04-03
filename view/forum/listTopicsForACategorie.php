@@ -29,20 +29,20 @@ $categorie = $result["data"]['categorie'];
 </table>
 
 
-<form action="#" methode="post">
+<form action="index.php?ctrl=forum&action=aNewTopic&id=<?= $_GET['id'] ?>" method="post">
     <div>
-        <label for="">
+        <label for="topic">
             Le nom de votre Sujet:
         </label>
-        <input type="text" name="" id="">
+        <input type="text" name="topic" id="topic">
     </div>
     <div>
-        <label for="">
+        <label for="resume">
             Détail de votre sujet (un "1er message"):
         </label>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <textarea name="resume" id="resume" cols="30" rows="10"></textarea>
     </div>
     <div>
-        <input type="submit" value="Ajouter votre sujet">
+        <input type="submit" value="Ajouter votre sujet" name="submitCate">
     </div>
 </form>
