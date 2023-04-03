@@ -3,7 +3,7 @@
 <form action="index.php?ctrl=security&action=newRegister" method="post" class="formPage">
     <div class="uneInfoLog">
         <label for="email">Email : </label>
-        <input type="text" name="email" id="email">
+        <input type="email" name="email" id="email">
     </div>
     <div class="uneInfoLog">
         <label for="pseudo">Pseudo : </label>
