@@ -33,7 +33,7 @@ else{
 }
 ?>
 
-<form action="index.php?ctrl=forum&action=aPost" methode="post">
+<form action="index.php?ctrl=forum&action=aPost" method="post">
     <div>
         <label for="messageForm">
             Votre message
