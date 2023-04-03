@@ -8,29 +8,30 @@ $categories = $result["data"]['categories'];
 <h1>liste topics</h1>
 
 
-
-<?php
-foreach($topics as $topic){
-    $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
-    ?>
-    <div class="carteTopic">
-        <a href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
-            <div class="hautDeCarte">
-                <div class="ligneHaut">
-                    <span><?= $verrou ?></span>
-                    <p class="nomCategorie" ><?=$topic->getCategorie()->getNomCategorie()?></p>
-                </div>
-                <p class="nomSujet"><?=$topic->getNomTopic()?></p>  
-            </div>
-            <div class="basDeCarte">
-                <p class="infoDate"><?=$topic->getUser()->getPseudo()?></p>
-                <p class="infoAuteur"><?=$topic->getDateCreation() ?></p>
-            </div>
-        </a>
-    </div>
+<div id="carteContainer">
     <?php
-}
-?>
+    foreach($topics as $topic){
+        $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
+        ?>
+        <div class="carteTopic">
+            <a href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
+                <div class="hautDeCarte">
+                    <div class="ligneHaut">
+                        <span><?= $verrou ?></span>
+                        <p class="nomCategorie" ><?=$topic->getCategorie()->getNomCategorie()?></p>
+                    </div>
+                    <p class="nomSujet"><?=$topic->getNomTopic()?></p>  
+                </div>
+                <div class="basDeCarte">
+                    <p class="infoDate"><?=$topic->getUser()->getPseudo()?></p>
+                    <p class="infoAuteur"><?=$topic->getDateCreation() ?></p>
+                </div>
+            </a>
+        </div>
+        <?php
+    }
+    ?>
+</div>
 
 <form action="index.php?ctrl=forum&action=aNewTopic" method="post">
     <div>
