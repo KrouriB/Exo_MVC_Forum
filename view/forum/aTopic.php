@@ -33,7 +33,7 @@ else{
 }
 ?>
 
-<form action="index.php?ctrl=forum&action=aPost" method="post">
+<form action="index.php?ctrl=forum&action=aPost&id=<?= $_GET['id'] ?>" method="post">
     <div>
         <label for="messageForm">
             Votre message
