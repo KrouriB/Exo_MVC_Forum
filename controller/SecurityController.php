@@ -32,7 +32,9 @@
             return ["view" => VIEW_DIR."security/register.php"];
         }
 
-        public function newRegister(){
+
+
+        public function newRegister(){ // fonction nouvelle utilisateur
             
             $userManager = new UserManager();
 
@@ -91,9 +93,20 @@
             }
         }
 
-        public function loginTry(){
+        public function loginTry(){ // fonction pour se connecter
             if(isset($_POST['submit'])){
                 
+
+
+                $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+
+                $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                // TODO : utiliser password_verify
+
+                if(){
+                    // TODO : mettre l'utilisateur en session
+                }
+                $this->redirectTo("forum","listTopic");
             }
         }
     }
