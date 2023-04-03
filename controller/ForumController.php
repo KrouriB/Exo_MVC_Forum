@@ -16,11 +16,13 @@
         public function listTopics(){
             
             $topicManager = new TopicManager();
+            $categorieManager = new CategorieManager();
             
             return [
                 "view" => VIEW_DIR."forum/listTopics.php",
                 "data" => [
-                    "topics" => $topicManager->findAll(["dateCreation", "DESC"])
+                    "topics" => $topicManager->findAll(["dateCreation", "DESC"]),
+                    "categories" => $categorieManager->findAll(["nomCategorie", "ASC"])
                 ]
             ];
 
@@ -73,18 +75,31 @@
 
             $topicManager = new TopicManager();
 
-            if (isset($_POST['submit'])){
-
+            if (isset($_POST['submitNo'])){
+                $topic = filter_input(INPUT_POST, "topic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $resume = filter_input(INPUT_POST, "resume", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                if ($topic && $resume){
+                    $topicManager->add($data = [
+                        "nomTopic" => $topic,
+                        "resumer" =>    $resume,
+                        "categorie_id" => $_POST['categorie'],
+                        "user_id" => 5
+                    ]);
+                $this->redirectTo("forum","listTopics");
+                }
             }
-
-        }
-
-        public function aNewTopicInCategorie(){
-
-            $topicManager = new TopicManager();
-
-            if (isset($_POST['submit'])){
-
+            elseif (isset($_POST['submitCate'])){
+                $topic = filter_input(INPUT_POST, "topic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $resume = filter_input(INPUT_POST, "resume", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                if ($topic && $resume){
+                    $topicManager->add($data = [
+                        "nomTopic" => $topic,
+                        "resumer" =>    $resume,
+                        "categorie_id" => $_GET['id'],
+                        "user_id" => 5
+                    ]);
+                    $this->redirectTo("forum","listTopicsForACategorie",$_GET['id']);
+                }
             }
 
         }
@@ -92,7 +107,6 @@
         public function aPost(){
 
             $postManager = new PostManager();
-            $topicManager = new TopicManager();
 
             if (isset($_POST['submit'])){
                 $message = filter_input(INPUT_POST, "messageForm", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -108,5 +122,3 @@
 
         }
     }
-
-    // ["message"=>$message],["user_id"=>5],["topic_id"=>$_GET['id']]
