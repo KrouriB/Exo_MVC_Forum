@@ -8,7 +8,7 @@
     <div class="uneInfoLog">
         <label for="password">Mot de Passe : </label>
         <div>
-            <input type="text" name="password" id="password">
+            <input type="password" name="password" id="password">
             <button onclick="showPassword()"><i class="fa-regular fa-eye"></i></button>
         </div>
     </div>

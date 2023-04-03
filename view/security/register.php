@@ -12,13 +12,13 @@
     <div class="uneInfoLog">
         <label for="password1">Mot de Passe : </label>
         <div>
-            <input type="text" name="password1" id="password1">
+            <input type="password" name="password1" id="password1">
             <button onclick="showPassword()"><i class="fa-regular fa-eye"></i></button>
         </div>
     </div>
     <div class="uneInfoLog">
         <label for="password2">Veuillez Conffirmez le Mot de Passe : </label>
-        <input type="text" name="password2" id="password2">
+        <input type="password" name="password2" id="password2">
     </div>
     <div>
         <input type="submit" value="Inscrivez-Vous" name="submit">
