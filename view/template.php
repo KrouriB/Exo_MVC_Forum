@@ -17,7 +17,7 @@
                 <div id="nav-left">
                     <a href="index.php">
                         <img src="#" alt="#">
-                        Les Ptit's Elan
+                        Les Ptit's Elans
                     </a>
                     <?php
                         if(App\Session::isAdmin()){
@@ -32,7 +32,7 @@
                     if(App\Session::getUser()){
                         ?>
                             <a href="#"><span class="fas fa-user"></span>&nbsp;&nbsp;<?= App\Session::getUser()?></a>
-                            <a href="#">Déconnexion</a>
+                            <a href="index.php?ctrl=security&action=logOut">Déconnexion</a>
                             <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
                             <a href="index.php?ctrl=forum&action=listCategories">la liste des categories</a>
                         <?php
@@ -41,8 +41,6 @@
                         ?>
                             <a href="index.php?ctrl=security&action=login">Connexion</a>
                             <a href="index.php?ctrl=security&action=register">Inscription</a>
-                            <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
-                            <a href="index.php?ctrl=forum&action=listCategories">la liste des categories</a>
                         <?php
                     }
                 ?>
