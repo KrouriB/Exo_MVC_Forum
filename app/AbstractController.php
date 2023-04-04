@@ -13,7 +13,7 @@
                 $url .= $action ? "&action=".$action : "";
                 $url .= $id ? "&id=".$id : "";
             }
-            else $url = "/";
+            else $url = "index.php";
             header("Location: $url");
             die();
         }
