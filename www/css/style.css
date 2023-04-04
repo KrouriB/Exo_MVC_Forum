@@ -72,6 +72,10 @@ footer a{
     min-height: 80vh;
 }
 
+.formBasPage{
+    margin-top: 40px;
+}
+
 /* listTopic.php */
 
 #carteContainer{
@@ -121,3 +125,32 @@ footer a{
     padding: 0 20px;
 }
 
+/* aTopic.php */
+
+#topTopic{
+    margin-bottom: 40px;
+}
+
+#topTopic h1{
+    margin-bottom: 12px;
+}
+
+#lesMessages{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.unMessage{
+    padding: 20px 12px;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.infoMsg{
+    display: flex;
+    justify-content: space-between;
+}
