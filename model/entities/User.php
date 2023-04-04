@@ -114,4 +114,10 @@
 
                         return $this;
                 }
+
+                public function hasRole($role): bool
+                {
+                        $result = $this->role == $role;
+                        return $result;
+                }
         }
