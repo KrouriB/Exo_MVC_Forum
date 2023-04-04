@@ -38,7 +38,6 @@ nav a{
     color: white;
 }
 #nav-right{
-    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
