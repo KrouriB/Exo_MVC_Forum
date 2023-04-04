@@ -28,4 +28,18 @@
             );
         }
 
+        public function findOnebyPseudo($pseudo){
+            $sql = "
+                SELECT *
+                FROM ".$this->tableName." a
+                WHERE a.pseudo = :pseudo";
+
+            // var_dump($sql);die;
+
+            return $this->getOneOrNullResult(
+                DAO::select($sql,['pseudo'=>$pseudo],false),
+                $this->className
+            );
+        }
+
     }
