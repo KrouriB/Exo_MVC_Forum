@@ -10,7 +10,7 @@ $topic = $result["data"]['topic'];
     
     <h3><?= $topic->getResumer() ?></h3>
 </div>
-
+<div id="lesMessages">
 <?php
 if($posts != null){
     foreach($posts as $post){
@@ -18,7 +18,7 @@ if($posts != null){
         ?>
         <div class="unMessage">
             <p><?=$post->getMessage()?></p>
-            <div>
+            <div class="infoMsg">
                 <span><?=$post->getUser()->getPseudo() ?></span>
                 <span><?=$post->getDatePost() ?></span>
             </div>
@@ -32,8 +32,9 @@ else{
     <?php
 }
 ?>
+</div>
 
-<form action="index.php?ctrl=forum&action=aPost&id=<?= $_GET['id'] ?>" method="post">
+<form action="index.php?ctrl=forum&action=aPost&id=<?= $_GET['id'] ?>" method="post" class="formBasPage">
     <div>
         <label for="messageForm">
             Votre message
