@@ -127,21 +127,25 @@
 
         public function loginTry(){ // fonction pour se connecter
             $userManager = new UserManager();
-            $laSession = new Session;
             if(isset($_POST['submit'])){
-                $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+                $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL ,FILTER_VALIDATE_EMAIL);
                 $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 if($email && $password){
                     if($userManager->findOnebyEmail($email)){
                         $user = $userManager->findOnebyEmail($email);
                         $hashed = $user->getPassword();
                         if(password_verify($password, $hashed)){
-                            $laSession->setUser($user);
-                            // $this->redirectTo("forum","listTopic");
+                            Session::setUser($user);
+                            $this->redirectTo("forum","listTopics");
                         }
                     }
                 }
             }
+        }
+
+        public function logOut(){
+            unset($_SESSION['user']);
+            $this->redirectTo("home");
         }
 
     }
