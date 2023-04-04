@@ -117,6 +117,7 @@
                                     "pseudo" => $pseudo ,
                                     "email" => $email 
                                 ]);
+                                $this->redirectTo("security","login");
                             }
                         }
                     }
@@ -125,19 +126,22 @@
         }
 
         public function loginTry(){ // fonction pour se connecter
+            $userManager = new UserManager();
+            $laSession = new Session;
             if(isset($_POST['submit'])){
-                
-
-
                 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-
                 $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                 // TODO : utiliser password_verify
-
-                if(){
-                     // TODO : mettre l'utilisateur en session
+                if($email && $password){
+                    if($userManager->findOnebyEmail($email)){
+                        $user = $userManager->findOnebyEmail($email);
+                        $hashed = $user->getPassword();
+                        if(password_verify($password, $hashed)){
+                            $laSession->setUser($user);
+                            // $this->redirectTo("forum","listTopic");
+                        }
+                    }
                 }
-                $this->redirectTo("forum","listTopic");
             }
         }
+
     }
