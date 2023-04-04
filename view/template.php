@@ -20,33 +20,31 @@
                         Les Ptit's Elan
                     </a>
                     <?php
-                    if(App\Session::isAdmin()){
-                        ?>
-                        <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
-                    
-                        <?php
-                    }
+                        if(App\Session::isAdmin()){
+                            ?>
+                                <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
+                            <?php
+                        }
                     ?>
                 </div>
                 <div id="nav-right">
                 <?php
-                    
                     if(App\Session::getUser()){
                         ?>
-                        <a href="/security/viewProfile.html"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
-                        <a href="/security/logout.html">Déconnexion</a>
+                            <a href="#"><span class="fas fa-user"></span>&nbsp;&nbsp;<?= App\Session::getUser()?></a>
+                            <a href="#">Déconnexion</a>
+                            <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
+                            <a href="index.php?ctrl=forum&action=listCategories">la liste des categories</a>
                         <?php
                     }
                     else{
                         ?>
-                        <a href="index.php?ctrl=security&action=login">Connexion</a>
-                        <a href="index.php?ctrl=security&action=register">Inscription</a>
-                        <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
-                        <a href="index.php?ctrl=forum&action=listCategories">la liste des categories</a>
-                    <?php
+                            <a href="index.php?ctrl=security&action=login">Connexion</a>
+                            <a href="index.php?ctrl=security&action=register">Inscription</a>
+                            <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
+                            <a href="index.php?ctrl=forum&action=listCategories">la liste des categories</a>
+                        <?php
                     }
-                
-                    
                 ?>
                 </div>
             </nav>
@@ -60,10 +58,7 @@
                 <?= $page ?>
             </main>
         </div>
-        <footer>
-            <?php if(array_key_exists('user',$_SESSION)){ ?>
-                <span><?= $_SESSION['user']->getPseudo() ?></span>
-            <?php } ?>            
+        <footer>          
             <p>&copy; 2020 - Forum CDA - <a href="/home/forumRules.html">Règlement du forum</a> - <a href="">Mentions légales</a></p>
             <!--<button id="ajaxbtn">Surprise en Ajax !</button> -> cliqué <span id="nbajax">0</span> fois-->
         </footer>
