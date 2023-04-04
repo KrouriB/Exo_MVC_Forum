@@ -120,4 +120,8 @@
                         $result = $this->role == $role;
                         return $result;
                 }
+
+                public function __toString(){
+                        return $this->getPseudo();
+                }
         }
