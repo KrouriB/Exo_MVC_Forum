@@ -83,7 +83,7 @@
                         "nomTopic" => $topic,
                         "resumer" =>    $resume,
                         "categorie_id" => $_POST['categorie'],
-                        "user_id" => 5
+                        "user_id" => $_SESSION['user']->getId()
                     ]);
                 $this->redirectTo("forum","listTopics");
                 }
@@ -96,7 +96,7 @@
                         "nomTopic" => $topic,
                         "resumer" =>    $resume,
                         "categorie_id" => $_GET['id'],
-                        "user_id" => 5
+                        "user_id" => $_SESSION['user']->getId()
                     ]);
                     $this->redirectTo("forum","listTopicsForACategorie",$_GET['id']);
                 }
@@ -113,7 +113,7 @@
                 if ($message){
                     $postManager->add($data = [
                         "message" => $message,
-                        "user_id" => 5,
+                        "user_id" => $_SESSION['user']->getId(),
                         "topic_id" => $_GET['id']
                     ]);
                     $this->redirectTo("forum","aTopic",$_GET['id']);
