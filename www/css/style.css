@@ -144,8 +144,22 @@ footer a{
     margin-bottom: 40px;
 }
 
-#topTopic h1{
-    margin-bottom: 12px;
+#sousInfoTopic{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#infoTopicDroite{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#botTopic{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
 }
 
 #lesMessages{
