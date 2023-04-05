@@ -54,7 +54,6 @@ $categories = $result["data"]['categories'];
             <option value="0">--Veuillez selcetionner une option--</option>
             <?php 
             foreach($categories as $categorie){
-                var_dump($categorie);
                 ?>
                 <option value="<?=$categorie->getId()?>"><?=$categorie->getNomCategorie()?></option>
                 <?php
