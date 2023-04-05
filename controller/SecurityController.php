@@ -16,7 +16,7 @@
             $userManager = new UserManager();
                 
                 return [
-                    "view" => VIEW_DIR."admin/listUsers.php",
+                    "view" => VIEW_DIR."security\listUsers.php",
                     "data" => [
                         "users" => $userManager->findAll(["pseudo", "ASC"])
                     ]
