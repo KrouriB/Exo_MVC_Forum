@@ -121,4 +121,9 @@
             }
 
         }
+
+        public function verouillerTopic(){
+            $topicManager = new TopicManager();
+            $topicManager->verouiller($_GET['id']);
+        }
     }
