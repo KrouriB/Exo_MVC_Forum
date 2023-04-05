@@ -30,4 +30,19 @@
             
         }
 
+        public function verouiller($id){
+            $sql = "
+                UPDATE $this->tableName
+                SET verouiller = 1
+                WHERE id_topic = :id";
+
+            // var_dump($sql);die;
+
+            return $this->getOneOrNullResult(
+                DAO::update($sql,['id'=>$id]),
+                $this->className
+            );
+            
+        }
+
     }
