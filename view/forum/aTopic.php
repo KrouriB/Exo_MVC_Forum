@@ -16,10 +16,12 @@ $topic = $result["data"]['topic'];
     <div id="botTopic">
         <h3><?= $topic->getResumer() ?></h3>
         <?php
-        if ($topic->getUser()->getPseudo() == App\Session::getUser()){
-            ?>
-            <a href="index.php?ctrl=forum&action=verouillerTopic&id=<?= $_GET['id'] ?>">Verouiller le Topic</a>
-            <?php
+        if (($topic->getUser()->getPseudo() == App\Session::getUser()) OR App\Session::isAdmin()){
+            if($topic->getVerouiller() == 0){
+                ?>
+                <a href="index.php?ctrl=forum&action=verouillerTopic&id=<?= $_GET['id'] ?>">Verouiller le Topic</a>
+                <?php
+            }
         }
         ?>
     </div>
@@ -49,14 +51,21 @@ if ($posts != null) {
     ?>
 </div>
 
-<form action="index.php?ctrl=forum&action=aPost&id=<?= $_GET['id'] ?>" method="post" class="formBasPage">
-    <div>
-        <label for="messageForm">
-            Votre message
-        </label>
-        <textarea name="messageForm" id="messageForm" cols="30" rows="10"></textarea>
-    </div>
-    <div>
-        <input type="submit" value="Envoyer votre message" name="submit">
-    </div>
-</form>
+<?php
+    if($topic->getVerouiller() == 0){
+        ?>
+            <form action="index.php?ctrl=forum&action=aPost&id=<?= $_GET['id'] ?>" method="post" class="formBasPage">
+                <div>
+                    <label for="messageForm">
+                        Votre message
+                    </label>
+                    <textarea name="messageForm" id="messageForm" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <input type="submit" value="Envoyer votre message" name="submit">
+                </div>
+            </form>
+        <?php
+    }
+?>
+
