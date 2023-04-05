@@ -1,54 +1,54 @@
 -- --------------------------------------------------------
--- Hôte:                         127.0.0.1
--- Version du serveur:           8.0.30 - MySQL Community Server - GPL
+-- Hôte :                        127.0.0.1
+-- Version du serveur:           5.7.24 - MySQL Community Server (GPL)
 -- SE du serveur:                Win64
--- HeidiSQL Version:             12.1.0.6537
+-- HeidiSQL Version:             10.2.0.5599
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
 -- Listage de la structure de la base pour forum_brice
-CREATE DATABASE IF NOT EXISTS `forum_brice` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `forum_brice` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
 USE `forum_brice`;
 
--- Listage de la structure de table forum_brice. categorie
+-- Listage de la structure de la table forum_brice. categorie
 CREATE TABLE IF NOT EXISTS `categorie` (
-  `id_categorie` int NOT NULL AUTO_INCREMENT,
-  `nomCategorie` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `id_categorie` int(11) NOT NULL AUTO_INCREMENT,
+  `nomCategorie` varchar(50) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id_categorie`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Listage des données de la table forum_brice.categorie : ~5 rows (environ)
+/*!40000 ALTER TABLE `categorie` DISABLE KEYS */;
 INSERT INTO `categorie` (`id_categorie`, `nomCategorie`) VALUES
 	(1, 'Jeux Vidéo'),
 	(2, 'Film'),
 	(3, 'Meme'),
 	(4, 'L\'espace'),
 	(5, 'Test');
+/*!40000 ALTER TABLE `categorie` ENABLE KEYS */;
 
--- Listage de la structure de table forum_brice. post
+-- Listage de la structure de la table forum_brice. post
 CREATE TABLE IF NOT EXISTS `post` (
-  `id_post` int NOT NULL AUTO_INCREMENT,
+  `id_post` int(11) NOT NULL AUTO_INCREMENT,
   `datePost` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `message` text NOT NULL,
-  `user_id` int NOT NULL,
-  `topic_id` int NOT NULL,
+  `message` text COLLATE utf8_bin NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `topic_id` int(11) NOT NULL,
   PRIMARY KEY (`id_post`),
   KEY `user_id` (`user_id`),
   KEY `topic_id` (`topic_id`),
   CONSTRAINT `FK_post_topic` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id_topic`),
   CONSTRAINT `FK_post_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Listage des données de la table forum_brice.post : ~13 rows (environ)
+-- Listage des données de la table forum_brice.post : ~19 rows (environ)
+/*!40000 ALTER TABLE `post` DISABLE KEYS */;
 INSERT INTO `post` (`id_post`, `datePost`, `message`, `user_id`, `topic_id`) VALUES
 	(1, '2023-02-14 17:04:23', 'Tes pas devenu un panda roux ???', 7, 2),
 	(2, '2023-02-03 14:50:42', 'It\'s not like WTF But It\'s WTF', 7, 3),
@@ -68,24 +68,26 @@ INSERT INTO `post` (`id_post`, `datePost`, `message`, `user_id`, `topic_id`) VAL
 	(16, '2023-04-04 19:27:09', 'ouai moi aussi j&#039;aime bien', 10, 5),
 	(17, '2023-04-04 19:27:47', 'De quoi vous parler ?', 10, 2),
 	(18, '2023-04-04 19:57:29', 't&#039;entend &ccedil;a !\r\n', 9, 3);
+/*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
--- Listage de la structure de table forum_brice. topic
+-- Listage de la structure de la table forum_brice. topic
 CREATE TABLE IF NOT EXISTS `topic` (
-  `id_topic` int NOT NULL AUTO_INCREMENT,
-  `nomTopic` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `resumer` text NOT NULL,
+  `id_topic` int(11) NOT NULL AUTO_INCREMENT,
+  `nomTopic` varchar(50) COLLATE utf8_bin NOT NULL,
+  `resumer` text COLLATE utf8_bin NOT NULL,
   `dateCreation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `verouiller` tinyint NOT NULL DEFAULT '0',
-  `categorie_id` int NOT NULL,
-  `user_id` int NOT NULL,
+  `verouiller` tinyint(4) NOT NULL DEFAULT '0',
+  `categorie_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id_topic`),
   KEY `categorie_id` (`categorie_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `FK_topic_categorie` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id_categorie`),
   CONSTRAINT `FK_topic_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Listage des données de la table forum_brice.topic : ~17 rows (environ)
+/*!40000 ALTER TABLE `topic` DISABLE KEYS */;
 INSERT INTO `topic` (`id_topic`, `nomTopic`, `resumer`, `dateCreation`, `verouiller`, `categorie_id`, `user_id`) VALUES
 	(1, 'Hyundai Waaaagh !', 'Le lien de la vidéo : https://www.youtube.com/watch?v=mVgabZXmBtU', '2023-03-10 13:05:12', 1, 3, 9),
 	(2, 'Terminator', 'Je vous raconte ?', '2023-02-14 12:00:00', 0, 2, 8),
@@ -104,18 +106,20 @@ INSERT INTO `topic` (`id_topic`, `nomTopic`, `resumer`, `dateCreation`, `verouil
 	(15, 'Test n&deg;2', 'test encore via le formulaire de categorie test', '2023-04-04 16:14:34', 0, 5, 9),
 	(16, 'Taxis A Stras', 'Trop chiant c&#039;est toujours bouch&eacute; !', '2023-04-04 19:25:58', 0, 3, 10),
 	(17, 'moi aussi je fais des test', 'mais beaucoup plus sur sql', '2023-04-04 19:30:22', 0, 5, 10);
+/*!40000 ALTER TABLE `topic` ENABLE KEYS */;
 
--- Listage de la structure de table forum_brice. user
+-- Listage de la structure de la table forum_brice. user
 CREATE TABLE IF NOT EXISTS `user` (
-  `id_user` int NOT NULL AUTO_INCREMENT,
-  `password` varchar(255) NOT NULL,
-  `role` varchar(50) NOT NULL DEFAULT 'ROLE_USER',
-  `pseudo` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `password` varchar(255) COLLATE utf8_bin NOT NULL,
+  `role` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT 'ROLE_USER',
+  `pseudo` varchar(50) COLLATE utf8_bin NOT NULL,
+  `email` varchar(100) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id_user`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Listage des données de la table forum_brice.user : ~10 rows (environ)
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id_user`, `password`, `role`, `pseudo`, `email`) VALUES
 	(1, 'JeSuisIngenieurInformaticien!', 'ROLE_USER', 'MoiMaid1', '1mohamed@informaticien.fr'),
 	(2, 'It\'sNotLikeWTFButIt\'sWTF', 'ROLE_USER', 'DoigtNez2', '2duanee@terminator.com'),
@@ -127,9 +131,8 @@ INSERT INTO `user` (`id_user`, `password`, `role`, `pseudo`, `email`) VALUES
 	(8, '$2y$10$WRisT0ZW2VeronY9s5thnuq59LmslCcYiXklFvuHxoAP8GQilNy9C', 'ROLE_USER', 'DoigtNez', 'duanee@terminator.com'),
 	(9, '$2y$10$VylP.WxROTT78cvk4azIc.RG/bCvSglk5RD4Z7CH1ltTeKOBwr70q', 'ROLE_USER', 'BrieSSSS', 'brice@raptorjesus.ru'),
 	(10, '$2y$10$PcqR2hDktQf3LWiLYlSqK.rQMwkMNDX.wzusZiGidTJobVsIh9o2G', 'ROLE_USER', 'vanthonyne', 'anthony@marseille.fr');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
