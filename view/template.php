@@ -21,20 +21,20 @@
                         <img src="<?= PUBLIC_DIR ?>/img/elan2/img2Elan.png" alt="#" id="imglogo">
                         Les Ptit's Elans
                     </a>
-                    <?php
-                    if (App\Session::isAdmin()) {
-                    ?>
-                        <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
-                    <?php
-                    }
-                    ?>
                 </div>
                 <div id="nav-right">
                     <?php
                     if (App\Session::getUser()) {
-                    ?>
+                        ?>
                         <a href="#"><span class="fas fa-user"></span>&nbsp;&nbsp;<?= App\Session::getUser() ?></a>
                         <a href="index.php?ctrl=security&action=logOut">Déconnexion</a>
+                        <?php
+                        if (App\Session::isAdmin()) {
+                        ?>
+                            <a href="index.php?ctrl=security&action=listUsers">Voir la liste des gens</a>
+                        <?php
+                        }
+                        ?>
                         <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
                         <a href="index.php?ctrl=forum&action=listCategories">la liste des categories</a>
                     <?php
