@@ -30,6 +30,7 @@ nav{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     padding: 0 20px;
 }
@@ -37,6 +38,7 @@ nav{
 nav a{
     color: white;
 }
+
 #nav-right{
     display: flex;
     flex-wrap: wrap;
@@ -45,6 +47,17 @@ nav a{
 
 #nav-right a{
     margin: 0 20px;
+}
+
+#nav-left > a{
+    display: flex;
+    align-items: center;
+    gap:20px;
+}
+
+#imglogo{
+    height: 80px;
+    border-radius: 8px;
 }
 
 /* FOOTER */

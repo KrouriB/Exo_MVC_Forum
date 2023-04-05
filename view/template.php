@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,40 +11,40 @@
     <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
     <title>FORUM</title>
 </head>
+
 <body>
-    <div id="wrapper"> 
+    <div id="wrapper">
         <header>
             <nav>
                 <div id="nav-left">
                     <a href="index.php">
-                        <img src="#" alt="#">
+                        <img src="<?= PUBLIC_DIR ?>/img/elan2/img2Elan.png" alt="#" id="imglogo">
                         Les Ptit's Elans
                     </a>
                     <?php
-                        if(App\Session::isAdmin()){
-                            ?>
-                                <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
-                            <?php
-                        }
+                    if (App\Session::isAdmin()) {
+                    ?>
+                        <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
+                    <?php
+                    }
                     ?>
                 </div>
                 <div id="nav-right">
-                <?php
-                    if(App\Session::getUser()){
-                        ?>
-                            <a href="#"><span class="fas fa-user"></span>&nbsp;&nbsp;<?= App\Session::getUser()?></a>
-                            <a href="index.php?ctrl=security&action=logOut">Déconnexion</a>
-                            <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
-                            <a href="index.php?ctrl=forum&action=listCategories">la liste des categories</a>
-                        <?php
+                    <?php
+                    if (App\Session::getUser()) {
+                    ?>
+                        <a href="#"><span class="fas fa-user"></span>&nbsp;&nbsp;<?= App\Session::getUser() ?></a>
+                        <a href="index.php?ctrl=security&action=logOut">Déconnexion</a>
+                        <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
+                        <a href="index.php?ctrl=forum&action=listCategories">la liste des categories</a>
+                    <?php
+                    } else {
+                    ?>
+                        <a href="index.php?ctrl=security&action=login">Connexion</a>
+                        <a href="index.php?ctrl=security&action=register">Inscription</a>
+                    <?php
                     }
-                    else{
-                        ?>
-                            <a href="index.php?ctrl=security&action=login">Connexion</a>
-                            <a href="index.php?ctrl=security&action=register">Inscription</a>
-                        <?php
-                    }
-                ?>
+                    ?>
                 </div>
             </nav>
         </header>
@@ -51,33 +52,29 @@
             <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
             <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
             <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
-            
+
             <main id="forum">
                 <?= $page ?>
             </main>
         </div>
-        <footer>          
+        <footer>
             <p>&copy; 2020 - Forum CDA - <a href="/home/forumRules.html">Règlement du forum</a> - <a href="">Mentions légales</a></p>
             <!--<button id="ajaxbtn">Surprise en Ajax !</button> -> cliqué <span id="nbajax">0</span> fois-->
         </footer>
         <script src="<?= PUBLIC_DIR ?>/js/script.js"></script>
     </div>
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
     </script>
     <script>
-
-        $(document).ready(function(){
-            $(".message").each(function(){
-                if($(this).text().length > 0){
-                    $(this).slideDown(500, function(){
+        $(document).ready(function() {
+            $(".message").each(function() {
+                if ($(this).text().length > 0) {
+                    $(this).slideDown(500, function() {
                         $(this).delay(3000).slideUp(500)
                     })
                 }
             })
-            $(".delete-btn").on("click", function(){
+            $(".delete-btn").on("click", function() {
                 return confirm("Etes-vous sûr de vouloir supprimer?")
             })
             tinymce.init({
@@ -89,14 +86,14 @@
                     'insertdatetime media table paste code help wordcount'
                 ],
                 toolbar: 'undo redo | formatselect | ' +
-                'bold italic backcolor | alignleft aligncenter ' +
-                'alignright alignjustify | bullist numlist outdent indent | ' +
-                'removeformat | help',
+                    'bold italic backcolor | alignleft aligncenter ' +
+                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                    'removeformat | help',
                 content_css: '//www.tiny.cloud/css/codepen.min.css'
             });
         })
 
-        
+
 
         /*
         $("#ajaxbtn").on("click", function(){
@@ -112,6 +109,7 @@
         })*/
     </script>
 </body>
+
 </html>
 <!--<!DOCTYPE html>
 <html lang="en">
