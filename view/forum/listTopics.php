@@ -34,22 +34,22 @@ $categories = $result["data"]['categories'];
     ?>
 </div>
 
-<form action="index.php?ctrl=forum&action=aNewTopic" method="post">
+<form action="index.php?ctrl=forum&action=aNewTopic" method="post" class="formBasPage">
     <div>
         <label for="topic">
-            Le nom de votre Sujet:
+            Le&nbsp;nom&nbsp;de votre&nbsp;Sujet&nbsp;:&nbsp;
         </label>
         <input type="text" name="topic" id="topic">
     </div>
     <div>
         <label for="resume">
-            Détail de votre sujet (un "1er message"):
+            Détail&nbsp;de&nbsp;votre&nbsp;sujet (un&nbsp;"1er&nbsp;message")&nbsp;:&nbsp;
         </label>
-        <textarea name="resume" id="resume" cols="30" rows="10"></textarea>
+        <textarea name="resume" id="resume" cols="4000" rows="10"></textarea>
     </div>
     <div>
         <label for="categorie">
-            Choissisez la catégorie :
+            Choissisez la&nbsp;catégorie&nbsp;:&nbsp;
         </label>
         <select name="categorie" id="categorie">
             <option value="0">--Veuillez selcetionner une option--</option>
@@ -62,7 +62,7 @@ $categories = $result["data"]['categories'];
             ?>
         </select>
     </div>
-    <div>
+    <div id="submitBas">
         <input type="submit" value="Ajouter votre sujet" name="submitNo">
     </div>
 </form>

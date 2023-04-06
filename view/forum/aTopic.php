@@ -73,11 +73,11 @@ if ($posts != null) {
             <form action="index.php?ctrl=forum&action=aPost&id=<?= $_GET['id'] ?>" method="post" class="formBasPage">
                 <div>
                     <label for="messageForm">
-                        Votre message
+                        Votre&nbsp;message&nbsp;:
                     </label>
-                    <textarea name="messageForm" id="messageForm" cols="30" rows="10"></textarea>
+                    <textarea name="messageForm" id="messageForm" cols="4000" rows="10"></textarea>
                 </div>
-                <div>
+                <div id="submitBas">
                     <input type="submit" value="Envoyer votre message" name="submit">
                 </div>
             </form>
