@@ -20,7 +20,7 @@ $categories = $result["data"]['categories'];
             <?php
             if(App\Session::isAdmin()){
                 ?>
-                    <td><a href="#"><i class="fa-regular fa-trash-can"></i></a></td>
+                    <td><a href="index.php?ctrl=forum&action=deleteCategorie&id=<?= $categorie->getId() ?>"><i class="fa-regular fa-trash-can"></i></a></td>
                 <?php
             }
             ?>
@@ -28,6 +28,9 @@ $categories = $result["data"]['categories'];
         <?php
     }
     ?>
+    <tr>
+        <td><a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie">Sans catégorie</a></td>
+    </tr>
     </tbody>
 </table>
 
