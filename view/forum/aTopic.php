@@ -48,7 +48,13 @@ if ($posts != null) {
                         <span><?= $post->getUser()->getPseudo() ?></span>
                         <span><?= $post->getDatePost() ?></span>
                     </div>
-                    <a href="index.php?ctrl=forum&action=deleteMessage&id=<?= $post->getId() ?>&idTopic=<?= $_GET['id'] ?>"><i class="fa-regular fa-trash-can"></i></a>
+                    <?php
+                    if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
+                        ?>
+                        <a href="index.php?ctrl=forum&action=deleteMessage&id=<?= $post->getId() ?>&idTopic=<?= $_GET['id'] ?>"><i class="fa-regular fa-trash-can"></i></a>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         <?php
