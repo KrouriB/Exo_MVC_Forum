@@ -17,11 +17,18 @@ $topic = $result["data"]['topic'];
         <h3><?= $topic->getResumer() ?></h3>
         <?php
         if (($topic->getUser()->getPseudo() == App\Session::getUser()) OR App\Session::isAdmin()){
+            ?>
+            <div id="adminTopic">
+            <?php
             if($topic->getVerouiller() == 0){
                 ?>
-                <a href="index.php?ctrl=forum&action=verouillerTopic&id=<?= $_GET['id'] ?>">Verouiller le Topic</a>
-                <?php
+                    <a href="index.php?ctrl=forum&action=verouillerTopic&id=<?= $_GET['id'] ?>">Verouiller le Topic</a>
+                    <?php
             }
+            ?>
+            <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>"><i class="fa-regular fa-trash-can"></i></a>
+            </div>
+            <?php
         }
         ?>
     </div>
