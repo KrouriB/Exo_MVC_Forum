@@ -12,13 +12,14 @@ $categories = $result["data"]['categories'];
     <?php
     foreach($topics as $topic){
         $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
+        $categorieAfficher = ($topic->getCategorie() != null) ? $topic->getCategorie()->getNomCategorie() : 'sans catégorie';
         ?>
         <div class="carteTopic">
             <a href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
                 <div class="hautDeCarte">
                     <div class="ligneHaut">
                         <span><?= $verrou ?></span>
-                        <p class="nomCategorie" ><?=$topic->getCategorie()->getNomCategorie()?></p>
+                        <p class="nomCategorie" ><?=$categorieAfficher?></p>
                     </div>
                     <p class="nomSujet"><?=$topic->getNomTopic()?></p>  
                 </div>
