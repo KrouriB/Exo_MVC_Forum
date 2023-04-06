@@ -44,8 +44,11 @@ if ($posts != null) {
             <div class="unMessage">
                 <p><?= $post->getMessage() ?></p>
                 <div class="infoMsg">
-                    <span><?= $post->getUser()->getPseudo() ?></span>
-                    <span><?= $post->getDatePost() ?></span>
+                    <div id="infoMsgGauche">
+                        <span><?= $post->getUser()->getPseudo() ?></span>
+                        <span><?= $post->getDatePost() ?></span>
+                    </div>
+                    <a href="index.php?ctrl=forum&action=deleteMessage&id=<?= $post->getId() ?>&idTopic=<?= $_GET['id'] ?>"><i class="fa-regular fa-trash-can"></i></a>
                 </div>
             </div>
         <?php
