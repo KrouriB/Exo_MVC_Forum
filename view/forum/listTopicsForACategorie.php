@@ -7,34 +7,44 @@ $categorie = $result["data"]['categorie'];
 
 <h1>liste des topics de la catégorie <?= $categorie->getNomCategorie() ?></h1>
 
-<table>
-    <thead>
-        <th></th>
-    </thead>
-    <tbody>
-    <?php
-    foreach($topics as $topic){
-        $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
-        ?>
-        <tr>
-            <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getNomTopic()?></a></td>
-            <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getUser()->getPseudo()?></a></td>
-            <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getDateCreation()?></a></td>
-            <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?= $verrou ?></a></td>
-            <?php
-            if(App\Session::isAdmin()){
-                ?>
-                    <td><a href="#"><i class="fa-regular fa-trash-can"></i></a></td>
-                <?php
-            }
-            ?>
-        </tr>
+<?php
+if($topics != null){
+    ?>
+    <table>
+        <thead>
+            <th></th>
+        </thead>
+        <tbody>
         <?php
-    }
-    ?>      
-    </tbody>
-</table>
-
+        foreach($topics as $topic){
+            $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
+            ?>
+            <tr>
+                <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getNomTopic()?></a></td>
+                <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getUser()->getPseudo()?></a></td>
+                <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getDateCreation()?></a></td>
+                <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?= $verrou ?></a></td>
+                <?php
+                if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
+                    ?>
+                        <td><a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>"><i class="fa-regular fa-trash-can"></i></a></td>
+                    <?php
+                }
+                ?>
+            </tr>
+            <?php
+        }
+        ?>      
+        </tbody>
+    </table>
+    <?php
+}
+else{
+    ?>
+    <p>Cette catégorie n'a pas de topics</p>
+    <?php
+}
+?>
 
 <form action="index.php?ctrl=forum&action=aNewTopic&id=<?= $_GET['id'] ?>" method="post">
     <div>
