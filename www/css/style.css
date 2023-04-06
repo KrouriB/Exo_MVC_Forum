@@ -87,8 +87,37 @@ footer a{
 }
 
 .formBasPage{
-    margin-top: 40px;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-color: lightgray;
+    padding: 24px 20px;
+    border-radius: 12px;
 }
+
+.formBasPage div{
+    background-color: white;
+    padding: 12px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    border-radius: 8px;
+}
+
+#submitBas{
+    justify-content: center;
+    height: 80px;
+}
+
+#submitBas input{
+    width: 33%;
+}
+
+
+
+
 
 /* listTopic.php */
 
