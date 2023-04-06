@@ -17,12 +17,16 @@ if($topics != null){
         <tbody>
         <?php
         foreach($topics as $topic){
+            // var_dump($topic);die;
             $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
             ?>
             <tr>
                 <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getNomTopic()?></a></td>
                 <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getUser()->getPseudo()?></a></td>
+                <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"></a></td>
                 <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getDateCreation()?></a></td>
+                <!-- <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"></a></td> -->
+                <!-- <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getDateCreation()?></a></td> -->
                 <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?= $verrou ?></a></td>
                 <?php
                 if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
@@ -46,20 +50,20 @@ else{
 }
 ?>
 
-<form action="index.php?ctrl=forum&action=aNewTopic&id=<?= $_GET['id'] ?>" method="post">
+<form action="index.php?ctrl=forum&action=aNewTopic&id=<?= $_GET['id'] ?>" method="post" class="formBasPage">
     <div>
         <label for="topic">
-            Le nom de votre Sujet:
+            Le&nbsp;nom&nbsp;de votre&nbsp;Sujet&nbsp;:&nbsp;
         </label>
         <input type="text" name="topic" id="topic">
     </div>
     <div>
         <label for="resume">
-            Détail de votre sujet (un "1er message"):
+            Détail&nbsp;de&nbsp;votre&nbsp;sujet (un&nbsp;"1er&nbsp;message")&nbsp;:&nbsp;
         </label>
-        <textarea name="resume" id="resume" cols="30" rows="10"></textarea>
+        <textarea name="resume" id="resume" cols="4000" rows="10"></textarea>
     </div>
-    <div>
+    <div id="submitBas">
         <input type="submit" value="Ajouter votre sujet" name="submitCate">
     </div>
 </form>
