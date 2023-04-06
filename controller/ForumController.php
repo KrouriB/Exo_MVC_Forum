@@ -154,4 +154,10 @@
             $topicManager->delete($_GET['id']);
             $this->redirectTo("forum","listTopics");
         }
+
+        public function deleteMessage(){
+            $postManager = new PostManager();
+            $postManager->delete($_GET['id']);
+            $this->redirectTo("forum","aTopic",$_GET['idTopic']);
+        }
     }
