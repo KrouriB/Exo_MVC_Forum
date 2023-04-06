@@ -122,6 +122,17 @@
 
         }
 
+        public function addCategorie(){
+            $categorieManager = new CategorieManager();
+            if(isset($_POST['submit'])){
+                $nomCategorie = filter_input(INPUT_POST, "nomCategorie", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                if($nomCategorie){
+                    $categorieManager->add($data = ["nomCategorie" => $nomCategorie]);
+                    $this->redirectTo("forum","listCategories");
+                }
+            }
+        }
+
         public function verouillerTopic(){
             $topicManager = new TopicManager();
             $topicManager->verouiller($_GET['id']);
