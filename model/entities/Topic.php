@@ -12,6 +12,8 @@
                 private $verouiller;
                 private $categorie;
                 private $resumer;
+                private $nbPost;
+                private $lastMsg;
 
                 public function __construct($data){         
                         $this->hydrate($data);        
@@ -143,6 +145,46 @@
                 public function setResumer($resumer)
                 {
                         $this->resumer = $resumer;
+
+                        return $this;
+                }
+
+                /**
+                 * Get the value of nbPost
+                 */ 
+                public function getNbPost()
+                {
+                        return $this->nbPost;
+                }
+
+                /**
+                 * Set the value of nbPost
+                 *
+                 * @return  self
+                 */ 
+                public function setNbPost($nbPost)
+                {
+                        $this->nbPost = $nbPost;
+
+                        return $this;
+                }
+
+                /**
+                 * Get the value of lastMsg
+                 */ 
+                public function getLastMsg()
+                {
+                        return $this->lastMsg;
+                }
+
+                /**
+                 * Set the value of lastMsg
+                 *
+                 * @return  self
+                 */ 
+                public function setLastMsg($lastMsg)
+                {
+                        $this->lastMsg = $lastMsg;
 
                         return $this;
                 }
