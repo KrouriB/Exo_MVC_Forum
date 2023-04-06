@@ -78,7 +78,7 @@
             if (isset($_POST['submitNo'])){
                 $topic = filter_input(INPUT_POST, "topic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $resume = filter_input(INPUT_POST, "resume", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                if ($topic && $resume){
+                if ($topic && $resume && $_POST['categorie'] != 0){
                     $topicManager->add($data = [
                         "nomTopic" => $topic,
                         "resumer" =>    $resume,
@@ -126,5 +126,32 @@
             $topicManager = new TopicManager();
             $topicManager->verouiller($_GET['id']);
             $this->redirectTo("forum","aTopic",$_GET['id']);
+        }
+
+        public function listTopicsWithoutCategorie(){
+            $topicManager = new TopicManager();
+
+            return [
+                "view" => VIEW_DIR."forum/listTopicsWithoutCategorie.php",
+                "data" => [
+                    "topics" => $topicManager->findAll(["dateCreation", "DESC"])
+                ]
+            ];
+        }
+
+        public function deleteCategorie(){
+            $categorieManager = new CategorieManager();
+            $topicManager = new TopicManager();
+            $topicManager->setIdTopic($_GET['id']);
+            $categorieManager->delete($_GET['id']);
+            $this->redirectTo("forum","listCategories");
+        }
+
+        public function deleteTopic(){
+            $topicManager = new TopicManager();
+            $postManager = new PostManager();
+            $postManager->deleteMessagesTopic($_GET['id']);
+            $topicManager->delete($_GET['id']);
+            $this->redirectTo("forum","listTopics");
         }
     }
