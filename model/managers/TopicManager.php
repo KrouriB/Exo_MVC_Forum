@@ -45,4 +45,18 @@
             
         }
 
+        public function setIdTopic($id){
+            $sql = "
+                UPDATE $this->tableName
+                SET categorie_id = NULL
+                WHERE categorie_id = :id";
+
+        // var_dump($sql);die;
+
+        return $this->getOneOrNullResult(
+            DAO::update($sql,['id'=>$id]),
+            $this->className
+        );
+        }
+
     }
