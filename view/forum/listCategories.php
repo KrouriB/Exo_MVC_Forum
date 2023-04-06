@@ -37,10 +37,10 @@ $categories = $result["data"]['categories'];
 <?php
 if(App\Session::isAdmin()){
     ?>
-    <form action="index.php?ctrl=forum&action=addCategorie">
+    <form action="index.php?ctrl=forum&action=addCategorie" method="post">
         <div>
-            <label for="categorie">Inserer le nom de votre categorie</label>
-            <input type="text" name="categorie" id="categorie">
+            <label for="nomCategorie">Inserer le nom de votre categorie</label>
+            <input type="text" name="nomCategorie" id="nomCategorie">
         </div>
         <div>
             <input type="submit" value="Rajouter la catégorie" name="submit">
