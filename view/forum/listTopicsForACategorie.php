@@ -18,7 +18,7 @@ if($topics != null){
                 <th class="third">Date de Création</th>
                 <th class="fourth">Nombre de posts</th>
                 <th class="fifth">Date du dernier post</th>
-                <th class="sixth">Etat du >Topic</th>
+                <th class="sixth">Etat du Topic</th>
                 <?php
                     if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
                         ?>
