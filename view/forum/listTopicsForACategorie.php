@@ -10,29 +10,66 @@ $categorie = $result["data"]['categorie'];
 <?php
 if($topics != null){
     ?>
-    <table>
+    <table id="tableauTopicCategorie">
         <thead>
-            <th></th>
+            <tr>
+                <th class="first">Auteur</th>
+                <th class="second">Topic</th>
+                <th class="third">Date de Création</th>
+                <th class="fourth">Nombre de posts</th>
+                <th class="fifth">Date du dernier post</th>
+                <th class="sixth">Etat du >Topic</th>
+                <?php
+                    if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
+                        ?>
+                            <th class="seventh"></th>
+                        <?php
+                    }
+                ?>
+            </tr>
         </thead>
         <tbody>
         <?php
         foreach($topics as $topic){
-            // var_dump($topic);die;
             $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
             ?>
             <tr>
-                <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getNomTopic()?></a></td>
-                <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getUser()->getPseudo()?></a></td>
-                <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getNbPost()?></a></td>
-                <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getLastMsg()?></a></td>
-                <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?=$topic->getDateCreation()?></a></td>
-                <td><a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?= $verrou ?></a></td>
+                <td class="first">
+                    <a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
+                        <?=$topic->getUser()->getPseudo()?>        
+                    </a>
+                </td>
+                <td class="second">
+                    <a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
+                        <?=$topic->getNomTopic()?>
+                    </a>
+                </td>
+                <td class="third">
+                    <a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
+                        <?=$topic->getDateCreation()?>
+                    </a>
+                </td>
+                <td class="fourth">
+                    <a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
+                        <?=$topic->getNbPost()?>
+                    </a>
+                </td>
+                <td class="fifth">
+                    <a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
+                        <?=$topic->getLastMsg()?>
+                    </a>
+                </td>
+                <td class="sixth">
+                    <a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
+                        <?= $verrou ?>
+                    </a>
+                </td>
                 <?php
-                if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
-                    ?>
-                        <td><a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>"><i class="fa-regular fa-trash-can"></i></a></td>
-                    <?php
-                }
+                        if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
+                            ?>
+                                <td class="seventh"><a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>"><i class="fa-regular fa-trash-can"></i></a></td>
+                            <?php
+                        }
                 ?>
             </tr>
             <?php
@@ -66,3 +103,4 @@ else{
         <input type="submit" value="Ajouter votre sujet" name="submitCate">
     </div>
 </form>
+
