@@ -5,34 +5,28 @@ $categories = $result["data"]['categories'];
 ?>
 
 <h1>liste categories</h1>
-
-<table>
-    <thead>
-        <th>Catégorie</th>
-    </thead>
-    <tbody>      
+<div id="groupCate">
     <?php
     foreach($categories as $categorie){
 
         ?>
-        <tr>
-            <td><a href="index.php?ctrl=forum&action=listTopicsForACategorie&id=<?= $categorie->getId() ?>"><?=$categorie->getNomCategorie()?></a></td>
+        <div class="cateNom">
+            <a href="index.php?ctrl=forum&action=listTopicsForACategorie&id=<?= $categorie->getId() ?>"><?=$categorie->getNomCategorie()?></a></td>
             <?php
             if(App\Session::isAdmin()){
                 ?>
-                    <td><a href="index.php?ctrl=forum&action=deleteCategorie&id=<?= $categorie->getId() ?>"><i class="fa-regular fa-trash-can"></i></a></td>
+                    <a href="index.php?ctrl=forum&action=deleteCategorie&id=<?= $categorie->getId() ?>"><i class="fa-regular fa-trash-can"></i></a>
                 <?php
             }
             ?>
-        </tr>
+        </div>
         <?php
     }
-    ?>
-    <tr>
-        <td><a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie">Sans catégorie</a></td>
-    </tr>
-    </tbody>
-</table>
+    ?> 
+    <div>
+        <a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie">Sans catégorie</a>
+    </div>
+</div>
 
 <?php
 if(App\Session::isAdmin()){
