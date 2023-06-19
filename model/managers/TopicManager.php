@@ -16,10 +16,11 @@
 
         public function findTopicbyCategorie($id){
             $sql = "
-                SELECT t.* ,DATE_FORMAT(MAX(p.datePost, '%d/%m/%Y %H:%i')) AS lastMsg ,(SELECT COUNT(*) FROM post WHERE p.topic_id = t.id_topic) AS nbPost
+                SELECT t.* ,MAX(DATE_FORMAT(p.datePost, '%d/%m/%Y %H:%i')) AS lastMsg ,(SELECT COUNT(p.topic_id) FROM post p WHERE p.topic_id = t.id_topic) AS nbPost
                 FROM topic t
                 LEFT JOIN post p ON t.id_topic = p.topic_id
                 WHERE t.categorie_id = :id
+                GROUP BY t.id_topic
                 ORDER BY lastMsg DESC";
 
             // var_dump($sql);die;
