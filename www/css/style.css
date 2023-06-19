@@ -1,24 +1,26 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-.fa-lock-open{
+.fa-lock-open {
     color: green;
 }
 
-.fa-lock{
+.fa-lock {
     color: red;
 }
 
+
 /* HEADER */
 
-header{
+
+header {
     min-height: 10vh;
     width: 100%;
     background-color: green;
@@ -26,7 +28,7 @@ header{
     align-items: center;
 }
 
-nav{
+nav {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -35,35 +37,37 @@ nav{
     padding: 0 20px;
 }
 
-nav a{
+nav a {
     color: white;
 }
 
-#nav-right{
+#nav-right {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
 }
 
-#nav-right a{
+#nav-right a {
     margin: 0 20px;
 }
 
-#nav-left > a{
+#nav-left>a {
     display: flex;
     align-items: center;
-    gap:20px;
+    gap: 20px;
 }
 
-#imglogo{
+#imglogo {
     height: 80px;
     border-radius: 8px;
     margin: 8px 0;
 }
 
+
 /* FOOTER */
 
-footer{
+
+footer {
     background-color: black;
     color: white;
     min-height: 10vh;
@@ -71,22 +75,23 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
-footer a{
+footer a {
     color: white;
 }
 
+
 /* MAIN */
 
-#mainpage{
+
+#mainpage {
     padding: 24px 20px;
     background-color: gray;
     min-height: 80vh;
 }
 
-.formBasPage{
+.formBasPage {
     margin-top: 120px;
     display: flex;
     flex-direction: column;
@@ -96,7 +101,7 @@ footer a{
     border-radius: 12px;
 }
 
-.formBasPage div{
+.formBasPage div {
     background-color: white;
     padding: 12px 10px;
     display: flex;
@@ -106,29 +111,27 @@ footer a{
     border-radius: 8px;
 }
 
-#submitBas{
+#submitBas {
     justify-content: center;
     height: 80px;
 }
 
-#submitBas input{
+#submitBas input {
     width: 33%;
 }
 
 
-
-
-
 /* listTopic.php */
 
-#carteContainer{
+
+#carteContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 28px 40px;
 }
 
-.carteTopic{
+.carteTopic {
     width: 360px;
     height: 230px;
     border-radius: 12px;
@@ -136,15 +139,15 @@ footer a{
     overflow: hidden;
 }
 
-.hautDeCarte{
+.hautDeCarte {
     height: 80%;
-    background-color:rgb(30, 30, 30);
+    background-color: rgb(30, 30, 30);
     color: white;
     display: flex;
     flex-direction: column;
 }
 
-.ligneHaut{
+.ligneHaut {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -152,13 +155,13 @@ footer a{
     padding: 0 20px;
 }
 
-.nomSujet{
+.nomSujet {
     margin-top: 50px;
     align-self: center;
     font-size: xx-large;
 }
 
-.basDeCarte{
+.basDeCarte {
     height: 20%;
     background-color: rgb(179, 179, 179);
     color: black;
@@ -168,37 +171,39 @@ footer a{
     padding: 0 20px;
 }
 
+
 /* aTopic.php */
 
-#topTopic{
+
+#topTopic {
     margin-bottom: 40px;
 }
 
-#sousInfoTopic{
+#sousInfoTopic {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#infoTopicDroite{
+#infoTopicDroite {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-#botTopic{
+#botTopic {
     margin-top: 40px;
     display: flex;
     justify-content: space-between;
 }
 
-#lesMessages{
+#lesMessages {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.unMessage{
+.unMessage {
     padding: 20px 12px;
     background-color: white;
     border-radius: 8px;
@@ -207,7 +212,97 @@ footer a{
     gap: 40px;
 }
 
-.infoMsg{
+.infoMsg {
     display: flex;
     justify-content: space-between;
+}
+
+
+/* listTopicForACategorie.php */
+
+#tableauTopicCategorie {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    text-align: left;
+}
+
+#tableauTopicCategorie thead {
+    background-color: #f3f3f3;
+    border-radius: 8px 8px 0px 0px;
+}
+
+#tableauTopicCategorie thead > tr {
+    border-radius: 8px 8px 0px 0px;
+    font-weight: bold;
+    color: black;
+}
+
+#tableauTopicCategorie tr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border: 1px solid #e1e1e1;
+    margin-top: -1px;
+    color: #535353;
+}
+
+#tableauTopicCategorie tbody tr:hover {
+    background-color: #f6f6f6;
+}
+
+#tableauTopicCategorie .first {
+    width: 32px;
+}
+
+#tableauTopicCategorie .second {
+    min-width: 18%;
+    align-items: left;
+}
+
+#tableauTopicCategorie .third {
+    width: 60px;
+}
+
+#tableauTopicCategorie .fourth {
+    width: 60px;
+    text-align: center;
+}
+
+#tableauTopicCategorie .fifth {
+    width: 84px;
+}
+
+#tableauTopicCategorie .sixth {
+    width: 60px;
+    text-align: center;
+}
+
+#tableauTopicCategorie .seventh {
+    width: 24px;
+}
+
+#tableauTopicCategorie tbody > tr:last-child {
+    border-radius: 0px 0px 8px 8px;
+}
+
+#tableauTopicCategorie a{
+    width: 100%;
+    height: 100%;
+}
+
+/* Making the layout responsive */
+
+@media screen and (max-width: 960px) {
+    table, nav, header {
+    grid-column: 1 / 3;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .third, .fourth, .avatars, .drafts, .secondary-btn {
+    display: none;
+    }
 }

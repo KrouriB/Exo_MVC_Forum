@@ -65,11 +65,11 @@ if($topics != null){
                     </a>
                 </td>
                 <?php
-                        if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
-                            ?>
-                                <td class="seventh"><a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>"><i class="fa-regular fa-trash-can"></i></a></td>
-                            <?php
-                        }
+                    if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
+                        ?>
+                            <td class="seventh"><a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>"><i class="fa-regular fa-trash-can"></i></a></td>
+                        <?php
+                    }
                 ?>
             </tr>
             <?php
