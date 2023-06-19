@@ -218,7 +218,24 @@ footer a {
 }
 
 
+/* listCategorie.php */
+
+
+#groupCate{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+}
+
+.cateNom{
+    display: flex;
+    width: 60px;
+}
+
+
+
 /* listTopicForACategorie.php */
+
 
 #tableauTopicCategorie {
     grid-column: 2 / 3;
