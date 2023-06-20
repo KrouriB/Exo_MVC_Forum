@@ -133,10 +133,12 @@
             }
         }
 
-        public function verouillerTopic(){
+        public function verouillerTopic($id){
             $topicManager = new TopicManager();
-            $topicManager->verouiller($_GET['id']);
-            $this->redirectTo("forum","aTopic",$_GET['id']);
+            if(($topicManager->findOneById($id)->getUser() == Session::getUser()) OR Session::isAdmin()){ // ne pas mettre App\Session car deja appeler avant
+                $topicManager->verouiller($id);
+                $this->redirectTo("forum","aTopic",$id);
+            }
         }
 
         public function listTopicsWithoutCategorie(){
@@ -150,25 +152,25 @@
             ];
         }
 
-        public function deleteCategorie(){
+        public function deleteCategorie($id){
             $categorieManager = new CategorieManager();
             $topicManager = new TopicManager();
-            $topicManager->setIdTopic($_GET['id']);
-            $categorieManager->delete($_GET['id']);
+            $topicManager->setIdTopic($id);
+            $categorieManager->delete($id);
             $this->redirectTo("forum","listCategories");
         }
 
-        public function deleteTopic(){
+        public function deleteTopic($id){
             $topicManager = new TopicManager();
             $postManager = new PostManager();
-            $postManager->deleteMessagesTopic($_GET['id']);
-            $topicManager->delete($_GET['id']);
+            $postManager->deleteMessagesTopic($id);
+            $topicManager->delete($id);
             $this->redirectTo("forum","listTopics");
         }
 
-        public function deleteMessage(){
+        public function deleteMessage($id){
             $postManager = new PostManager();
-            $postManager->delete($_GET['id']);
+            $postManager->delete($id);
             $this->redirectTo("forum","aTopic",$_GET['idTopic']);
         }
     }
