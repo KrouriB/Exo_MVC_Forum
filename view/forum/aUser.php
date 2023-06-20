@@ -4,14 +4,16 @@ $user = $result["data"]['user'];
 $topics = $result["data"]['topics'];
 
 if($_GET["id"] == App\Session::getUser()->getId()){
-
+    ?>
+        <h1>Bienvenu su votre page Utilisateur</h1>
+    <?php
 }
 else{
-
+    ?>
+        <h1>Voici la page de <?= $user->getPseudo() ?></h1>
+    <?php
 }
-
 ?>
-
 <div>
     <table>
         <thead>
