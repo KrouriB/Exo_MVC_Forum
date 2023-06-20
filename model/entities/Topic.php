@@ -14,6 +14,7 @@
                 private $resumer;
                 private $nbPost;
                 private $lastMsg;
+                private $nbTopic;
 
                 public function __construct($data){         
                         $this->hydrate($data);        
@@ -185,6 +186,26 @@
                 public function setLastMsg($lastMsg)
                 {
                         $this->lastMsg = $lastMsg;
+
+                        return $this;
+                }
+
+                /**
+                 * Get the value of nbTopic
+                 */ 
+                public function getNbTopic()
+                {
+                        return $this->nbTopic;
+                }
+
+                /**
+                 * Set the value of nbTopic
+                 *
+                 * @return  self
+                 */ 
+                public function setNbTopic($nbTopic)
+                {
+                        $this->nbTopic = $nbTopic;
 
                         return $this;
                 }
