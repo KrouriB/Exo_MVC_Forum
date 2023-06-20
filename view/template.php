@@ -26,7 +26,7 @@
                     <?php
                     if (App\Session::getUser()) {
                         ?>
-                        <a href="#"><span class="fas fa-user"></span>&nbsp;&nbsp;<?= App\Session::getUser() ?></a>
+                        <a href="index.php?ctrl=forum&action=aUser&id=<?= App\Session::getUser()->getId() ?>"><span class="fas fa-user"></span>&nbsp;&nbsp;<?= App\Session::getUser() ?></a>
                         <a href="index.php?ctrl=security&action=logOut">Déconnexion</a>
                         <?php
                         if (App\Session::isAdmin()) {
