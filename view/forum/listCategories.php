@@ -23,7 +23,7 @@ $categories = $result["data"]['categories'];
         <?php
     }
     ?> 
-    <div>
+    <div class="cateNom">
         <a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie">Sans catégorie</a>
     </div>
 </div>
