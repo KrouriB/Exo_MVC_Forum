@@ -59,8 +59,14 @@ if ($posts != null) {
             </div>
         <?php
     }
-} else {
-        ?>
+}
+elseif($topic->getVerouiller() == 1) {
+    ?>
+        <p>Ce Topic est vide et verouiller.</p>
+    <?php
+}
+else{
+    ?>
         <p>Ce Topic n'as pas de message ! Soyer la 1er personne a lui répondre !</p>
     <?php
 }
