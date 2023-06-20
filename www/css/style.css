@@ -398,6 +398,37 @@ footer a {
 }
 
 
+/* aUser.php */
+
+
+#titre-user{
+    position: absolute;
+}
+
+#user-table{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#user-table table{
+    width: 100%;
+    padding: 20px;
+}
+
+#user-table th{
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+#user-table td{
+    text-align: center;
+    padding: 20px;
+}
+
+
 /* Making the layout responsive */
 
 @media screen and (max-width: 960px) {
