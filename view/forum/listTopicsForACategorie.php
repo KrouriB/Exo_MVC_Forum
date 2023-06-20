@@ -19,13 +19,7 @@ if($topics != null){
                 <th class="fourth">Nombre de posts</th>
                 <th class="fifth">Date du dernier post</th>
                 <th class="sixth">Etat du Topic</th>
-                <?php
-                    if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
-                        ?>
-                            <th class="seventh"></th>
-                        <?php
-                    }
-                ?>
+                <th class="seventh"></th>
             </tr>
         </thead>
         <tbody>
@@ -68,6 +62,11 @@ if($topics != null){
                     if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
                         ?>
                             <td class="seventh"><a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>"><i class="fa-regular fa-trash-can"></i></a></td>
+                        <?php
+                    }
+                    else{
+                        ?>
+                            <td class="seventh"></td>
                         <?php
                     }
                 ?>
