@@ -3,18 +3,22 @@
 $user = $result["data"]['user'];
 $topics = $result["data"]['topics'];
 
+// var_dump($topics[0]->getNbTopic());die;
+
+// $nbTopic = ($topics[0]->getNbTopic() != null) ? $topics[0]->getNbTopic() : 0;
+
 if($_GET["id"] == App\Session::getUser()->getId()){
     ?>
-        <h1>Bienvenu su votre page Utilisateur</h1>
+        <h1 id="titre-user">Bienvenu su votre page Utilisateur</h1>
     <?php
 }
 else{
     ?>
-        <h1>Voici la page de <?= $user->getPseudo() ?></h1>
+        <h1 id="titre-user">Voici la page de <?= $user->getPseudo() ?></h1>
     <?php
 }
 ?>
-<div>
+<div id="user-table">
     <table>
         <thead>
             <tr>
