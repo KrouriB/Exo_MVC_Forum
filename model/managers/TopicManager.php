@@ -32,11 +32,10 @@
 
         public function findTopicbyUser($id){
             $sql = "
-                SELECT t.* ,(SELECT COUNT(p.topic_id) FROM post p WHERE p.topic_id = t.id_topic) AS nbPost
+                SELECT t.* ,(SELECT COUNT(p.topic_id) FROM post p WHERE p.topic_id = t.id_topic) AS nbPost,(SELECT COUNT(t.user_id) FROM topic t WHERE t.user_id = :id) AS nbTopic
                 FROM topic t
                 LEFT JOIN post p ON t.id_topic = p.topic_id
                 WHERE t.user_id = :id
-                GROUP BY t.id_topic
                 ORDER BY t.dateCreation DESC";
 
             return $this->getMultipleResults(
