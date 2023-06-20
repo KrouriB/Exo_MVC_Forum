@@ -90,10 +90,15 @@ footer a {
 /* MAIN */
 
 
+#forum{
+    width: 100%;
+}
+
 #mainpage {
     padding: 24px 20px;
     background-color: gray;
     min-height: 80vh;
+    display: flex;
 }
 
 .formBasPage {
@@ -123,6 +128,29 @@ footer a {
 
 #submitBas input {
     width: 33%;
+}
+
+
+/* home.php */
+
+
+#home-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40%;
+}
+
+#entete{
+    align-self:flex-start;
+}
+
+#message-acceuil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
