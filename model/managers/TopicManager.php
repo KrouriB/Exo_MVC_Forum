@@ -23,7 +23,21 @@
                 GROUP BY t.id_topic
                 ORDER BY lastMsg DESC";
 
-            // var_dump($sql);die;
+            return $this->getMultipleResults(
+                DAO::select($sql,['id'=>$id]),
+                $this->className
+            );
+            
+        }
+
+        public function findTopicbyUser($id){
+            $sql = "
+                SELECT t.* ,MAX(DATE_FORMAT(p.datePost, '%d/%m/%Y %H:%i')) AS lastMsg ,(SELECT COUNT(p.topic_id) FROM post p WHERE p.topic_id = t.id_topic) AS nbPost
+                FROM topic t
+                LEFT JOIN post p ON t.id_topic = p.topic_id
+                WHERE t.user_id = :id
+                GROUP BY t.id_topic
+                ORDER BY lastMsg DESC";
 
             return $this->getMultipleResults(
                 DAO::select($sql,['id'=>$id]),
