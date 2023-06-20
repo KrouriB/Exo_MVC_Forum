@@ -26,7 +26,7 @@ $topic = $result["data"]['topic'];
                     <?php
             }
             ?>
-            <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>"><i class="fa-regular fa-trash-can"></i></a>
+                <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>"><i class="fa-regular fa-trash-can"></i></a>
             </div>
             <?php
         }
@@ -49,7 +49,7 @@ if ($posts != null) {
                         <span><?= $post->getDatePost() ?></span>
                     </div>
                     <?php
-                    if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
+                    if(App\Session::isAdmin() OR ($post->getUser()->getPseudo() == App\Session::getUser())){
                         ?>
                         <a href="index.php?ctrl=forum&action=deleteMessage&id=<?= $post->getId() ?>&idTopic=<?= $_GET['id'] ?>"><i class="fa-regular fa-trash-can"></i></a>
                         <?php
