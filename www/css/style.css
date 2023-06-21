@@ -429,16 +429,32 @@ footer a {
 }
 
 
+/* login.php */
+
+
+#login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* register.php */
+
+
+#register-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /* Making the layout responsive */
 
 @media screen and (max-width: 960px) {
-    table, nav, header {
+    #tableauTopicCategorie table{
     grid-column: 1 / 3;
-    }
-}
-
-@media screen and (max-width: 680px) {
-    .third, .fourth, .avatars, .drafts, .secondary-btn {
-    display: none;
     }
 }
