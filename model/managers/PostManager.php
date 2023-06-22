@@ -30,11 +30,4 @@
             
         }
 
-        public function deleteMessagesTopic($id){
-            $sql = "DELETE FROM ".$this->tableName."
-                    WHERE topic_id = :id";
-
-            return DAO::delete($sql, ['id' => $id]); 
-        }
-
     }
