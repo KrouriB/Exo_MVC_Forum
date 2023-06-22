@@ -230,15 +230,17 @@
         public function deleteMessage($id){
 
             $postManager = new PostManager();
+            $topicManager = new TopicManager();
+            var_dump($postManager);die;
             $postManager->delete($id);
 
-            if(($topicManager->findOneById($id)->getUser() == Session::getUser()) OR Session::isAdmin()){
+            /*if(($postManager->findOneById($id)->getUser() == Session::getUser()) OR Session::isAdmin()){
                 Session::addFlash("success","vous avez supprimer le message avec succès");
                 $this->redirectTo("forum","aTopic",$_GET['idTopic']);
             }
             else{
                 Session::addFlash("error","vous avez tentez de supprimez un message qui ne vous appartient pas !");
                 $this->redirectTo("home");
-            }
+            }*/
         }
     }
