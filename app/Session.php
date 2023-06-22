@@ -18,8 +18,14 @@
         public static function getFlash($categ){
             
             if(isset($_SESSION[$categ])){
-                $msg = $_SESSION[$categ];  
-                unset($_SESSION[$categ]);
+                if($_SESSION['success']){
+                    $msg = "<h3 class='message' style='color: green'>".$_SESSION[$categ].'</h3>';  
+                    unset($_SESSION[$categ]);
+                }
+                else{
+                    $msg = "<h3 class='message' style='color: red'>".$_SESSION[$categ].'</h3>';  
+                    unset($_SESSION[$categ]);
+                }
             }
             else $msg = "";
             
