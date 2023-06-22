@@ -14,6 +14,7 @@
         public function listUsers(){
 
             $userManager = new UserManager();
+            
                 if(Session::isAdmin()){
                     return [
                         "view" => VIEW_DIR."security\listUsers.php",
@@ -110,17 +111,35 @@
                         // test pseudo
                         if(!$userManager->findOnebyPseudo($pseudo)){
                             // test concordance des 2 mot de passe
-                            if(($password1 == $password2) and strlen($password1 >= 8)){
-                                // mot de passe hasher
-                                $hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
-                                $userManager->add($data = [
-                                    "password" => $hashedPassword ,
-                                    "pseudo" => $pseudo ,
-                                    "email" => $email 
-                                ]);
-                                $this->redirectTo("security","login");
+                            if(strlen($password1)>8){
+                                if($password1 == $password2){
+                                    // mot de passe hasher
+                                    $hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
+                                    $userManager->add($data = [
+                                        "password" => $hashedPassword ,
+                                        "pseudo" => $pseudo ,
+                                        "email" => $email 
+                                    ]);
+                                    $this->redirectTo("security","login");
+                                }
+                                else{
+                                    Session::addFlash("error","veuiller entrer correctement votre mot de passe");
+                                    $this->redirectTo("security","register");
+                                }    
+                            }
+                            else{
+                                Session::addFlash("error","votre mot de passe est trop court");
+                                $this->redirectTo("security","register");
                             }
                         }
+                        else{
+                            Session::addFlash("error","veuiller prendre un autre pseudo");
+                            $this->redirectTo("security","register");
+                        }
+                    }
+                    else{
+                        Session::addFlash("error","veuiller prendre un autre email.");
+                        $this->redirectTo("security","register");
                     }
                 }
             }
@@ -139,6 +158,14 @@
                             Session::setUser($user);
                             $this->redirectTo("forum","listTopics");
                         }
+                        else{
+                            Session::addFlash("error","veuiller rentrer le bon mot de passe");
+                            $this->redirectTo("security","login");
+                        }
+                    }
+                    else{
+                        Session::addFlash("error","cette adresse email n'es pas lié a un utilisateur.");
+                        $this->redirectTo("security","login");
                     }
                 }
             }
