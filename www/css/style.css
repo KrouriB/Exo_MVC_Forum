@@ -97,22 +97,30 @@ footer a {
     background-color: white;
     border: 2px solid black;
     border-radius: 8px;
+    margin-bottom: 32px;
 }
 
 
 /* MAIN */
 
 
-#forum{
-    width: 100%;
-}
-
 #mainpage {
     padding: 24px 20px;
     background-color: gray;
-    min-height: 80vh;
     display: flex;
     flex-direction: column;
+}
+
+#forum{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 80vh;
+}
+
+#forum > h1{
+    margin-bottom: 20px;
 }
 
 .formBasPage {
@@ -420,6 +428,7 @@ footer a {
 }
 
 #user-table{
+    margin-top: 40px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -440,6 +449,10 @@ footer a {
 #user-table td{
     text-align: center;
     padding: 20px;
+}
+
+#infoTopicUser{
+    text-align: center;
 }
 
 
