@@ -14,13 +14,14 @@
         public function listUsers(){
 
             $userManager = new UserManager();
-                
-                return [
-                    "view" => VIEW_DIR."security\listUsers.php",
-                    "data" => [
-                        "users" => $userManager->findAll(["pseudo", "ASC"])
-                    ]
-                ];
+                if(Session::isAdmin()){
+                    return [
+                        "view" => VIEW_DIR."security\listUsers.php",
+                        "data" => [
+                            "users" => $userManager->findAll(["pseudo", "ASC"])
+                        ]
+                    ];
+                }
 
         }
 
