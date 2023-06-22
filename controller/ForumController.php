@@ -76,10 +76,10 @@
 
             $topicManager = new TopicManager();
 
-            if (isset($_POST['submitNo'])){
+            if(isset($_POST['submitNo'])){
                 $topic = filter_input(INPUT_POST, "topic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $resume = filter_input(INPUT_POST, "resume", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                if ($topic && $resume && $_POST['categorie'] != 0){
+                if($topic && $resume && $_POST['categorie'] != 0){
                     $topicManager->add($data = [
                         "nomTopic" => $topic,
                         "resumer" =>    $resume,
@@ -88,11 +88,15 @@
                     ]);
                 $this->redirectTo("forum","listTopics");
                 }
+                else{
+                    Session::addFlash("error","veuiller remplir le formulaire correctement.");
+                    $this->redirectTo("forum","listTopics");
+                }
             }
-            elseif (isset($_POST['submitCate'])){
+            elseif(isset($_POST['submitCate'])){
                 $topic = filter_input(INPUT_POST, "topic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $resume = filter_input(INPUT_POST, "resume", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                if ($topic && $resume){
+                if($topic && $resume){
                     $topicManager->add($data = [
                         "nomTopic" => $topic,
                         "resumer" =>    $resume,
@@ -101,8 +105,11 @@
                     ]);
                     $this->redirectTo("forum","listTopicsForACategorie",$_GET['id']);
                 }
+                else{
+                    Session::addFlash("error","veuiller remplir le formulaire correctement.");
+                    $this->redirectTo("forum","listTopics");
+                }
             }
-
         }
 
         public function aPost(){
@@ -119,6 +126,10 @@
                     ]);
                     $this->redirectTo("forum","aTopic",$_GET['id']);
                 }
+                else{
+                    Session::addFlash("error","Vous ne pouvez pas envoyer un message vide.");
+                    $this->redirectTo("forum","aTopic",$_GET['id']);
+                }
             }
 
         }
@@ -133,6 +144,10 @@
                     $categorieManager->add($data = ["nomCategorie" => $nomCategorie]);
                     $this->redirectTo("forum","listCategories");
                 }
+                else{
+                    Session::addFlash("error","veuiller inserer un nom de categorie.");
+                    $this->redirectTo("forum","listCategories");
+                }
             }
         }
 
@@ -144,6 +159,10 @@
                 $topicManager->verouiller($id);
                 Session::addFlash("success","vous avez verouiller le topic");
                 $this->redirectTo("forum","aTopic",$id);
+            }
+            else{
+                Session::addFlash("error","vous avez tentez de verouiller un topic qui ne vous appartient pas !");
+                $this->redirectTo("home");
             }
         }
 
@@ -185,6 +204,10 @@
                 Session::addFlash("success","vous avez supprimer la categorie avec succès");
                 $this->redirectTo("forum","listCategories");
             }
+            else{
+                Session::addFlash("error","vous n'avez pas l'autorisation pour supprimez une catégorie !");
+                $this->redirectTo("home");
+            }
         }
 
         public function deleteTopic($id){
@@ -198,16 +221,24 @@
                 Session::addFlash("success","vous avez supprimer le topic avec succès");
                 $this->redirectTo("forum","listTopics");
             }
+            else{
+                Session::addFlash("error","vous avez tentez de supprimez un topic qui ne vous appartient pas !");
+                $this->redirectTo("home");
+            }
         }
 
         public function deleteMessage($id){
 
             $postManager = new PostManager();
             $postManager->delete($id);
-            
+
             if(($topicManager->findOneById($id)->getUser() == Session::getUser()) OR Session::isAdmin()){
                 Session::addFlash("success","vous avez supprimer le message avec succès");
                 $this->redirectTo("forum","aTopic",$_GET['idTopic']);
+            }
+            else{
+                Session::addFlash("error","vous avez tentez de supprimez un message qui ne vous appartient pas !");
+                $this->redirectTo("home");
             }
         }
     }
