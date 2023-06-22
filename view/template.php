@@ -50,8 +50,8 @@
         </header>
         <div id="mainpage">
             <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
-            <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
-            <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
+            <?= App\Session::getFlash("error") ?>
+            <?= App\Session::getFlash("success") ?>
 
             <main id="forum">
                 <?= $page ?>
