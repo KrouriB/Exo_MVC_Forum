@@ -29,7 +29,7 @@ if($topics != null){
             ?>
             <tr>
                 <td class="first">
-                    <a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
+                    <a class="lienTd" href="index.php?ctrl=forum&action=aUser&id=<?= $topic->getUser()->getId() ?>">
                         <?=$topic->getUser()->getPseudo()?>        
                     </a>
                 </td>
@@ -39,24 +39,16 @@ if($topics != null){
                     </a>
                 </td>
                 <td class="third">
-                    <a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
                         <?=$topic->getDateCreation()?>
-                    </a>
                 </td>
                 <td class="fourth">
-                    <a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
                         <?=$topic->getNbPost()?>
-                    </a>
                 </td>
                 <td class="fifth">
-                    <a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
                         <?=$topic->getLastMsg()?>
-                    </a>
                 </td>
                 <td class="sixth">
-                    <a class="lienTd" href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
                         <?= $verrou ?>
-                    </a>
                 </td>
                 <?php
                     if(App\Session::isAdmin() OR ($topic->getUser()->getPseudo() == App\Session::getUser())){
