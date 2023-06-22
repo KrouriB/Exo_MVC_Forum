@@ -27,11 +27,23 @@
         }
 
         public function login(){
-            return ["view" => VIEW_DIR."security/login.php"];
+            if(Session::getUser() == false){    
+                return ["view" => VIEW_DIR."security/login.php"];
+            }
+            else{
+                Session::addFlash("error","vous êtes deja connecter.");
+                $this->redirectTo("home");
+            }
         }
 
         public function register(){
-            return ["view" => VIEW_DIR."security/register.php"];
+            if(Session::getUser() == false){
+                return ["view" => VIEW_DIR."security/register.php"];
+            }
+            else{
+                Session::addFlash("error","vous êtes deja connecter.");
+                $this->redirectTo("home");
+            }
         }
 
 
