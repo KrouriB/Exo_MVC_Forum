@@ -124,7 +124,9 @@
         }
 
         public function addCategorie(){
+
             $categorieManager = new CategorieManager();
+
             if(isset($_POST['submit'])){
                 $nomCategorie = filter_input(INPUT_POST, "nomCategorie", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 if($nomCategorie){
@@ -135,14 +137,18 @@
         }
 
         public function verouillerTopic($id){
+
             $topicManager = new TopicManager();
+
             if(($topicManager->findOneById($id)->getUser() == Session::getUser()) OR Session::isAdmin()){ // ne pas mettre App\Session car deja appeler avant
                 $topicManager->verouiller($id);
+                Session::addFlash("success","vous avez verouiller le topic");
                 $this->redirectTo("forum","aTopic",$id);
             }
         }
 
         public function listTopicsWithoutCategorie(){
+
             $topicManager = new TopicManager();
 
             return [
@@ -169,24 +175,39 @@
         }
 
         public function deleteCategorie($id){
+
             $categorieManager = new CategorieManager();
             $topicManager = new TopicManager();
-            $topicManager->setIdTopic($id);
-            $categorieManager->delete($id);
-            $this->redirectTo("forum","listCategories");
+
+            if(Session::isAdmin()){
+                $topicManager->setIdTopic($id);
+                $categorieManager->delete($id);
+                Session::addFlash("success","vous avez supprimer la categorie avec succès");
+                $this->redirectTo("forum","listCategories");
+            }
         }
 
         public function deleteTopic($id){
+
             $topicManager = new TopicManager();
             $postManager = new PostManager();
-            $postManager->deleteMessagesTopic($id);
-            $topicManager->delete($id);
-            $this->redirectTo("forum","listTopics");
+
+            if(($topicManager->findOneById($id)->getUser() == Session::getUser()) OR Session::isAdmin()){
+                $postManager->deleteMessagesTopic($id);
+                $topicManager->delete($id);
+                Session::addFlash("success","vous avez supprimer le topic avec succès");
+                $this->redirectTo("forum","listTopics");
+            }
         }
 
         public function deleteMessage($id){
+
             $postManager = new PostManager();
             $postManager->delete($id);
-            $this->redirectTo("forum","aTopic",$_GET['idTopic']);
+            
+            if(($topicManager->findOneById($id)->getUser() == Session::getUser()) OR Session::isAdmin()){
+                Session::addFlash("success","vous avez supprimer le message avec succès");
+                $this->redirectTo("forum","aTopic",$_GET['idTopic']);
+            }
         }
     }
