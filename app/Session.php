@@ -18,7 +18,7 @@
         public static function getFlash($categ){
             
             if(isset($_SESSION[$categ])){
-                if($_SESSION['success']){
+                if($_SESSION[$categ] == 'success'){
                     $msg = "<h3 class='message' style='color: green'>".$_SESSION[$categ].'</h3>';  
                     unset($_SESSION[$categ]);
                 }
