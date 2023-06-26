@@ -3,7 +3,7 @@
     $topics = $result["data"]['topics'];
     $categorie = $result["data"]['categorie'];
         
-    $titre_page = "liste des topics de la catégorie ".$categorie->getNomCategorie();
+    $titre_page = "Liste des topics de la catégorie ".$categorie->getNomCategorie();
     $sousTitre_page = 0;
 ?>
 
