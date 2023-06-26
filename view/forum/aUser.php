@@ -3,10 +3,6 @@
 $user = $result["data"]['user'];
 $topics = $result["data"]['topics'];
 
-// var_dump($topics[0]->getNbTopic());die;
-
-// $nbTopic = ($topics[0]->getNbTopic() != null) ? $topics[0]->getNbTopic() : 0;
-
 if($_GET["id"] == App\Session::getUser()->getId()){
     ?>
         <h1 id="titre-user">Bienvenu su votre page Utilisateur</h1>
@@ -39,7 +35,7 @@ if($topics != null){
                         $delete = (($_GET["id"] == App\Session::getUser()->getId()) OR App\Session::isAdmin()) ? '<a href="index.php?ctrl=forum&action=deleteTopic&id='.$topic->getId().'"><i class="fa-regular fa-trash-can"></i></a>' : "" ;
                 ?>
                     <tr>
-                        <td><?= $topic->getNomTopic() ?></td>
+                        <td><a href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>"><?= $topic->getNomTopic() ?></a></td>
                         <td><?= $categorieAfficher ?></td>
                         <td><?= $topic->getDateCreation() ?></td>
                         <td><?= $topic->getNbPost() ?></td>
