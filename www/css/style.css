@@ -60,8 +60,19 @@ nav a {
 
 #navLink {
     display: flex;
+    align-items: center;
     list-style-type: none;
-    gap: 16px;
+    gap: 20px;
+}
+
+#navLink li {
+    text-align: center;
+}
+
+@media screen and (max-width: 920px) {
+    #navLink li {
+        width: 108px;
+    }
 }
 
 /* menu burger */
@@ -115,7 +126,7 @@ nav a {
     #navLink li {
         padding: 24px 0;
         font-size: 22px;
-        text-align: center;
+        width: 100%;
     }
 
     /* menu burger */
@@ -178,7 +189,21 @@ nav a {
 /* MAIN */
 
 
-#mainPage {
+#topMain {
+    background-color: #26bcb5;
+    padding: 10% 16px;
+    color: white;
+}
+
+#container {
     padding: 0 16px;
 }
 
+
+/* FOOTER */
+
+
+footer {
+    padding: 0 16px;
+    text-align: center;
+}
