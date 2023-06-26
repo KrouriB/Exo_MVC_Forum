@@ -36,7 +36,7 @@ nav a {
 
 /* bloc gauche */
 
-#nav-left a {
+#navLeft a {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -51,14 +51,14 @@ nav a {
 
 /* bloc droit */
 
-#nav-right {
+#navRight {
     display: block;
     padding-right: 16px;
 }
 
 
 
-#nav-link {
+#navLink {
     display: flex;
     list-style-type: none;
     gap: 16px;
@@ -66,7 +66,7 @@ nav a {
 
 /* menu burger */
 
-#nav-right input {
+#navRight input {
     visibility: hidden;
     display: block;
     width: 40px;
@@ -81,24 +81,24 @@ nav a {
 
 @media screen and (max-width: 768px) {
 
-    #nav-right {
+    #navRight {
         position: relative;
         z-index: 1;
         -webkit-user-select: none;
         user-select: none;
     }
 
-    #nav-right a {
+    #navRight a {
         text-decoration: none;
         color: white;
         transition: color 0.3s ease;
     }
 
-    #nav-right a:hover {
+    #navRight a:hover {
         color: tomato;
     }
 
-    #nav-link {
+    #navLink {
         position: absolute;
         gap: 0;
         display: block;
@@ -112,7 +112,7 @@ nav a {
         transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
     }
 
-    #nav-link li {
+    #navLink li {
         padding: 24px 0;
         font-size: 22px;
         text-align: center;
@@ -120,15 +120,15 @@ nav a {
 
     /* menu burger */
     
-    #nav-right input {
+    #navRight input {
         visibility: visible;
     }
 
-    #nav-right input:checked ~ #nav-link {
+    #navRight input:checked ~ #navLink {
         transform: none; /* pour permettre le glissement */
     }
 
-    #nav-right .barre {
+    #navRight .barre {
         display: block;
         width: 33px;
         height: 4px;
@@ -144,17 +144,17 @@ nav a {
                 opacity 0.55s ease;
     }
 
-    #nav-right .barre:first-child {
+    #navRight .barre:first-child {
         transform-origin: 0% 0%;
     }
 
-    #nav-right .barre:nth-last-child(2) {
+    #navRight .barre:nth-last-child(2) {
         transform-origin: 0% 100%;
     }
 
     /* Transforme toutes les barres en une croix */
 
-    #nav-right input:checked ~ .barre {
+    #navRight input:checked ~ .barre {
         opacity: 1;
         transform: rotate(45deg) translate(-2px, -1px);
         background: #232323;
@@ -162,13 +162,13 @@ nav a {
 
     /* cacher la barre du milieu */
 
-    #nav-right input:checked ~ .barre:nth-last-child(3) {
+    #navRight input:checked ~ .barre:nth-last-child(3) {
         opacity: 0;
         transform: rotate(0deg) scale(0.2, 0.2);
     }
 
     /* et l'autre barre va dans l'autre sens */
-    #nav-right input:checked ~ .barre:nth-last-child(2) {
+    #navRight input:checked ~ .barre:nth-last-child(2) {
         transform: rotate(-45deg) translate(0, -1px);
     }
 
@@ -178,6 +178,7 @@ nav a {
 /* MAIN */
 
 
-#mainpage {
+#mainPage {
     padding: 0 16px;
 }
+
