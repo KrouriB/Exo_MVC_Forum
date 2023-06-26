@@ -16,14 +16,16 @@
             ?>
             <div class="carteTopic">
                 <a href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
-                    <div id="infoCarte">
-                        <h2><?=$topic->getNomTopic()?></h2>
+                    <div class="infoCarte">
+                        <div class="longTitre">
+                            <h3><?=$topic->getNomTopic()?></h3>
+                        </div>
                         <div>
+                            <p class="nomCategorie" >Thème : <?=$categorieAfficher?></p>
                             <div class="ligneAuteurVerrou">
                                 <p class="infoAuteur">By - <?=$topic->getUser()->getPseudo() ?></p>
                                 <span><?= $verrou ?></span>
                             </div>
-                            <p class="nomCategorie" >Thème : <?=$categorieAfficher?></p>
                         </div>
                         <p class="infoDate"><?=$topic->getDateCreation() ?></p>
                     </div>
@@ -46,7 +48,7 @@
         <label for="resume">
             Détail&nbsp;de&nbsp;votre&nbsp;sujet (un&nbsp;"1er&nbsp;message")&nbsp;:&nbsp;
         </label>
-        <textarea name="resume" id="resume" cols="4000" rows="10"></textarea>
+        <textarea name="resume" id="resume" cols="40" rows="10"></textarea>
     </div>
     <div>
         <label for="categorie">
