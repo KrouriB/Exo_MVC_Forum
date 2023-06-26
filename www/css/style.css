@@ -231,23 +231,70 @@ footer a {
 #listTopics{
     display: flex;
     flex-wrap: wrap;
-    gap: 3.33%;
+    gap: 3%;
 }
 
 .carteTopic {
-    border: 1px solid;
     flex-basis: 22.5%;
     max-width: 22.5%;
+    margin: 3% 0;
+    position: relative;
+    background-color: #26bcb45f;
+    padding: 4px 8px;
+    border-radius: 8px;
 }
 
-@media screen and (max-width: 1200px) {
+.infoCarte {
+    position: relative;
+}
+
+.longTitre {
+    max-width: 80%;
+}
+
+.ligneAuteurVerrou {
+    display: flex;
+    justify-content: space-between;
+    gap: 20%;
+}
+
+.infoDate {
+    color: white;
+    background-color: #ee836e;
+    padding: 4px;
+    position: absolute;
+    left: 80%;
+    top: -25%;
+    border-radius: 8px;
+}
+
+@media screen and (min-width: 1440px) {
     #listTopics{
-        gap: 10%;
+        gap: 5%;
+    }
+
+    .carteTopic {
+        flex-basis: 16%;
+        max-width: 16%;
+    }
+
+    .infoDate{
+        left: 80%;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    #listTopics{
+        gap: 7%;
     }
 
     .carteTopic {
         flex-basis: 45%;
         max-width: 45%;
+    }
+
+    .infoDate{
+        left: 85%;
     }
 }
 
@@ -256,13 +303,26 @@ footer a {
         flex-basis: 100%;
         max-width: 100%;
     }
+
+    .infoDate{
+        left: 90%;
+    }
 }
 
-.infoCarte {
-    position: relative;
+@media screen and (max-width: 426px) {
+    .infoDate{
+        left: 80%;
+    }
 }
 
-.ligneAuteurVerrou {
-    display: flex;
-    gap: 20%;
+@media screen and (max-width: 376px) {
+    .infoDate{
+        left: 76%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .infoDate{
+        left: 70%;
+    }
 }
