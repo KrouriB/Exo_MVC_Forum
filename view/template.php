@@ -18,33 +18,41 @@
             <nav>
                 <div id="nav-left">
                     <a href="index.php">
-                        <img src="<?= PUBLIC_DIR ?>/img/elan2/img2Elan.png" alt="#" id="imglogo">
+                        <figure>
+                            <img src="<?= PUBLIC_DIR ?>/img/elan2/img2Elan.png" alt="#" id="imglogo">
+                        </figure>
                         Les Ptit's Elans
                     </a>
                 </div>
                 <div id="nav-right">
-                    <?php
-                    if (App\Session::getUser()) {
-                        ?>
-                        <a href="index.php?ctrl=forum&action=aUser&id=<?= App\Session::getUser()->getId() ?>"><span class="fas fa-user"></span>&nbsp;&nbsp;<?= App\Session::getUser() ?></a>
-                        <a href="index.php?ctrl=security&action=logOut">Déconnexion</a>
+                    <input type="checkbox" />
+                    <span class=barre></span>
+                    <span class=barre></span>
+                    <span class=barre></span>
+                    <ul id=nav-link>
                         <?php
-                        if (App\Session::isAdmin()) {
+                        if (App\Session::getUser()) {
+                            ?>
+                            <a href="index.php?ctrl=forum&action=aUser&id=<?= App\Session::getUser()->getId() ?>"><li><span class="fas fa-user"></span>&nbsp;&nbsp;<?= App\Session::getUser() ?></li></a>
+                            <a href="index.php?ctrl=security&action=logOut"><li>Déconnexion</li></a>
+                            <?php
+                            if (App\Session::isAdmin()) {
+                            ?>
+                                <a href="index.php?ctrl=security&action=listUsers"><li>Voir la liste des gens</li></a>
+                            <?php
+                            }
+                            ?>
+                            <a href="index.php?ctrl=forum&action=listTopics"><li>la liste des topics</li></a>
+                            <a href="index.php?ctrl=forum&action=listCategories"><li>la liste des categories</li></a>
+                        <?php
+                        } else {
                         ?>
-                            <a href="index.php?ctrl=security&action=listUsers">Voir la liste des gens</a>
+                            <a href="index.php?ctrl=security&action=login"><li>Connexion</li></a>
+                            <a href="index.php?ctrl=security&action=register"><li>Inscription</li></a>
                         <?php
                         }
                         ?>
-                        <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
-                        <a href="index.php?ctrl=forum&action=listCategories">la liste des categories</a>
-                    <?php
-                    } else {
-                    ?>
-                        <a href="index.php?ctrl=security&action=login">Connexion</a>
-                        <a href="index.php?ctrl=security&action=register">Inscription</a>
-                    <?php
-                    }
-                    ?>
+                    </ul>
                 </div>
             </nav>
         </header>
