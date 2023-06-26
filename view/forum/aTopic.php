@@ -4,70 +4,67 @@
     $topic = $result["data"]['topic'];
 
     $titre_page = $topic->getNomTopic();
-    $sousTitre_page = "<h4><a href='index.php?ctrl=forum&action=aUser&id=".$topic->getUser()->getId()."'>".$topic->getUser()->getPseudo()."</a></h4><h4>".$topic->getDateCreation()."</h4>";
+    $sousTitre_page = "<div id='infoTopic'><h4><a href='index.php?ctrl=forum&action=aUser&id=".$topic->getUser()->getId()."'>".$topic->getUser()->getPseudo()."</a><h4>".$topic->getDateCreation()."</h4></div>";
 
 ?>
 
-<div id="theTopic">
-    <div id="topTopic">
-        <div id="botTopic">
-            <h3><?= $topic->getResumer() ?></h3>
-            <?php
-            if (($topic->getUser()->getPseudo() == App\Session::getUser()) OR App\Session::isAdmin()){
-                ?>
-                <div id="adminTopic">
-                <?php
-                if($topic->getVerouiller() == 0){
-                    ?>
-                        <a href="index.php?ctrl=forum&action=verouillerTopic&id=<?= $_GET['id'] ?>">Verouiller le Topic</a>
-                        <?php
-                }
-                ?>
-                    <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>"><i class="fa-regular fa-trash-can"></i></a>
-                </div>
-                <?php
-            }
-            ?>
-        </div>
-
-
-    </div>
-    <div id="lesMessages">
+<div id="topTopic">
+    <div id="botTopic">
+        <h3><?= $topic->getResumer() ?></h3>
         <?php
-            if ($posts != null) {
-                foreach ($posts as $post) {
-        ?>
-            <div class="unMessage">
-                <p><?= $post->getMessage() ?></p>
-                <div class="infoMsg">
-                    <div id="infoMsgGauche">
-                        <span><?= $post->getUser()->getPseudo() ?></span>
-                        <span><?= $post->getDatePost() ?></span>
-                    </div>
+        if (($topic->getUser()->getPseudo() == App\Session::getUser()) OR App\Session::isAdmin()){
+            ?>
+            <div id="adminTopic">
+            <?php
+            if($topic->getVerouiller() == 0){
+                ?>
+                    <a href="index.php?ctrl=forum&action=verouillerTopic&id=<?= $_GET['id'] ?>">Verouiller le Topic</a>
                     <?php
-                        if(App\Session::isAdmin() OR ($post->getUser()->getPseudo() == App\Session::getUser())){
-                    ?>
-                    <a href="index.php?ctrl=forum&action=deleteMessage&id=<?= $post->getId() ?>&idTopic=<?= $_GET['id'] ?>"><i class="fa-regular fa-trash-can"></i></a>
-            <?php
-                }
-            ?>
-                </div>
-            </div>
-        <?php
             }
-    }
-    elseif($topic->getVerouiller() == 1) {
-        ?>
-            <p>Ce Topic est vide et verouiller.</p>
-        <?php
-    }
-    else{
-        ?>
-            <p>Ce Topic n'as pas de message ! Soyer la 1er personne a lui répondre !</p>
-        <?php
-    }
+            ?>
+                <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>"><i class="fa-regular fa-trash-can"></i></a>
+            </div>
+            <?php
+        }
         ?>
     </div>
+</div>
+
+<div id="lesMessages">
+    <?php
+        if ($posts != null) {
+            foreach ($posts as $post) {
+    ?>
+        <div class="unMessage">
+            <p><?= $post->getMessage() ?></p>
+            <div class="infoMsg">
+                <div id="infoMsgGauche">
+                    <span><?= $post->getUser()->getPseudo() ?></span>
+                    <span><?= $post->getDatePost() ?></span>
+                </div>
+                <?php
+                    if(App\Session::isAdmin() OR ($post->getUser()->getPseudo() == App\Session::getUser())){
+                ?>
+                <a href="index.php?ctrl=forum&action=deleteMessage&id=<?= $post->getId() ?>&idTopic=<?= $_GET['id'] ?>"><i class="fa-regular fa-trash-can"></i></a>
+        <?php
+            }
+        ?>
+            </div>
+        </div>
+    <?php
+        }
+}
+elseif($topic->getVerouiller() == 1) {
+    ?>
+        <p>Ce Topic est vide et verouiller.</p>
+    <?php
+}
+else{
+    ?>
+        <p>Ce Topic n'as pas de message ! Soyer la 1er personne a lui répondre !</p>
+    <?php
+}
+    ?>
 </div>
 
 <?php
