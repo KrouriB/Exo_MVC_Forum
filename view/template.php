@@ -63,7 +63,12 @@
             <main id="forum">
                 <div id="topMain">
                     <h1><?= $titre_page ?></h1>
-                    <p id="sousTitre_page"><?= $sousTitre_page ?></p>
+                    <?php
+                        if($sousTitre_page != 0){
+                            echo "<p id='sousTitre_page'>$sousTitre_page</p>";
+                        }
+                    ?>
+                    
                 </div>
                 <?= $page ?>
             </main>
