@@ -10,7 +10,7 @@ $topic = $result["data"]['topic'];
         <div id="sousInfoTopic">
             <h1><?= $topic->getNomTopic() ?></h1>
             <div id="infoTopicDroite">
-                <h4><?= $topic->getUser()->getPseudo() ?></h4>
+                <h4><a href="index.php?ctrl=forum&action=aUser&id=<?= $topic->getUser()->getId() ?>"><?= $topic->getUser()->getPseudo() ?></a></h4>
                 <h4><?= $topic->getDateCreation() ?></h4>
             </div>
         </div>
