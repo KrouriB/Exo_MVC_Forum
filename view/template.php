@@ -16,7 +16,7 @@
     <div id="wrapper">
         <header>
             <nav>
-                <div id="nav-left">
+                <div id="navLeft">
                     <a href="index.php">
                         <figure>
                             <img src="<?= PUBLIC_DIR ?>/img/elan2/img2Elan.png" alt="#" id="imglogo">
@@ -24,12 +24,12 @@
                         Les Ptit's Elans
                     </a>
                 </div>
-                <div id="nav-right">
+                <div id="navRight">
                     <input type="checkbox" />
                     <span class=barre></span>
                     <span class=barre></span>
                     <span class=barre></span>
-                    <ul id=nav-link>
+                    <ul id=navLink>
                         <?php
                         if (App\Session::getUser()) {
                             ?>
@@ -56,12 +56,15 @@
                 </div>
             </nav>
         </header>
-        <div id="mainpage">
+        <div id="mainPage">
             <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
             <?= App\Session::getFlash("error") ?>
             <?= App\Session::getFlash("success") ?>
-
             <main id="forum">
+                <div id="topMain">
+                    <h1><?= $titre_page ?></h1>
+                    <p id="sousTitre_page"><?= $sousTitre_page ?></p>
+                </div>
                 <?= $page ?>
             </main>
         </div>
