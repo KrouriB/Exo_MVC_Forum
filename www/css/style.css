@@ -1,3 +1,4 @@
+/* menu burger : https://codepen.io/erikterwan/pen/EVzeRP */
 * {
     margin: 0;
     padding: 0;
@@ -17,8 +18,166 @@ a {
     color: red;
 }
 
+
+
+/* HEADER */
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #535a6c;
+}
+
+nav a {
+    color: white;
+}
+
+/* bloc gauche */
+
+#nav-left a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 16px;
+}
+
 #imglogo {
     height: 60px;
     border-radius: 8px;
     margin: 8px 0;
+}
+
+/* bloc droit */
+
+#nav-right {
+    display: block;
+    padding-right: 16px;
+}
+
+
+
+#nav-link {
+    display: flex;
+    list-style-type: none;
+    gap: 16px;
+}
+
+/* menu burger */
+
+#nav-right input {
+    visibility: hidden;
+    display: block;
+    width: 40px;
+    height: 32px;
+    right: 16px;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0; /* pour le cacher */
+    z-index: 2; /* et le placer au dessus du menu */
+    -webkit-touch-callout: none;
+}
+
+@media screen and (max-width: 768px) {
+
+    #nav-right {
+        position: relative;
+        z-index: 1;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    #nav-right a {
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s ease;
+    }
+
+    #nav-right a:hover {
+        color: tomato;
+    }
+
+    #nav-link {
+        position: absolute;
+        gap: 0;
+        display: block;
+        right: 0;
+        top: -28px;
+        width: 100vw;
+        background: #535a6c;
+        -webkit-font-smoothing: antialiased; /* to stop flickering of text in safari */
+        transform-origin: 0% 0%;
+        transform: translate(0, -100%);
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    }
+
+    #nav-link li {
+        padding: 24px 0;
+        font-size: 22px;
+        text-align: center;
+    }
+
+    /* menu burger */
+    
+    #nav-right input {
+        visibility: visible;
+    }
+
+    #nav-right input:checked ~ #nav-link {
+        transform: none; /* pour permettre le glissement */
+    }
+
+    #nav-right .barre {
+        display: block;
+        width: 33px;
+        height: 4px;
+        right: 16px;
+        margin-bottom: 5px;
+        position: relative;
+        background: #cdcdcd;
+        border-radius: 3px;
+        z-index: 1;
+        transform-origin: 4px 0px;
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+    }
+
+    #nav-right .barre:first-child {
+        transform-origin: 0% 0%;
+    }
+
+    #nav-right .barre:nth-last-child(2) {
+        transform-origin: 0% 100%;
+    }
+
+    /* Transforme toutes les barres en une croix */
+
+    #nav-right input:checked ~ .barre {
+        opacity: 1;
+        transform: rotate(45deg) translate(-2px, -1px);
+        background: #232323;
+    }
+
+    /* cacher la barre du milieu */
+
+    #nav-right input:checked ~ .barre:nth-last-child(3) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    /* et l'autre barre va dans l'autre sens */
+    #nav-right input:checked ~ .barre:nth-last-child(2) {
+        transform: rotate(-45deg) translate(0, -1px);
+    }
+
+}
+
+
+/* MAIN */
+
+
+#mainpage {
+    padding: 0 16px;
 }
