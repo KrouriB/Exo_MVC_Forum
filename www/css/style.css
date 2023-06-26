@@ -6,6 +6,10 @@
     font-family: sans-serif;
 }
 
+:root {
+    --turqoise: #26bcb5;
+}
+
 a {
     text-decoration: none;
 }
@@ -190,13 +194,19 @@ nav a {
 
 
 #topMain {
-    background-color: #26bcb5;
+    background-color: var(--turqoise);
     padding: 10% 16px;
     color: white;
 }
 
 #container {
     padding: 0 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 80vh;
 }
 
 
@@ -204,6 +214,12 @@ nav a {
 
 
 footer {
-    padding: 0 16px;
+    background-color: #22354a;
+    padding: 60px 16px;
     text-align: center;
+    color: white;
+}
+
+footer a {
+    color: white;
 }
