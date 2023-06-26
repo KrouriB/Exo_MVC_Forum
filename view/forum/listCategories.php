@@ -1,27 +1,27 @@
 <?php
 
-$categories = $result["data"]['categories'];
+    $categories = $result["data"]['categories'];
     
+    $titre_page = "Liste des Categories";
+    $sousTitre_page = 0;
 ?>
 
-<h1>liste categories</h1>
-<div id="groupCate">
+<div id="container">
     <?php
-    foreach($categories as $categorie){
-
-        ?>
-        <div class="cateNom">
-            <a href="index.php?ctrl=forum&action=listTopicsForACategorie&id=<?= $categorie->getId() ?>"><?=$categorie->getNomCategorie()?></a></td>
-            <?php
-            if(App\Session::isAdmin()){
-                ?>
-                    <a href="index.php?ctrl=forum&action=deleteCategorie&id=<?= $categorie->getId() ?>"><i class="fa-regular fa-trash-can"></i></a>
-                <?php
-            }
+        foreach($categories as $categorie){
             ?>
-        </div>
-        <?php
-    }
+                <div class="cateNom">
+                    <a href="index.php?ctrl=forum&action=listTopicsForACategorie&id=<?= $categorie->getId() ?>"><?=$categorie->getNomCategorie()?></a></td>
+                        <?php
+                            if(App\Session::isAdmin()){
+                                ?>
+                                    <a href="index.php?ctrl=forum&action=deleteCategorie&id=<?= $categorie->getId() ?>"><i class="fa-regular fa-trash-can"></i></a>
+                                <?php
+                            }
+                        ?>
+                </div>
+            <?php
+        }
     ?> 
     <div class="cateNom">
         <a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie">Sans catégorie</a>

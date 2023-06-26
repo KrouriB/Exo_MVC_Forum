@@ -1,4 +1,9 @@
-<div id="register-container">
+<?php
+    $titre_page = "Page d'inscription";
+    $sousTitre_page = 0;
+?>
+
+<div id="container">
     <form action="index.php?ctrl=security&action=newRegister" method="post" class="formPage">
         <div class="uneInfoLog">
             <label for="email">Email : </label>

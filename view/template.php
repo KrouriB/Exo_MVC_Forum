@@ -65,7 +65,7 @@
                     <h1><?= $titre_page ?></h1>
                     <?php
                         if($sousTitre_page != 0){
-                            echo "<p id='sousTitre_page'>$sousTitre_page</p>";
+                            echo "<div id='sousTitre_page'>$sousTitre_page</div>";
                         }
                     ?>
                     

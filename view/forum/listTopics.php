@@ -1,14 +1,13 @@
 <?php
 
-$topics = $result["data"]['topics'];
-$categories = $result["data"]['categories'];
+    $topics = $result["data"]['topics'];
+    $categories = $result["data"]['categories'];
     
+    $titre_page = "Liste de tout les Topics";
+    $sousTitre_page = 0;
 ?>
 
-<h1>liste topics</h1>
-
-
-<div id="carteContainer">
+<div id="container">
     <?php
     foreach($topics as $topic){
         $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;

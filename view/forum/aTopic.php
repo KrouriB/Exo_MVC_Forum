@@ -1,19 +1,15 @@
 <?php
 
-$posts = $result["data"]['posts'];
-$topic = $result["data"]['topic'];
+    $posts = $result["data"]['posts'];
+    $topic = $result["data"]['topic'];
+
+    $titre_page = $topic->getNomTopic();
+    $sousTitre_page = "<h4><a href='index.php?ctrl=forum&action=aUser&id=".$topic->getUser()->getId()."'>".$topic->getUser()->getPseudo()."</a></h4><h4>".$topic->getDateCreation()."</h4>";
 
 ?>
 
 <div id="theTopic">
     <div id="topTopic">
-        <div id="sousInfoTopic">
-            <h1><?= $topic->getNomTopic() ?></h1>
-            <div id="infoTopicDroite">
-                <h4><a href="index.php?ctrl=forum&action=aUser&id=<?= $topic->getUser()->getId() ?>"><?= $topic->getUser()->getPseudo() ?></a></h4>
-                <h4><?= $topic->getDateCreation() ?></h4>
-            </div>
-        </div>
         <div id="botTopic">
             <h3><?= $topic->getResumer() ?></h3>
             <?php

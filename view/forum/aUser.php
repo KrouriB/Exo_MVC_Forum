@@ -3,19 +3,18 @@
 $user = $result["data"]['user'];
 $topics = $result["data"]['topics'];
 
+
+
 if($_GET["id"] == App\Session::getUser()->getId()){
-    ?>
-        <h1 id="titre-user">Bienvenu su votre page Utilisateur</h1>
-    <?php
+    $titre_page = "Bienvenu su votre page Utilisateur";
 }
 else{
-    ?>
-        <h1 id="titre-user">Voici la page de <?= $user->getPseudo() ?></h1>
-    <?php
+        $titre_page = "Voici la page de ".$user->getPseudo();
 }
 if($topics != null){
+    $sousTitre_page = 0;
     ?>
-    <div id="user-table">
+    <div id="container">
         <table>
             <thead>
                 <tr>
@@ -52,13 +51,9 @@ if($topics != null){
 }
 else{
     if($_GET["id"] == App\Session::getUser()->getId()){
-        ?>
-            <p id="infoTopicUser">Vous n'avez pas ouvert de Topic</p>
-        <?php
+        $sousTitre_page = "<h4>Vous n'avez pas ouvert de Topic</h4>";
     }
     else{
-        ?>
-            <p  id="infoTopicUser">Cette utilisateur n'as pas ouvert de topic</p>
-        <?php
+        $sousTitre_page = "<h4>Cette utilisateur n'as pas ouvert de topic</h4>";
     }
 }

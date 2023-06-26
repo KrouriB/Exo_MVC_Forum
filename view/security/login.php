@@ -1,4 +1,9 @@
-<div id="login-container">
+<?php
+    $titre_page = "Page de connexion";
+    $sousTitre_page = 0;
+?>
+
+<div id="container">
     <form action="index.php?ctrl=security&action=loginTry" method="post" class="formPage">
         <div class="uneInfoLog">
             <label for="email">Email : </label>
