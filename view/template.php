@@ -60,7 +60,7 @@
             <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
             <?= App\Session::getFlash("error") ?>
             <?= App\Session::getFlash("success") ?>
-            <main id="forum">
+            <main>
                 <div id="topMain">
                     <h1><?= $titre_page ?></h1>
                     <?php
