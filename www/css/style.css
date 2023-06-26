@@ -205,8 +205,8 @@ nav a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    flex-wrap: wrap;
     min-height: 80vh;
+    margin: 40px 0;
 }
 
 
@@ -222,4 +222,47 @@ footer {
 
 footer a {
     color: white;
+}
+
+
+/* Liste Topics */
+
+
+#listTopics{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.33%;
+}
+
+.carteTopic {
+    border: 1px solid;
+    flex-basis: 22.5%;
+    max-width: 22.5%;
+}
+
+@media screen and (max-width: 1200px) {
+    #listTopics{
+        gap: 10%;
+    }
+
+    .carteTopic {
+        flex-basis: 45%;
+        max-width: 45%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .carteTopic {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
+
+.infoCarte {
+    position: relative;
+}
+
+.ligneAuteurVerrou {
+    display: flex;
+    gap: 20%;
 }
