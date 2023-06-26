@@ -8,29 +8,31 @@
 ?>
 
 <div id="container">
-    <?php
-    foreach($topics as $topic){
-        $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
-        $categorieAfficher = ($topic->getCategorie() != null) ? $topic->getCategorie()->getNomCategorie() : 'sans catégorie';
-        ?>
-        <div class="carteTopic">
-            <a href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
-                <div class="hautDeCarte">
-                    <div class="ligneHaut">
-                        <span><?= $verrou ?></span>
-                        <p class="nomCategorie" ><?=$categorieAfficher?></p>
-                    </div>
-                    <p class="nomSujet"><?=$topic->getNomTopic()?></p>  
-                </div>
-                <div class="basDeCarte">
-                    <p class="infoDate"><?=$topic->getUser()->getPseudo()?></p>
-                    <p class="infoAuteur"><?=$topic->getDateCreation() ?></p>
-                </div>
-            </a>
-        </div>
+    <div id="listTopics">
         <?php
-    }
-    ?>
+        foreach($topics as $topic){
+            $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
+            $categorieAfficher = ($topic->getCategorie() != null) ? $topic->getCategorie()->getNomCategorie() : 'sans catégorie';
+            ?>
+            <div class="carteTopic">
+                <a href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
+                    <div id="infoCarte">
+                        <h2><?=$topic->getNomTopic()?></h2>
+                        <div>
+                            <div class="ligneAuteurVerrou">
+                                <p class="infoAuteur">By - <?=$topic->getUser()->getPseudo() ?></p>
+                                <span><?= $verrou ?></span>
+                            </div>
+                            <p class="nomCategorie" >Thème : <?=$categorieAfficher?></p>
+                        </div>
+                        <p class="infoDate"><?=$topic->getDateCreation() ?></p>
+                    </div>
+                </a>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 </div>
 
 <form action="index.php?ctrl=forum&action=aNewTopic" method="post" class="formBasPage">
