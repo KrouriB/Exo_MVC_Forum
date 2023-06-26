@@ -36,6 +36,7 @@
                 FROM topic t
                 LEFT JOIN post p ON t.id_topic = p.topic_id
                 WHERE t.user_id = :id
+                GROUP BY t.id_topic
                 ORDER BY t.dateCreation DESC";
 
             return $this->getMultipleResults(
