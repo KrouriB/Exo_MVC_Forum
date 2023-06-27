@@ -1,10 +1,12 @@
 <?php
-
     $topics = $result["data"]['topics'];
     $categories = $result["data"]['categories'];
+
     
     $titre_page = "Liste de tout les Topics";
     $sousTitre_page = 0;
+    
+    $format = new IntlDateFormatter('fr_FR', IntlDateFormatter::MEDIUM, IntlDateFormatter::NONE);
 ?>
 
 <div id="container">
@@ -14,6 +16,10 @@
             $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
             $categorieAfficher = ($topic->getCategorie() != null) ? $topic->getCategorie()->getNomCategorie() : 'sans catégorie';
             $resume = (strlen($topic->getResumer()) > 25) ? substr($topic->getResumer(),0,25)."[...]" : $topic->getResumer() ;
+            // var_dump($topic->getDateCreation());
+            $theDate = DateTime::createFromFormat('d/m/Y, H:i:s', $topic->getDateCreation());
+            // var_dump($theDate);die;
+            // $theDate = new DateTime($topic->getDateCreation());
             ?>
             <div class="carteTopic">
                 <a href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
@@ -28,7 +34,7 @@
                                 <span><?= $verrou ?></span>
                             </div>
                         </div>
-                        <p class="infoDate"><?=$topic->getDateCreation() ?></p>
+                        <p class="infoDate"><?= $theDate->format('d M') ?></p>
                     </div>
                     <p class="resumeTopic"><?= $resume ?></p>
                 </a>
