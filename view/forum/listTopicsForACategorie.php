@@ -80,6 +80,7 @@
 </div>
 
 <form action="index.php?ctrl=forum&action=aNewTopic&id=<?= $_GET['id'] ?>" method="post" class="formBasPage">
+    <h2>Ajouter un Nouveau Topic :</h2>
     <div>
         <label for="topic">
             Le&nbsp;nom&nbsp;de votre&nbsp;Sujet&nbsp;:&nbsp;
@@ -93,6 +94,6 @@
         <textarea name="resume" id="resume" cols="4000" rows="10"></textarea>
     </div>
     <div id="submitBas">
-        <input type="submit" value="Ajouter votre sujet" name="submitCate">
+        <button type="submit" name="submitCate">Ajouter votre sujet</button>
     </div>
 </form>

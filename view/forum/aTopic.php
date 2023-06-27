@@ -71,6 +71,7 @@ else{
     if($topic->getVerouiller() == 0){
         ?>
             <form action="index.php?ctrl=forum&action=aPost&id=<?= $_GET['id'] ?>" method="post" class="formBasPage">
+                <h2>Envoyer votre Réponse</h2>
                 <div>
                     <label for="messageForm">
                         Votre&nbsp;message&nbsp;:
@@ -78,7 +79,7 @@ else{
                     <textarea name="messageForm" id="messageForm" cols="4000" rows="10"></textarea>
                 </div>
                 <div id="submitBas">
-                    <input type="submit" value="Envoyer votre message" name="submit">
+                    <button type="submit" name="submit">Envoyer votre message</button>
                 </div>
             </form>
         <?php
