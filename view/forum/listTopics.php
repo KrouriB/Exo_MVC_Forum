@@ -13,6 +13,7 @@
         foreach($topics as $topic){
             $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
             $categorieAfficher = ($topic->getCategorie() != null) ? $topic->getCategorie()->getNomCategorie() : 'sans catégorie';
+            $resume = (strlen($topic->getResumer()) > 40) ? substr($topic->getResumer(),0,40)."[...]" : $topic->getResumer() ;
             ?>
             <div class="carteTopic">
                 <a href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
@@ -29,6 +30,7 @@
                         </div>
                         <p class="infoDate"><?=$topic->getDateCreation() ?></p>
                     </div>
+                    <p class="resumeTopic"><?= $resume ?></p>
                 </a>
             </div>
             <?php
