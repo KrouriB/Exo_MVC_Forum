@@ -195,7 +195,7 @@ nav a {
 
 #topMain {
     background-color: var(--turqoise);
-    padding: 10% 16px;
+    padding: 5% 16px;
     color: white;
 }
 
@@ -225,6 +225,75 @@ footer a {
 }
 
 
+/* formulaire de bas de page */
+
+
+.formBasPage {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 60px 48px;
+    padding: 24px 12px;
+    gap: 16px;
+    border: 3px solid #d8e3e6  ;
+}
+
+.formBasPage h2 {
+    border-bottom: 4px solid #ccc;
+}
+
+.formBasPage h2::after {
+    display: block;
+    width: 80px;
+    height: 4px;
+    margin-bottom: -4px;
+    content: "";
+    background-color: #ee836e;
+}
+
+.formBasPage > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 12px;
+    border-bottom: 2px dashed darkgray;
+    padding-bottom: 24px;
+    gap: 12px;
+}
+
+.formBasPage > div:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    align-items: center;
+}
+
+.formBasPage > div > * {
+    width: 65%;
+}
+
+.formBasPage input ,.formBasPage textarea ,.formBasPage select ,.formBasPage button {
+    border: 2px solid #d6d9e0;
+    padding: 6px;
+}
+
+#submitBas button {
+    background-color: #d6d9e0;
+    width: 10%;
+    transition: background .2s;
+}
+
+#submitBas button:hover {
+    color: white;
+    background-color: #c0c2c7;
+    border-color: #c0c2c7;
+}
+
+
+
+
+
+
 /* Liste Topics */
 
 
@@ -232,24 +301,27 @@ footer a {
     display: flex;
     flex-wrap: wrap;
     gap: 3%;
+    margin: 0 32px;
 }
 
 .carteTopic {
     flex-basis: 22.5%;
     max-width: 22.5%;
-    margin: 3% 0;
+    margin: 5% 0;
     position: relative;
-    background-color: #26bcb45f;
-    padding: 4px 8px;
+    background-color: #26bcb495;
     border-radius: 8px;
+    box-shadow: black 0 60px 20px -6px;
 }
 
 .infoCarte {
     position: relative;
+    padding: 4px 8px;
 }
 
-.longTitre {
-    max-width: 80%;
+
+.longTitre h3 {
+    text-align: center;
 }
 
 .ligneAuteurVerrou {
@@ -263,24 +335,18 @@ footer a {
     background-color: #ee836e;
     padding: 4px;
     position: absolute;
-    left: 80%;
-    top: -25%;
+    right: 82%;
+    top: -50%;
     border-radius: 8px;
 }
 
-@media screen and (min-width: 1440px) {
-    #listTopics{
-        gap: 5%;
-    }
-
-    .carteTopic {
-        flex-basis: 16%;
-        max-width: 16%;
-    }
-
-    .infoDate{
-        left: 80%;
-    }
+.resumeTopic {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 0 8px;
+    border-radius: 0 0 8px 8px;
 }
 
 @media screen and (max-width: 1280px) {
@@ -292,10 +358,6 @@ footer a {
         flex-basis: 45%;
         max-width: 45%;
     }
-
-    .infoDate{
-        left: 85%;
-    }
 }
 
 @media screen and (max-width: 768px) {
@@ -303,26 +365,5 @@ footer a {
         flex-basis: 100%;
         max-width: 100%;
     }
-
-    .infoDate{
-        left: 90%;
-    }
 }
 
-@media screen and (max-width: 426px) {
-    .infoDate{
-        left: 80%;
-    }
-}
-
-@media screen and (max-width: 376px) {
-    .infoDate{
-        left: 76%;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .infoDate{
-        left: 70%;
-    }
-}
