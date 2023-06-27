@@ -307,11 +307,15 @@ footer a {
 .carteTopic {
     flex-basis: 22.5%;
     max-width: 22.5%;
-    margin: 5% 0;
+    margin-top: 160px;
     position: relative;
     background-color: #26bcb495;
     border-radius: 8px;
-    box-shadow: black 0 60px 20px -6px;
+    box-shadow: black 0 8px 60px -24px;
+}
+
+.carteTopic a {
+    height: 100%;
 }
 
 .infoCarte {
@@ -335,14 +339,14 @@ footer a {
     background-color: #ee836e;
     padding: 4px;
     position: absolute;
-    right: 82%;
-    top: -50%;
+    width: 92px;
+    left: -24px;
+    top: -40%;
     border-radius: 8px;
 }
 
 .resumeTopic {
     width: 100%;
-    height: 100%;
     text-align: center;
     background-color: #ffffff;
     padding: 0 8px;
