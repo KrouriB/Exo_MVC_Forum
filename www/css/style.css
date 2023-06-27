@@ -339,17 +339,18 @@ footer a {
     background-color: #ee836e;
     padding: 4px;
     position: absolute;
-    width: 92px;
-    left: -24px;
-    top: -40%;
-    border-radius: 8px;
+    width: 36px;
+    left: -16px;
+    top: -30%;
+    border-radius: 4px;
+    text-align: center;
 }
 
 .resumeTopic {
     width: 100%;
     text-align: center;
     background-color: #ffffff;
-    padding: 0 8px;
+    padding: 8px 0;
     border-radius: 0 0 8px 8px;
 }
 
