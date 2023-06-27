@@ -13,7 +13,7 @@
         foreach($topics as $topic){
             $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
             $categorieAfficher = ($topic->getCategorie() != null) ? $topic->getCategorie()->getNomCategorie() : 'sans catégorie';
-            $resume = (strlen($topic->getResumer()) > 40) ? substr($topic->getResumer(),0,40)."[...]" : $topic->getResumer() ;
+            $resume = (strlen($topic->getResumer()) > 25) ? substr($topic->getResumer(),0,25)."[...]" : $topic->getResumer() ;
             ?>
             <div class="carteTopic">
                 <a href="index.php?ctrl=forum&action=aTopic&id=<?= $topic->getId() ?>">
@@ -40,11 +40,12 @@
 </div>
 
 <form action="index.php?ctrl=forum&action=aNewTopic" method="post" class="formBasPage">
+    <h2>Ajouter un Nouveau Topic :</h2>
     <div>
         <label for="topic">
             Le&nbsp;nom&nbsp;de votre&nbsp;Sujet&nbsp;:&nbsp;
         </label>
-        <input type="text" name="topic" id="topic">
+        <input type="text" name="topic" id="topic" placeholder="Sujet:">
     </div>
     <div>
         <label for="resume">
@@ -68,6 +69,6 @@
         </select>
     </div>
     <div id="submitBas">
-        <input type="submit" value="Ajouter votre sujet" name="submitNo">
+        <button type="submit" name="submitNo">Ajouter votre sujet</button>
     </div>
 </form>
