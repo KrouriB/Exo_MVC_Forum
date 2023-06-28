@@ -1,4 +1,6 @@
 /* menu burger : https://codepen.io/erikterwan/pen/EVzeRP */
+/* dropdown menu : https://codepen.io/remilaudanski/pen/gbBGyN */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +10,7 @@
 
 :root {
     --turqoise: #26bcb5;
+    --gris: #535a6c;
 }
 
 a {
@@ -35,7 +38,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #535a6c;
+    background-color: var(--gris);
 }
 
 nav a {
@@ -63,8 +66,6 @@ nav a {
     display: block;
     padding-right: 16px;
 }
-
-
 
 #navLink {
     display: flex;
@@ -190,6 +191,50 @@ nav a {
         transform: rotate(-45deg) translate(0, -1px);
     }
 
+}
+
+/* dropdown Menu categorie */
+
+#dropdownCat {
+    position: relative; /* pour que le rese du menu n'augement pas la taille de la nav bar */
+}
+
+#titleCat {
+    color : white;
+    cursor : pointer;
+    display: block;
+    text-align: center;
+}
+
+.slide {
+    position: absolute; /* pour que le rese du menu n'augement pas la height de la nav bar */
+    top: 48px;
+    left: -45%;
+    background-color: var(--gris);
+    clear:both; /* garder pour éviter que la scroll bar glitch*/
+    width:200%;
+    height:0px;
+    overflow: hidden;
+    text-align: center;
+    transition: height .4s ease;
+    z-index: 2;
+}
+
+.slide li {
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+#touch {
+    position: absolute;
+    opacity: 0;
+    height: 0px;
+}    
+
+#touch:checked + .slide {
+    overflow-y: scroll; /* scroll bar vertical ( axe y ) */
+    height: 240px;
 }
 
 
