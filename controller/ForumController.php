@@ -37,33 +37,25 @@
 
         }
 
-        public function listCategories(){
-            
-            $categorieManager = new CategorieManager();
-            
-            return [
-                "view" => VIEW_DIR."forum/listCategories.php",
-                "data" => [
-                    "categoriesMenu" => $this->categories,
-                    "categories" => $categorieManager->findAll(["nomCategorie", "ASC"])
-                ]
-            ];
-
-        }
-
         public function listTopicsForACategorie(){
             
             $topicManager = new TopicManager();
             $categorieManager = new CategorieManager();
+
+            if($id != 0){
+                return [
+                    "view" => VIEW_DIR."forum/listTopicsForACategorie.php",
+                    "data" => [
+                        "categoriesMenu" => $this->categories,
+                        "topics" => $topicManager->findTopicbyCategorie($_GET["id"]),
+                        "categorie" => $categorieManager->findOneById($_GET["id"])
+                    ]
+                ];
+            }
+            else{
+                $this->redirectTo("forum","listTopicsWithoutCategorie");
+            }
             
-            return [
-                "view" => VIEW_DIR."forum/listTopicsForACategorie.php",
-                "data" => [
-                    "categoriesMenu" => $this->categories,
-                    "topics" => $topicManager->findTopicbyCategorie($_GET["id"]),
-                    "categorie" => $categorieManager->findOneById($_GET["id"])
-                ]
-            ];
 
         }
 
@@ -185,7 +177,7 @@
                 "view" => VIEW_DIR."forum/listTopicsWithoutCategorie.php",
                 "data" => [
                     "categoriesMenu" => $this->categories,
-                    "topics" => $topicManager->findAll(["dateCreation", "DESC"])
+                    "topics" => $topicManager->findTopicbyCategorie(0)
                 ]
             ];
         }
