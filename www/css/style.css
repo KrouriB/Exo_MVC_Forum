@@ -240,7 +240,7 @@ nav a {
 
 #touch:checked + .slide {
     overflow-y: scroll; /* scroll bar vertical ( axe y ) */
-    height: 240px;
+    height: 280px;
 }
 
 @media screen and (max-width: 768px) {
