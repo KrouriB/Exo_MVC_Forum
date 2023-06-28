@@ -8,8 +8,16 @@
     use Model\Managers\UserManager;
     use Model\Managers\TopicManager;
     use Model\Managers\PostManager;
+    use Model\Managers\CategorieManager;
     
     class HomeController extends AbstractController implements ControllerInterface{
+
+        private array $categories;
+
+        public function __construct(){
+            $catManager = new CategorieManager();
+            $this->categories = array($catManager->findAll(["nomCategorie", "ASC"]));
+        }
 
         public function index(){
             

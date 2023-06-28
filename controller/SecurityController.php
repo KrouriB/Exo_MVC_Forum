@@ -6,8 +6,16 @@
     use App\AbstractController;
     use App\ControllerInterface;
     use Model\Managers\UserManager;
+    use Model\Managers\CategorieManager;
 
     class SecurityController extends AbstractController implements ControllerInterface{
+
+        private array $categories;
+
+        public function __construct(){
+            $catManager = new CategorieManager();
+            $this->categories = array($catManager->findAll(["nomCategorie", "ASC"]));
+        }
 
         public function index(){}
 
