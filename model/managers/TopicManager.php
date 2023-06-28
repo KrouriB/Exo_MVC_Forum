@@ -64,7 +64,7 @@
         public function setIdTopic($id){
             $sql = "
                 UPDATE $this->tableName
-                SET categorie_id = NULL
+                SET categorie_id = 0
                 WHERE categorie_id = :id";
 
         // var_dump($sql);die;
