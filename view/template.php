@@ -40,17 +40,21 @@
                             <a href="index.php?ctrl=forum&action=aUser&id=<?= App\Session::getUser()->getId() ?>"><li><span class="fas fa-user"></span> <?= App\Session::getUser() ?></li></a>
                             <a href="index.php?ctrl=security&action=logOut"><li>Déconnexion</li></a>
                             <div id="dropdownCat">
-                                <label for="touch"><span>Catégorie <i class="fa-solid fa-chevron-down"></i></span></label>               
-                                <input type="checkbox" id="touch"> 
+                                <li>
+                                    <label for="touch">
+                                        <span id="titleCat">Catégorie <i class="fa-solid fa-chevron-down"></i></span>
+                                    </label>               
+                                    <input type="checkbox" id="touch">
 
-                                <ul class="slide">
-                                    <?php
-                                        foreach($menu[0] as $option){ ?>
-                                            <li><a href="index.php?ctrl=forum&action=listTopicsForACategorie&id=<?= $option->getId() ?>"><?= $option->getNomCategorie() ?></a></li>
-                                        <?php }
-                                    ?>
-                                    <li><a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie">Sans catégorie</a></li>
-                                </ul>
+                                    <ul class="slide">
+                                        <?php
+                                            foreach($menu[0] as $option){ ?>
+                                                <a href="index.php?ctrl=forum&action=listTopicsForACategorie&id=<?= $option->getId() ?>"><li><?= $option->getNomCategorie() ?></li></a>
+                                            <?php }
+                                        ?>
+                                        <a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie"><li>Sans catégorie</li></a>
+                                    </ul>
+                                </li>
                             </div>
                             <?php
                             if (App\Session::isAdmin()) {
