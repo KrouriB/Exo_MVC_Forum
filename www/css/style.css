@@ -78,7 +78,7 @@ nav a {
 }
 
 @media screen and (max-width: 920px) {
-    #navLink li {
+    #navLink > a > li #dropdownCat {
         width: 108px;
     }
 }
@@ -113,10 +113,6 @@ nav a {
         transition: color 0.3s ease;
     }
 
-    #navRight a:hover {
-        color: tomato;
-    }
-
     #navLink {
         position: absolute;
         gap: 0;
@@ -132,8 +128,12 @@ nav a {
     }
 
     #navLink li {
-        padding: 24px 0;
         font-size: 22px;
+        width: 100%;
+    }
+
+    #navLink > a li {
+        padding: 24px 0;
         width: 100%;
     }
 
@@ -199,6 +199,8 @@ nav a {
     position: relative; /* pour que le rese du menu n'augement pas la taille de la nav bar */
 }
 
+
+
 #titleCat {
     color : white;
     cursor : pointer;
@@ -216,14 +218,18 @@ nav a {
     height:0px;
     overflow: hidden;
     text-align: center;
-    transition: height .4s ease;
+    transition: all .4s ease;
     z-index: 2;
 }
 
 .slide li {
-    padding: 20px 0;
+    padding: 40px 0;
     text-align: center;
     width: 100%;
+}
+
+.slide > a > li {
+    border-top: 2px solid white;
 }
 
 #touch {
@@ -235,6 +241,33 @@ nav a {
 #touch:checked + .slide {
     overflow-y: scroll; /* scroll bar vertical ( axe y ) */
     height: 240px;
+}
+
+@media screen and (max-width: 768px) {
+
+    #dropdownCat {
+        width: 100%;
+    }
+
+    #dropdownCat > li > label > span {
+        padding: 24px 0;
+    }
+
+    .slide {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    #touch:checked + .slide {
+        overflow-y: visible;
+        height: 100%;
+    }
+
+    .slide > a:last-child > li {
+        border-bottom: 2px solid white;
+    }
 }
 
 
