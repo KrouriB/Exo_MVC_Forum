@@ -1,3 +1,7 @@
+<?php
+    $menu = $result["data"]['categoriesMenu'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,6 +39,19 @@
                             ?>
                             <a href="index.php?ctrl=forum&action=aUser&id=<?= App\Session::getUser()->getId() ?>"><li><span class="fas fa-user"></span> <?= App\Session::getUser() ?></li></a>
                             <a href="index.php?ctrl=security&action=logOut"><li>Déconnexion</li></a>
+                            <div id="dropdownCat">
+                                <label for="touch"><span>Catégorie <i class="fa-solid fa-chevron-down"></i></span></label>               
+                                <input type="checkbox" id="touch"> 
+
+                                <ul class="slide">
+                                    <?php
+                                        foreach($menu[0] as $option){ ?>
+                                            <li><a href="index.php?ctrl=forum&action=listTopicsForACategorie&id=<?= $option->getId() ?>"><?= $option->getNomCategorie() ?></a></li>
+                                        <?php }
+                                    ?>
+                                    <li><a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie">Sans catégorie</a></li>
+                                </ul>
+                            </div>
                             <?php
                             if (App\Session::isAdmin()) {
                             ?>
@@ -43,7 +60,6 @@
                             }
                             ?>
                             <a href="index.php?ctrl=forum&action=listTopics"><li>la liste des topics</li></a>
-                            <a href="index.php?ctrl=forum&action=listCategories"><li>la liste des categories</li></a>
                         <?php
                         } else {
                         ?>
@@ -71,6 +87,21 @@
                     
                 </div>
                 <?= $page ?>
+                <?php
+                    if(App\Session::isAdmin()){
+                        ?>
+                        <form action="index.php?ctrl=forum&action=addCategorie" method="post" class="formBasPage">
+                            <div>
+                                <label for="nomCategorie">Inserer&nbsp;le&nbsp;nom&nbsp;de votre&nbsp;categorie&nbsp;:&nbsp;</label>
+                                <input type="text" name="nomCategorie" id="nomCategorie">
+                            </div>
+                            <div id="submitBas">
+                                <input type="submit" value="Rajouter la catégorie" name="submit">
+                            </div>
+                        </form>
+                        <?php
+                    }
+                ?>
             </main>
         </div>
         <footer>
