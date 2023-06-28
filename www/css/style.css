@@ -14,6 +14,10 @@ a {
     text-decoration: none;
 }
 
+ul {
+    list-style-type: none;
+}
+
 .fa-lock-open {
     color: green;
 }
@@ -65,7 +69,6 @@ nav a {
 #navLink {
     display: flex;
     align-items: center;
-    list-style-type: none;
     gap: 20px;
 }
 
@@ -339,7 +342,7 @@ footer a {
     background-color: #ee836e;
     padding: 4px;
     position: absolute;
-    width: 36px;
+    width: 44px;
     left: -16px;
     top: -30%;
     border-radius: 4px;
