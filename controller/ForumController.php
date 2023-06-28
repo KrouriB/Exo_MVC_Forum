@@ -12,6 +12,13 @@
     
     class ForumController extends AbstractController implements ControllerInterface{
 
+        private array $categories;
+
+        public function __construct(){
+            $catManager = new CategorieManager();
+            $this->categories = array($catManager->findAll(["nomCategorie", "ASC"]));
+        }
+
         public function index(){}
         
         public function listTopics(){
@@ -22,6 +29,7 @@
             return [
                 "view" => VIEW_DIR."forum/listTopics.php",
                 "data" => [
+                    "categoriesMenu" => $this->categories,
                     "topics" => $topicManager->findAll(["dateCreation", "DESC"]),
                     "categories" => $categorieManager->findAll(["nomCategorie", "ASC"])
                 ]
@@ -36,6 +44,7 @@
             return [
                 "view" => VIEW_DIR."forum/listCategories.php",
                 "data" => [
+                    "categoriesMenu" => $this->categories,
                     "categories" => $categorieManager->findAll(["nomCategorie", "ASC"])
                 ]
             ];
@@ -50,6 +59,7 @@
             return [
                 "view" => VIEW_DIR."forum/listTopicsForACategorie.php",
                 "data" => [
+                    "categoriesMenu" => $this->categories,
                     "topics" => $topicManager->findTopicbyCategorie($_GET["id"]),
                     "categorie" => $categorieManager->findOneById($_GET["id"])
                 ]
@@ -65,6 +75,7 @@
             return [
                 "view" => VIEW_DIR."forum/aTopic.php",
                 "data" => [
+                    "categoriesMenu" => $this->categories,
                     "posts" => $postManager->findPostsbyTopic($_GET["id"]),
                     "topic" => $topicManager->findOneById($_GET["id"])
                 ]
@@ -173,6 +184,7 @@
             return [
                 "view" => VIEW_DIR."forum/listTopicsWithoutCategorie.php",
                 "data" => [
+                    "categoriesMenu" => $this->categories,
                     "topics" => $topicManager->findAll(["dateCreation", "DESC"])
                 ]
             ];
@@ -186,6 +198,7 @@
             return [
                 "view" => VIEW_DIR."forum/aUser.php",
                 "data" => [
+                    "categoriesMenu" => $this->categories,
                     "user" => $userManager->findOneById($_GET["id"]),
                     "topics" => $topicManager->findTopicbyUser($_GET["id"])
                 ]

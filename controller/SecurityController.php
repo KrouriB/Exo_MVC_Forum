@@ -19,6 +19,7 @@
                     return [
                         "view" => VIEW_DIR."security\listUsers.php",
                         "data" => [
+                            "categoriesMenu" => $this->categories,
                             "users" => $userManager->findAll(["pseudo", "ASC"])
                         ]
                     ];
@@ -28,7 +29,11 @@
 
         public function login(){
             if(Session::getUser() == false){    
-                return ["view" => VIEW_DIR."security/login.php"];
+                return [
+                    "view" => VIEW_DIR."security/login.php",
+                    "data" => [
+                    "categoriesMenu" => $this->categories
+                ]];
             }
             else{
                 Session::addFlash("error","vous êtes deja connecter.");
@@ -38,7 +43,12 @@
 
         public function register(){
             if(Session::getUser() == false){
-                return ["view" => VIEW_DIR."security/register.php"];
+                return [
+                    "view" => VIEW_DIR."security/register.php",
+                    "data" => [
+                        "categoriesMenu" => $this->categories
+                    ]
+                ];
             }
             else{
                 Session::addFlash("error","vous êtes deja connecter.");

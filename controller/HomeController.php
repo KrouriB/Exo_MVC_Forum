@@ -14,28 +14,20 @@
         public function index(){
             
                 return [
-                    "view" => VIEW_DIR."home.php"
+                    "view" => VIEW_DIR."home.php",
+                    "data" => [
+                        "categoriesMenu" => $this->categories
+                    ]
                 ];
             }
-            
-        public function users(){
-            $this->restrictTo("ROLE_USER");
-
-            $manager = new UserManager();
-            $users = $manager->findAll(['registerdate', 'DESC']);
-
-            return [
-                "view" => VIEW_DIR."security/users.php",
-                "data" => [
-                    "users" => $users
-                ]
-            ];
-        }
 
         public function forumRules(){
             
             return [
-                "view" => VIEW_DIR."rules.php"
+                "view" => VIEW_DIR."rules.php",
+                "data" => [
+                    "categoriesMenu" => $this->categories
+                ]
             ];
         }
 
