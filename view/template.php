@@ -48,9 +48,9 @@
 
                                     <ul class="slide">
                                         <?php
-                                            foreach($menu[0] as $option){ ?>
+                                            foreach($menu[0] as $option){ if($option->getId() == 0){ continue;}else{?>
                                                 <a href="index.php?ctrl=forum&action=listTopicsForACategorie&id=<?= $option->getId() ?>"><li><?= $option->getNomCategorie() ?></li></a>
-                                            <?php }
+                                            <?php }}
                                         ?>
                                         <a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie"><li>Sans catégorie</li></a>
                                     </ul>
