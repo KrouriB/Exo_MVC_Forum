@@ -276,8 +276,21 @@ nav a {
 
 #topMain {
     background-color: var(--turqoise);
-    padding: 5% 16px;
+    padding: 2em 16px;
     color: white;
+    position: relative;
+}
+
+#sousTitre_page {
+    position: absolute;
+    width: 100%;
+    top: 2em;
+    right: 16px;
+}
+
+#sousTitre_page div {
+    width: 100%;
+    text-align: right;
 }
 
 #container {
@@ -453,3 +466,10 @@ footer a {
     }
 }
 
+
+/* categorie */
+
+
+#trashCat a {
+    font-size: xx-large;
+}
