@@ -29,6 +29,14 @@ ul {
     color: red;
 }
 
+table {
+    width: 100%;
+}
+
+th ,td {
+    padding: 12px 0;
+}
+
 
 
 /* HEADER */
@@ -473,3 +481,5 @@ footer a {
 #trashCat a {
     font-size: xx-large;
 }
+
+
