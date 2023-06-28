@@ -6,7 +6,7 @@
     $titre_page = "Liste de tout les Topics";
     $sousTitre_page = 0;
     
-    $format = new IntlDateFormatter('fr_FR', IntlDateFormatter::MEDIUM, IntlDateFormatter::NONE);
+    $format = new IntlDateFormatter('fr_FR', IntlDateFormatter::MEDIUM, IntlDateFormatter::NONE, null, null, 'dd MMM');
 ?>
 
 <div id="container">
@@ -16,8 +16,8 @@
             $verrou = ($topic->getVerouiller() == 0) ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>' ;
             $categorieAfficher = ($topic->getCategorie() != null) ? $topic->getCategorie()->getNomCategorie() : 'sans catégorie';
             $resume = (strlen($topic->getResumer()) > 25) ? substr($topic->getResumer(),0,25)."[...]" : $topic->getResumer() ;
-            // var_dump($topic->getDateCreation());
             $theDate = DateTime::createFromFormat('d/m/Y, H:i:s', $topic->getDateCreation());
+            // var_dump($topic->getDateCreation());
             // var_dump($theDate);die;
             // $theDate = new DateTime($topic->getDateCreation());
             ?>
@@ -34,7 +34,7 @@
                                 <span><?= $verrou ?></span>
                             </div>
                         </div>
-                        <p class="infoDate"><?= $theDate->format('d M') ?></p>
+                        <p class="infoDate"><?= $format->format($theDate) ?></p>
                     </div>
                     <p class="resumeTopic"><?= $resume ?></p>
                 </a>
