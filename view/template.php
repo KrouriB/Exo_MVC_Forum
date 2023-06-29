@@ -1,5 +1,6 @@
 <?php
     $menu = $result["data"]['categoriesMenu'];
+    $nbElemPage = 5 ;
 ?>
 
 <!DOCTYPE html>

@@ -14,33 +14,43 @@
             parent::connect();
         }
 
-        public function findTopicbyCategorie($id){
+        public function findTopicbyCategorie($id,$page){
+            $start = ($page - 1) * 5;
             $sql = "
                 SELECT t.* ,MAX(DATE_FORMAT(p.datePost, '%d/%m/%Y %H:%i')) AS lastMsg ,(SELECT COUNT(p.topic_id) FROM post p WHERE p.topic_id = t.id_topic) AS nbPost
                 FROM topic t
                 LEFT JOIN post p ON t.id_topic = p.topic_id
                 WHERE t.categorie_id = :id
                 GROUP BY t.id_topic
-                ORDER BY lastMsg DESC";
+                ORDER BY lastMsg DESC
+                LIMIT :page, 5;";
 
             return $this->getMultipleResults(
-                DAO::select($sql,['id'=>$id]),
+                DAO::select($sql,[
+                    'id'=>$id,
+                    'page'=>$start
+                ]),
                 $this->className
             );
             
         }
 
-        public function findTopicbyUser($id){
+        public function findTopicbyUser($id,$page){
+            $start = ($page - 1) * 5;
             $sql = "
                 SELECT t.* ,(SELECT COUNT(p.topic_id) FROM post p WHERE p.topic_id = t.id_topic) AS nbPost,(SELECT COUNT(t.user_id) FROM topic t WHERE t.user_id = :id) AS nbTopic
                 FROM topic t
                 LEFT JOIN post p ON t.id_topic = p.topic_id
                 WHERE t.user_id = :id
                 GROUP BY t.id_topic
-                ORDER BY t.dateCreation DESC";
+                ORDER BY t.dateCreation DESC
+                LIMIT :page, 5;";
 
             return $this->getMultipleResults(
-                DAO::select($sql,['id'=>$id]),
+                DAO::select($sql,[
+                    'id'=>$id,
+                    'page'=>$start
+                ]),
                 $this->className
             );
             
