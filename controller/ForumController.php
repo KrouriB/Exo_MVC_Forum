@@ -42,19 +42,14 @@
             $topicManager = new TopicManager();
             $categorieManager = new CategorieManager();
 
-            if($id != 0){
-                return [
-                    "view" => VIEW_DIR."forum/listTopicsForACategorie.php",
-                    "data" => [
-                        "categoriesMenu" => $this->categories,
-                        "topics" => $topicManager->findTopicbyCategorie($_GET["id"]),
-                        "categorie" => $categorieManager->findOneById($_GET["id"])
-                    ]
-                ];
-            }
-            else{
-                $this->redirectTo("forum","listTopicsWithoutCategorie");
-            }
+            return [
+                "view" => VIEW_DIR."forum/listTopicsForACategorie.php",
+                "data" => [
+                    "categoriesMenu" => $this->categories,
+                    "topics" => $topicManager->findTopicbyCategorie($_GET["id"]),
+                    "categorie" => $categorieManager->findOneById($_GET["id"])
+                ]
+            ];
             
 
         }
