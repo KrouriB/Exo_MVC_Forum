@@ -322,22 +322,22 @@ tr {
     padding: .35em;
 }
 
-th ,td {
-    padding: .625em;
-    font-size: x-large;
+th,td {
+    padding: 1.875em;
     text-align: center;
 }
 
 th {
-    font-size: .85em;
+    font-size: 1.4em;
     letter-spacing: .1em;
     text-transform: uppercase;
 }
 
+td {
+    font-size: 1.2em;
+}
 
-
-@media screen and (max-width: 768px) {
-    
+@media screen and (max-width: 1560px) {
     table {
         border: 0;
     }
@@ -362,15 +362,11 @@ th {
     td {
         border-bottom: 1px solid #ddd;
         display: block;
-        font-size: .8em;
+        font-size: 1.2em;
         text-align: right;
     }
     
     td::before {
-        /*
-      * aria-label has no advantage, it won't be read inside a table
-        content: attr(aria-label);
-      */
         content: attr(data-label);
         float: left;
         font-weight: bold;
@@ -379,6 +375,12 @@ th {
     
     td:last-child {
         border-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 680px) {    
+    td {
+        font-size: 1em;
     }
 }
 
