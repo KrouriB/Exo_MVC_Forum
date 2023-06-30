@@ -187,7 +187,7 @@
                 "data" => [
                     "categoriesMenu" => $this->categories,
                     "user" => $userManager->findOneById($_GET["id"]),
-                    "topics" => $topicManager->findTopicbyUser($_GET["id"])
+                    "topics" => $topicManager->findTopicbyUser($_GET["id"]/*,1*/)
                 ]
             ];
 
