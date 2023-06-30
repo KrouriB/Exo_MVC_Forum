@@ -47,12 +47,12 @@
     //ex : HomeController->users(null)
     $result = $ctrl->$action($id);
 
-    if(isset($_GET['page'])){
-        $page = $_GET['page'];
-    }
-    else{
-        $page = null;
-    }
+    // if(isset($_GET['page'])){
+    //     $page = $_GET['page'];
+    // }
+    // else{
+    //     $page = null;
+    // }
     
     /*--------CHARGEMENT PAGE--------*/
     

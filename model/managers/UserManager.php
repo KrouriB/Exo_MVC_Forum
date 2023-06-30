@@ -14,20 +14,19 @@
             parent::connect();
         }
 
-        public function findOnebyEmail($email,$page){
-            $start = ($page - 1) * 5;
+        public function findOnebyEmail($email,/*$page*/){
+            /*$page = ($page - 1) * 5;*/
             $sql = "
                 SELECT *
                 FROM ".$this->tableName." a
-                WHERE a.email = :email
-                LIMIT :page, 5;";
-
-            // var_dump($sql);die;
+                WHERE a.email = :email";
+                /*
+                LIMIT :page, 5*/
 
             return $this->getOneOrNullResult(
                 DAO::select($sql,[
-                    'email'=>$email,
-                    'page'=>$start
+                    'email'=>$email/*,
+                    'page'=>$page*/
                 ],false),
                 $this->className
             );

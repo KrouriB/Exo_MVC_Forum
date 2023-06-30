@@ -12,7 +12,7 @@
                 $url = $ctrl ? "?ctrl=".$ctrl : "";
                 $url .= $action ? "&action=".$action : "";
                 $url .= $id ? "&id=".$id : "";
-                $url .= $page ? "&page=".$page : "";
+                // $url .= $page ? "&page=".$page : "";
             }
             else $url = "index.php";
             header("Location: $url");
