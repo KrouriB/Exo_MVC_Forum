@@ -338,6 +338,16 @@ td {
 }
 
 @media screen and (max-width: 1560px) {
+    th {
+        font-size: 1.1em;
+    }
+
+    td {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 1132px) {
     table {
         border: 0;
     }
@@ -382,6 +392,45 @@ td {
     td {
         font-size: 1em;
     }
+}
+
+
+/* TABLE naviguation */
+
+
+#navPage {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+#upNav {
+    display: flex;
+    gap: 180px;
+}
+
+.mouvNav {
+    display: flex;
+    gap: 60px;
+}
+
+#selectPage {
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#upNav span, #upNav a {
+    padding: 18px;
+    border-radius: 100%;
+}
+
+#upNav span, #upNav a, #selectPage {
+    background-color: var(--turqoise);
+    color: white;
+    border: 1px solid white;
 }
 
 

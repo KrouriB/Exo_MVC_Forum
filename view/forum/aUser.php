@@ -46,6 +46,20 @@ if($topics != null){
                 ?>
             </tbody>
         </table>
+        <div id="navPage">
+            <div id="upNav">
+                <div class="mouvNav">
+                    <a href="#"><<</a>
+                    <a href="#">&nbsp;<&nbsp;</a>
+                </div>
+                <span><!-- $_GET["page"] -->&nbsp;1&nbsp;</span>
+                <div class="mouvNav">
+                    <a href="#">&nbsp;>&nbsp;</a>
+                    <a href="#">>></a>
+                </div>
+            </div>
+            <button id="selectPage">Sélectionner une page</button><!-- idée de navigation en saisisant la page vers laquel naviguer avec un prompt en js -->
+        </div>
     </div>
     <?php
 }
