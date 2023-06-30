@@ -1,5 +1,6 @@
 /* menu burger : https://codepen.io/erikterwan/pen/EVzeRP */
 /* dropdown menu : https://codepen.io/remilaudanski/pen/gbBGyN */
+/* tableau responsive : https://codepen.io/AllThingsSmitty/pen/MyqmdM */
 
 * {
     margin: 0;
@@ -28,15 +29,6 @@ ul {
 .fa-lock {
     color: red;
 }
-
-table {
-    width: 100%;
-}
-
-th ,td {
-    padding: 12px 0;
-}
-
 
 
 /* HEADER */
@@ -309,6 +301,85 @@ nav a {
     flex-direction: column;
     min-height: 80vh;
     margin: 40px 0;
+}
+
+
+/* TABLE */
+
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+}
+
+th ,td {
+    padding: .625em;
+    font-size: x-large;
+    text-align: center;
+}
+
+th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    
+    table {
+        border: 0;
+    }
+    
+    thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+    
+    tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+    
+    td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+    
+    td::before {
+        /*
+      * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+      */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    
+    td:last-child {
+        border-bottom: 0;
+    }
 }
 
 
