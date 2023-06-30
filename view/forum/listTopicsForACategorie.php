@@ -7,7 +7,7 @@
     $firstLine = 0;
 
     $titre_page = "Liste des topics de la catégorie ".$categorie->getNomCategorie();
-    $sousTitre_page = (App\Session::isAdmin()) ? '<div id="trashCat"><a href="index.php?ctrl=forum&action=deleteCategorie&id=<?= $categorie->getId() ?>"><i class="fa-regular fa-trash-can"></i></a></div>' : 0 ;
+    $sousTitre_page = (App\Session::isAdmin()) ? '<div id="sousTitre_page"><div id="trashCat"><a href="index.php?ctrl=forum&action=deleteCategorie&id=<?= $categorie->getId() ?>"><i class="fa-regular fa-trash-can"></i></a></div></div>' : 0 ;
     
 ?>
 
