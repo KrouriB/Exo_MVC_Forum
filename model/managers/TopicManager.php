@@ -59,6 +59,32 @@
             
         }
 
+        public function countTopicPerUser($id){
+            $sql = "SELECT COUNT(id_topic) AS total
+                    FROM topic
+                    WHERE user_id = :id";
+
+            return $this->getMultipleResults(
+                DAO::select($sql,[
+                    'id'=>$id
+                ]), 
+                $this->className
+            );
+        }
+
+        public function countTopicPerCategorie($id){
+            $sql = "SELECT COUNT(id_topic) AS total
+                    FROM topic
+                    WHERE categorie_id = :id";
+
+            return $this->getMultipleResults(
+                DAO::select($sql,[
+                    'id'=>$id
+                ]), 
+                $this->className
+            );
+        }
+
         public function verouiller($id){
             $sql = "
                 UPDATE $this->tableName

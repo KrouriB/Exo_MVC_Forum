@@ -30,7 +30,7 @@
             );
         }
 
-        public function findAllEmail($id, $page, $nbElementsPerPage){ // fonction pour trouver tout les utilisateur ,nécessite $id dans variable d'entre sinon $page = NULL
+        public function findAllUsers($id, $page, $nbElementsPerPage){ // fonction pour trouver tout les utilisateur ,nécessite $id dans variable d'entre sinon $page = NULL
             $page = ($page - 1) * $nbElementsPerPage;
             $limit = $page . ", " . $nbElementsPerPage;
             
@@ -41,6 +41,18 @@
 
             return $this->getMultipleResults(
                 DAO::select($sql),
+                $this->className
+            );
+        }
+
+        public function countUsers($id){
+            $sql = "SELECT COUNT(id_user) AS total
+                    FROM user";
+
+            return $this->getMultipleResults(
+                DAO::select($sql,[
+                    'id'=>$id
+                ]), 
                 $this->className
             );
         }
