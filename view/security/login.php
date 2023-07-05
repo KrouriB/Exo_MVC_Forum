@@ -9,12 +9,14 @@
             <div class="titleCol">
                 <span>Inscrivez vous</span>
             </div>
-            <p>
-                Pour pouvoir vous connecter, vous devez être enregistré. L'enregistrement ne prend que quelques instants mais vous donne des possibilités accrues. L'administrateur du forum peut également accorder des autorisations supplémentaires aux utilisateurs enregistrés. Avant de vous inscrire, assurez-vous d'avoir pris connaissance de nos conditions d'utilisation et de nos politiques connexes. Veillez à lire les règles du forum lorsque vous naviguez sur le forum.
-            </p>
-            <div id="blocLinkCol">
-                <a href="#">Terme d'utilisation</a>
-                <a href="#">Politique de confidentialité</a>
+            <div class="blocTextInscrit">
+                <p>
+                    Pour pouvoir vous connecter, vous devez être enregistré. L'enregistrement ne prend que quelques instants mais vous donne des possibilités accrues. L'administrateur du forum peut également accorder des autorisations supplémentaires aux utilisateurs enregistrés. Avant de vous inscrire, assurez-vous d'avoir pris connaissance de nos conditions d'utilisation et de nos politiques connexes. Veillez à lire les règles du forum lorsque vous naviguez sur le forum.
+                </p>
+                <div id="blocLinkCol">
+                    <a href="#">Terme d'utilisation</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
             </div>
             <a href="index.php?ctrl=security&action=register" class="notCheckInput">Enregistrez Vous</a>
         </div>
