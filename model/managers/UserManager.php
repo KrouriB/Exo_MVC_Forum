@@ -45,14 +45,12 @@
             );
         }
 
-        public function countUsers($id){
+        public function countUsers(){
             $sql = "SELECT COUNT(id_user) AS total
                     FROM user";
 
             return $this->getMultipleResults(
-                DAO::select($sql,[
-                    'id'=>$id
-                ]), 
+                DAO::select($sql), 
                 $this->className
             );
         }
