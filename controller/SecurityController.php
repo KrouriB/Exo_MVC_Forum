@@ -28,7 +28,7 @@
                         "view" => VIEW_DIR."security\listUsers.php",
                         "data" => [
                             "categoriesMenu" => $this->categories,
-                            "total" => $userManager->countUsers($id),
+                            "total" => $userManager->countUsers(),
                             "users" => $userManager->findAllUsers($id, $page, $_SESSION["nbElementsPerPage"]) // cette id est utiliser ici , + d'info sur UserManager.php
                         ]
                     ];
