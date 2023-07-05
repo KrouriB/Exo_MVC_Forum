@@ -38,7 +38,7 @@
                         <?php
                         if (App\Session::getUser()) {
                             ?>
-                            <a href="index.php?ctrl=forum&action=aUser&id=<?= App\Session::getUser()->getId() ?>"><li><span class="fas fa-user"></span> <?= App\Session::getUser() ?></li></a>
+                            <a href="index.php?ctrl=forum&action=aUser&id=<?= App\Session::getUser()->getId() ?>&page=1"><li><span class="fas fa-user"></span> <?= App\Session::getUser() ?></li></a>
                             <a href="index.php?ctrl=security&action=logOut"><li>Déconnexion</li></a>
                             <div id="dropdownCat">
                                 <li>
@@ -50,17 +50,17 @@
                                     <ul class="slide">
                                         <?php
                                             foreach($menu[0] as $option){ if($option->getId() == 0){ continue;}else{?>
-                                                <a href="index.php?ctrl=forum&action=listTopicsForACategorie&id=<?= $option->getId() ?>"><li><?= $option->getNomCategorie() ?></li></a>
+                                                <a href="index.php?ctrl=forum&action=listTopicsForACategorie&id=<?= $option->getId() ?>&page=1"><li><?= $option->getNomCategorie() ?></li></a>
                                             <?php }}
                                         ?>
-                                        <a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie"><li>Sans catégorie</li></a>
+                                        <a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie&page=1"><li>Sans catégorie</li></a>
                                     </ul>
                                 </li>
                             </div>
                             <?php
                             if (App\Session::isAdmin()) {
                             ?>
-                                <a href="index.php?ctrl=security&action=listUsers"><li>Voir la liste des gens</li></a>
+                                <a href="index.php?ctrl=security&action=listUsers&page=1"><li>Voir la liste des gens</li></a>
                             <?php
                             }
                             ?>
