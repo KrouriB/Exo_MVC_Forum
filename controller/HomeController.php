@@ -20,11 +20,16 @@
         }
 
         public function index(){
+
+            $topicManager = new TopicManager();
+            $categorieManager = new CategorieManager();
             
                 return [
                     "view" => VIEW_DIR."home.php",
                     "data" => [
-                        "categoriesMenu" => $this->categories
+                        "categoriesMenu" => $this->categories,
+                        "topics" => $topicManager->findAll(["dateCreation", "DESC"]),
+                        "categories" => $categorieManager->findAll(["nomCategorie", "ASC"])
                     ]
                 ];
             }
