@@ -24,7 +24,7 @@
                 <div id="navLeft">
                     <a href="index.php">
                         <figure>
-                            <img src="<?= PUBLIC_DIR ?>/img/elan2/img2Elan.png" alt="#" id="imglogo">
+                            <img src="<?= PUBLIC_DIR ?>/img/elan/img2Elan.png" alt="#" id="imglogo">
                         </figure>
                         Les Ptit's Elans
                     </a>
