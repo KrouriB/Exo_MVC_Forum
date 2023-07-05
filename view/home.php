@@ -1,6 +1,11 @@
 <?php
+
+    $topics = $result["data"]['topics'];
+    $categories = $result["data"]['categories'];
+
     $titre_page = "BIENVENUE CHEZ LES PTIT'S ELANS";
     $sousTitre_page = "<h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ut nemo quia voluptas numquam, itaque ipsa soluta ratione eum temporibus aliquid, facere rerum in laborum debitis labore aliquam ullam cumque.</h4>"
+
 ?>
 <div id="container">
     <div id="message-acceuil">
@@ -20,5 +25,37 @@
                 <?php
             }
         ?>
+    </div>
+    <div id="homeLink">
+        <h2>Lien</h2>
+        <div>
+            <a href="https://github.com/KrouriB" class="homeLigneLink">
+                <figure>
+                    <img src="<?= PUBLIC_DIR ?>/img/link/github.png" alt="github icon">
+                </figure>
+                <div class="homeTextLigneLink">
+                    <h4>KrouriB</h4>
+                    <p>Vous pouvez retrouvez mon github ici</p>
+                </div>
+            </a>
+            <a href="https://preview.themeforest.net/item/flatboots-phpbb-32-highperformance-and-creative-modern-forum-for-phpbb/full_screen_preview/8536771" class="homeLigneLink">
+                <figure>
+                    <img src="<?= PUBLIC_DIR ?>/img/link/themeforest.png" alt="theme forest icon">
+                </figure>
+                <div class="homeTextLigneLink">
+                    <h4>Theme Forest</h4>
+                    <p>Ici le theme dont je me suis inspirer</p>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/in/brice-krouri-ba3a15252/" class="homeLigneLink">
+                <figure>
+                    <img src="<?= PUBLIC_DIR ?>/img/link/linkedin.png" alt="linkedin icon">
+                </figure>
+                <div class="homeTextLigneLink">
+                    <h4>Mon Linkedin</h4>
+                    <p>Vous pouvez le retrouver ici</p>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
