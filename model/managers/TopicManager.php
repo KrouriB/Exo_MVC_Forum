@@ -14,30 +14,31 @@
             parent::connect();
         }
 
-        public function findTopicbyCategorie($id/*,$page*/){
-            /*$page = ($page - 1) * 5;*/
+        public function findTopicbyCategorie($id, $page, $nbElementsPerPage){
+            $page = ($page - 1) * $nbElementsPerPage;
+            $limit = $page . ", " . $nbElementsPerPage;
+            
             $sql = "
                 SELECT t.* ,MAX(DATE_FORMAT(p.datePost, '%d/%m/%Y %H:%i')) AS lastMsg ,(SELECT COUNT(p.topic_id) FROM post p WHERE p.topic_id = t.id_topic) AS nbPost
                 FROM topic t
                 LEFT JOIN post p ON t.id_topic = p.topic_id
                 WHERE t.categorie_id = :id
                 GROUP BY t.id_topic
-                ORDER BY lastMsg DESC";
-                /*
-                LIMIT :page, 5*/
+                ORDER BY lastMsg DESC
+                LIMIT $limit";
 
             return $this->getMultipleResults(
                 DAO::select($sql,[
-                    'id'=>$id/*,
-                    'page'=>$page*/
+                    'id'=>$id
                 ]),
                 $this->className
             );
             
         }
 
-        public function findTopicbyUser($id/*,$page*/){
-            // $page = ($page - 1) * 5;
+        public function findTopicbyUser($id, $page, $nbElementsPerPage){
+            $page = ($page - 1) * $nbElementsPerPage;
+            $limit = $page . ", " . $nbElementsPerPage;
             
             $sql = "
                 SELECT t.* ,(SELECT COUNT(p.topic_id) FROM post p WHERE p.topic_id = t.id_topic) AS nbPost,(SELECT COUNT(t.user_id) FROM topic t WHERE t.user_id = :id) AS nbTopic
@@ -46,12 +47,12 @@
                 WHERE t.user_id = :id
                 GROUP BY t.id_topic
                 ORDER BY t.dateCreation DESC
-                ";/*LIMIT :page, 5*/
+                LIMIT $limit";
+                // var_dump($page ,"<br>", $nbElementsPerPage,"<br>",$sql);die;
 
             return $this->getMultipleResults(
                 DAO::select($sql,[
-                    'id'=>$id/*,
-                    'page'=>intval($page)*/
+                    'id'=>$id
                 ]),
                 $this->className
             );
