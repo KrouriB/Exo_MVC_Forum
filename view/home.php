@@ -27,14 +27,14 @@
         ?>
     </div>
     <div id="homeLink">
-        <h2>Lien</h2>
+        <h2>Liens :</h2>
         <div>
             <a href="https://github.com/KrouriB" class="homeLigneLink">
                 <figure>
                     <img src="<?= PUBLIC_DIR ?>/img/link/github.png" alt="github icon">
                 </figure>
                 <div class="homeTextLigneLink">
-                    <h4>KrouriB</h4>
+                    <h3>KrouriB</h3>
                     <p>Vous pouvez retrouvez mon github ici</p>
                 </div>
             </a>
@@ -43,7 +43,7 @@
                     <img src="<?= PUBLIC_DIR ?>/img/link/themeforest.png" alt="theme forest icon">
                 </figure>
                 <div class="homeTextLigneLink">
-                    <h4>Theme Forest</h4>
+                    <h3>Theme Forest</h3>
                     <p>Ici le theme dont je me suis inspirer</p>
                 </div>
             </a>
@@ -52,7 +52,7 @@
                     <img src="<?= PUBLIC_DIR ?>/img/link/linkedin.png" alt="linkedin icon">
                 </figure>
                 <div class="homeTextLigneLink">
-                    <h4>Mon Linkedin</h4>
+                    <h3>Mon Linkedin</h3>
                     <p>Vous pouvez le retrouver ici</p>
                 </div>
             </a>
