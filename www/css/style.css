@@ -790,4 +790,12 @@ footer a {
     .blocCol {
         width: 100%;
     }
+
+    .blocTextInscrit {
+        height: auto;
+    }
+
+    #blocInfoCo {
+        height: auto;
+    }
 }
