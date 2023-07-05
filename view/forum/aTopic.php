@@ -45,7 +45,7 @@
                 <?php
                     if(App\Session::isAdmin() OR ($post->getUser()->getPseudo() == App\Session::getUser())){
                 ?>
-                <a href="index.php?ctrl=forum&action=deleteMessage&id=<?= $post->getId() ?>&idTopic=<?= $_GET['id'] ?>"><i class="fa-regular fa-trash-can"></i></a>
+                <a href="index.php?ctrl=forum&action=deleteMessage&id=<?= $post->getId() ?>"><i class="fa-regular fa-trash-can"></i></a>
         <?php
             }
         ?>
@@ -70,7 +70,7 @@ else{
 <?php
     if($topic->getVerouiller() == 0){
         ?>
-            <form action="index.php?ctrl=forum&action=aPost&id=<?= $_GET['id'] ?>" method="post" class="formBasPage">
+            <form action="index.php?ctrl=forum&action=addPost&id=<?= $_GET['id'] ?>" method="post" class="formBasPage">
                 <h2>Envoyer votre Réponse</h2>
                 <div>
                     <label for="messageForm">
