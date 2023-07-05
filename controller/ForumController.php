@@ -37,7 +37,7 @@
 
         }
 
-        public function listTopicsForACategorie(){
+        public function listTopicsForACategorie($id, $page){
             
             $topicManager = new TopicManager();
             $categorieManager = new CategorieManager();
@@ -46,15 +46,15 @@
                 "view" => VIEW_DIR."forum/listTopicsForACategorie.php",
                 "data" => [
                     "categoriesMenu" => $this->categories,
-                    "topics" => $topicManager->findTopicbyCategorie($_GET["id"]),
-                    "categorie" => $categorieManager->findOneById($_GET["id"])
+                    "topics" => $topicManager->findTopicbyCategorie($id, $page, $_SESSION["nbElementsPerPage"]),
+                    "categorie" => $categorieManager->findOneById($id)
                 ]
             ];
             
 
         }
 
-        public function aTopic(){
+        public function aTopic($id){
             
             $postManager = new PostManager();
             $topicManager = new TopicManager();
@@ -63,14 +63,14 @@
                 "view" => VIEW_DIR."forum/aTopic.php",
                 "data" => [
                     "categoriesMenu" => $this->categories,
-                    "posts" => $postManager->findPostsbyTopic($_GET["id"]),
-                    "topic" => $topicManager->findOneById($_GET["id"])
+                    "posts" => $postManager->findPostsbyTopic($id),
+                    "topic" => $topicManager->findOneById($id)
                 ]
             ];
 
         }
 
-        public function aNewTopic(){
+        public function aNewTopic($id){
 
             $topicManager = new TopicManager();
 
@@ -98,10 +98,10 @@
                     $topicManager->add($data = [
                         "nomTopic" => $topic,
                         "resumer" =>    $resume,
-                        "categorie_id" => $_GET['id'],
+                        "categorie_id" => $id,
                         "user_id" => $_SESSION['user']->getId()
                     ]);
-                    $this->redirectTo("forum","listTopicsForACategorie",$_GET['id']);
+                    $this->redirectTo("forum","listTopicsForACategorie",$id);
                 }
                 else{
                     Session::addFlash("error","veuiller remplir le formulaire correctement.");
@@ -110,7 +110,7 @@
             }
         }
 
-        public function aPost(){
+        public function addPost($id){
 
             $postManager = new PostManager();
 
@@ -120,13 +120,13 @@
                     $postManager->add($data = [
                         "message" => $message,
                         "user_id" => $_SESSION['user']->getId(),
-                        "topic_id" => $_GET['id']
+                        "topic_id" => $id
                     ]);
-                    $this->redirectTo("forum","aTopic",$_GET['id']);
+                    $this->redirectTo("forum","aTopic",$id);
                 }
                 else{
                     Session::addFlash("error","Vous ne pouvez pas envoyer un message vide.");
-                    $this->redirectTo("forum","aTopic",$_GET['id']);
+                    $this->redirectTo("forum","aTopic",$id);
                 }
             }
 
@@ -164,20 +164,20 @@
             }
         }
 
-        public function listTopicsWithoutCategorie(){
-
+        public function listTopicsWithoutCategorie($id,$page){
+            $id = 0;
             $topicManager = new TopicManager();
 
             return [
                 "view" => VIEW_DIR."forum/listTopicsWithoutCategorie.php",
                 "data" => [
                     "categoriesMenu" => $this->categories,
-                    "topics" => $topicManager->findTopicbyCategorie(0)
+                    "topics" => $topicManager->findTopicbyCategorie($id, $page, $_SESSION["nbElementsPerPage"])
                 ]
             ];
         }
 
-        public function aUser(){
+        public function aUser($id, $page){
             
             $userManager = new UserManager();
             $topicManager = new TopicManager();
@@ -186,8 +186,8 @@
                 "view" => VIEW_DIR."forum/aUser.php",
                 "data" => [
                     "categoriesMenu" => $this->categories,
-                    "user" => $userManager->findOneById($_GET["id"]),
-                    "topics" => $topicManager->findTopicbyUser($_GET["id"]/*,1*/)
+                    "user" => $userManager->findOneById($id),
+                    "topics" => $topicManager->findTopicbyUser($id, $page, $_SESSION["nbElementsPerPage"])
                 ]
             ];
 
@@ -222,7 +222,7 @@
                 $this->redirectTo("forum","listTopics");
             }
             else{
-                Session::addFlash("error","vous avez tentez de supprimez un topic qui ne vous appartient pas !");
+                Session::addFlash("error","vous avez tenté de supprimer un topic qui ne vous appartient pas !");
                 $this->redirectTo("home");
             }
         }
@@ -231,14 +231,16 @@
 
             $postManager = new PostManager();
             $topicManager = new TopicManager();
+
+            $postToDelete = $postManager->findOneById($id);
             
-            if(($postManager->findOneById($id)->getUser() == Session::getUser()) OR Session::isAdmin()){
+            if(($postToDelete->getUser() == Session::getUser()) || Session::isAdmin()){
                 $postManager->delete($id);
                 Session::addFlash("success","vous avez supprimer le message avec succès");
-                $this->redirectTo("forum","aTopic",$_GET['idTopic']);
+                $this->redirectTo("forum","aTopic",$postToDelete->getTopic()->getId());
             }
             else{
-                Session::addFlash("error","vous avez tentez de supprimez un message qui ne vous appartient pas !");
+                Session::addFlash("error","vous avez tenté de supprimer un message qui ne vous appartient pas !");
                 $this->redirectTo("home");
             }
         }
