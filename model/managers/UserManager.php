@@ -14,25 +14,38 @@
             parent::connect();
         }
 
-        public function findOnebyEmail($email,/*$page*/){
-            /*$page = ($page - 1) * 5;*/
+        public function findOnebyEmail($email){ // fonction utiliser pour tester la presence d'un email dans la base de donnée
+            
             $sql = "
                 SELECT *
                 FROM ".$this->tableName." a
                 WHERE a.email = :email";
-                /*
-                LIMIT :page, 5*/
+                
 
             return $this->getOneOrNullResult(
                 DAO::select($sql,[
-                    'email'=>$email/*,
-                    'page'=>$page*/
+                    'email'=>$email
                 ],false),
                 $this->className
             );
         }
 
-        public function findOnebyPseudo($pseudo){
+        public function findAllEmail($id, $page, $nbElementsPerPage){ // fonction pour trouver tout les utilisateur ,nécessite $id dans variable d'entre sinon $page = NULL
+            $page = ($page - 1) * $nbElementsPerPage;
+            $limit = $page . ", " . $nbElementsPerPage;
+            
+            $sql = "
+                SELECT *
+                FROM ".$this->tableName." a
+                LIMIT $limit";
+
+            return $this->getMultipleResults(
+                DAO::select($sql),
+                $this->className
+            );
+        }
+
+        public function findOnebyPseudo($pseudo){ // fonction utiliser pour tester la presence d'un pseudo dans la base de donnée
             $sql = "
                 SELECT *
                 FROM ".$this->tableName." a
