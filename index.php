@@ -16,6 +16,10 @@
     
     //démarre une session ou récupère la session actuelle
     session_start();
+    // paramètres de SESSION par défaut
+    if (!isset($_SESSION["nbElementsPerPage"])) {
+        $_SESSION["nbElementsPerPage"] = 5;
+    }
     //et on intègre la classe Session qui prend la main sur les messages en session
     use App\Session as Session;
 
@@ -41,18 +45,17 @@
         $action = $_GET['action'];
     }
     if(isset($_GET['id'])){
-        $id = $_GET['id'];
+        $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
     }
     else $id = null;
-    //ex : HomeController->users(null)
-    $result = $ctrl->$action($id);
 
+    $pageNumber = 1;
     if(isset($_GET['page'])){
-        $page = $_GET['page'];
+        $pageNumber = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
     }
-    else{
-        $page = null;
-    }
+
+    //ex : HomeController->users(null)
+    $result = $ctrl->$action($id, $pageNumber);
     
     /*--------CHARGEMENT PAGE--------*/
     
