@@ -1,6 +1,14 @@
 <?php
 
     $topics = $result["data"]['topics'];
+    $total = $result["data"]['total'];
+
+    $count = 0;
+    foreach($total as $single){
+        $count = $single->getTotal();
+    }
+    $max = (($count % $_SESSION["nbElementsPerPage"]) != 0) ? intdiv($count,$_SESSION["nbElementsPerPage"]) + 1 : intdiv($count,$_SESSION["nbElementsPerPage"]) ;
+
 
     $userInSession = false;
     $firstLine = 0;
@@ -92,15 +100,43 @@
             </table>
             <div id="navPage">
                 <div id="upNav">
-                    <div class="mouvNav">
-                        <a href="#"><<</a>
-                        <a href="#">&nbsp;<&nbsp;</a>
-                    </div>
-                    <span><!-- $_GET["page"] -->&nbsp;1&nbsp;</span>
-                    <div class="mouvNav">
-                        <a href="#">&nbsp;>&nbsp;</a>
-                        <a href="#">>></a>
-                    </div>
+                    <?php
+                    if($_GET["page"] > 1){
+                        ?>
+                        <div class="mouvNav">
+                            <a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie&page=1"><<</a>
+                            <a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie&page=<?= $_GET["page"]-1 ?>">&nbsp;<&nbsp;</a>
+                        </div>
+                        <?php
+                    }
+                    else{
+                        ?>
+                        <div class="mouvNav">
+                            <a>&nbsp;&nbsp;&nbsp;</a>
+                            <a>&nbsp;&nbsp;&nbsp;</a>
+                        </div>
+                        <?php    
+                    }
+                    ?>
+                    <span>&nbsp;<?= $_GET["page"] ?>&nbsp;</span>
+                    <?php
+                    if($_GET["page"] != $max){
+                        ?>
+                        <div class="mouvNav">
+                            <a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie&page=<?= $_GET["page"]+1 ?>">&nbsp;>&nbsp;</a>
+                            <a href="index.php?ctrl=forum&action=listTopicsWithoutCategorie&page=<?= $max ?>">>></a>
+                        </div>
+                        <?php
+                    }
+                    else{
+                        ?>
+                        <div class="mouvNav">
+                            <a>&nbsp;&nbsp;&nbsp;</a>
+                            <a>&nbsp;&nbsp;&nbsp;</a>
+                        </div>
+                        <?php    
+                    }
+                    ?>
                 </div>
                 <button id="selectPage">Sélectionner une page</button><!-- idée de navigation en saisisant la page vers laquel naviguer avec un prompt en js -->
             </div>
