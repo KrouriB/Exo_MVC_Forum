@@ -19,8 +19,8 @@
 
         public function index(){}
 
-        public function listUsers(){
-
+        public function listUsers($id, $page){ // pour ce systeme de pagination il faut une variable id malgré le fait de ne pas l'utiliser
+            $id = null;
             $userManager = new UserManager();
             
                 if(Session::isAdmin()){
@@ -28,7 +28,7 @@
                         "view" => VIEW_DIR."security\listUsers.php",
                         "data" => [
                             "categoriesMenu" => $this->categories,
-                            "users" => $userManager->findAll(["pseudo", "ASC"])
+                            "users" => $userManager->findAllEmail($id, $page, $_SESSION["nbElementsPerPage"]) // cette id est utiliser ici , + d'info sur UserManager.php
                         ]
                     ];
                 }
