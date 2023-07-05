@@ -28,7 +28,8 @@
                         "view" => VIEW_DIR."security\listUsers.php",
                         "data" => [
                             "categoriesMenu" => $this->categories,
-                            "users" => $userManager->findAllEmail($id, $page, $_SESSION["nbElementsPerPage"]) // cette id est utiliser ici , + d'info sur UserManager.php
+                            "total" => $userManager->countUsers($id),
+                            "users" => $userManager->findAllUsers($id, $page, $_SESSION["nbElementsPerPage"]) // cette id est utiliser ici , + d'info sur UserManager.php
                         ]
                     ];
                 }

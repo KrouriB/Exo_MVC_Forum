@@ -46,6 +46,7 @@
                 "view" => VIEW_DIR."forum/listTopicsForACategorie.php",
                 "data" => [
                     "categoriesMenu" => $this->categories,
+                    "total" => $topicManager->countTopicPerCategorie($id),
                     "topics" => $topicManager->findTopicbyCategorie($id, $page, $_SESSION["nbElementsPerPage"]),
                     "categorie" => $categorieManager->findOneById($id)
                 ]
@@ -172,6 +173,7 @@
                 "view" => VIEW_DIR."forum/listTopicsWithoutCategorie.php",
                 "data" => [
                     "categoriesMenu" => $this->categories,
+                    "total" => $topicManager->countTopicPerCategorie($id),
                     "topics" => $topicManager->findTopicbyCategorie($id, $page, $_SESSION["nbElementsPerPage"])
                 ]
             ];
@@ -187,6 +189,7 @@
                 "data" => [
                     "categoriesMenu" => $this->categories,
                     "user" => $userManager->findOneById($id),
+                    "total" => $topicManager->countTopicPerUser($id),
                     "topics" => $topicManager->findTopicbyUser($id, $page, $_SESSION["nbElementsPerPage"])
                 ]
             ];
