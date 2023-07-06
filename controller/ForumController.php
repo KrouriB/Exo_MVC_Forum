@@ -89,7 +89,7 @@
                 }
                 else{
                     Session::addFlash("error","veuiller remplir le formulaire correctement.");
-                    $this->redirectTo("forum","listTopics");
+                    $this->redirectTo("home");
                 }
             }
             elseif(isset($_POST['submitCate'])){
@@ -102,11 +102,11 @@
                         "categorie_id" => $id,
                         "user_id" => $_SESSION['user']->getId()
                     ]);
-                    $this->redirectTo("forum","listTopicsForACategorie",$id);
+                    $this->redirectTo("forum","listTopicsForACategorie",$id,"1");
                 }
                 else{
                     Session::addFlash("error","veuiller remplir le formulaire correctement.");
-                    $this->redirectTo("forum","listTopics");
+                    $this->redirectTo("home");
                 }
             }
         }
@@ -127,7 +127,7 @@
                 }
                 else{
                     Session::addFlash("error","Vous ne pouvez pas envoyer un message vide.");
-                    $this->redirectTo("forum","aTopic",$id);
+                    $this->redirectTo("forum","aTopic",$id,"1");
                 }
             }
 
@@ -145,7 +145,7 @@
                 }
                 else{
                     Session::addFlash("error","veuiller inserer un nom de categorie.");
-                    $this->redirectTo("forum","listCategories");
+                    $this->redirectTo("home");
                 }
             }
         }
