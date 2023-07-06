@@ -47,8 +47,8 @@
             if($_GET["page"] > 1){
                 ?>
                 <div class="mouvNav">
-                    <a href="index.php?ctrl=forum&action=listUsers&page=1"><<</a>
-                    <a href="index.php?ctrl=forum&action=listUsers&page=<?= $_GET["page"]-1 ?>">&nbsp;<&nbsp;</a>
+                    <a href="index.php?ctrl=security&action=listUsers&page=1"><<</a>
+                    <a href="index.php?ctrl=security&action=listUsers&page=<?= $_GET["page"]-1 ?>">&nbsp;<&nbsp;</a>
                 </div>
                 <?php
             }
@@ -66,8 +66,8 @@
             if($_GET["page"] != $max){
                 ?>
                 <div class="mouvNav">
-                    <a href="index.php?ctrl=forum&action=listUsers&page=<?= $_GET["page"]+1 ?>">&nbsp;>&nbsp;</a>
-                    <a href="index.php?ctrl=forum&action=listUsers&page=<?= $max ?>">>></a>
+                    <a href="index.php?ctrl=security&action=listUsers&page=<?= $_GET["page"]+1 ?>">&nbsp;>&nbsp;</a>
+                    <a href="index.php?ctrl=security&action=listUsers&page=<?= $max ?>">>></a>
                 </div>
                 <?php
             }
