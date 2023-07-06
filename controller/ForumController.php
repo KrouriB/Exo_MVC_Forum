@@ -140,8 +140,11 @@
             if(isset($_POST['submit'])){
                 $nomCategorie = filter_input(INPUT_POST, "nomCategorie", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 if($nomCategorie){
-                    $categorieManager->add($data = ["nomCategorie" => $nomCategorie]);
-                    $this->redirectTo("forum","listCategories");
+                    $categorieManager->add($data = [   
+                        "nomCategorie" => $nomCategorie
+                    ]);
+                    Session::addFlash("success","Categorie ajouter.");
+                    $this->redirectTo("home");
                 }
                 else{
                     Session::addFlash("error","veuiller inserer un nom de categorie.");
