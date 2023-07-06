@@ -50,7 +50,7 @@
                             if($firstLine == 0){
                                 ?>
                                     <td class="first" data-label="Auteur">
-                                        <a class="lienTd" href="index.php?ctrl=forum&action=aUser&id=<?= $topic->getUser()->getId() ?>">
+                                        <a class="lienTd" href="index.php?ctrl=forum&action=aUser&id=<?= $topic->getUser()->getId() ?>&page=1">
                                             <?=$topic->getUser()->getPseudo()?>        
                                         </a>
                                     </td>
@@ -60,7 +60,7 @@
                             else{
                                 ?>
                                     <td class="first" scope="row" data-label="Auteur">
-                                        <a class="lienTd" href="index.php?ctrl=forum&action=aUser&id=<?= $topic->getUser()->getId() ?>">
+                                        <a class="lienTd" href="index.php?ctrl=forum&action=aUser&id=<?= $topic->getUser()->getId() ?>&page=1">
                                             <?=$topic->getUser()->getPseudo()?>        
                                         </a>
                                     </td>

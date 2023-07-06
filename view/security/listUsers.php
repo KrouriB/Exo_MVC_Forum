@@ -32,7 +32,7 @@
                     $role = strtolower(end($roleFull));
                     ?>
                         <tr>
-                            <td><a href="index.php?ctrl=forum&action=aUser&id=<?= $user->getId() ?>"><?=$user->getPseudo()?></a></td>
+                            <td><a href="index.php?ctrl=forum&action=aUser&id=<?= $user->getId() ?>&page=1"><?=$user->getPseudo()?></a></td>
                             <td><?=$user->getEmail()?></td>
                             <td><?=$role?></td>
                         </tr>
